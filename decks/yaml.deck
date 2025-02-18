@@ -1,0 +1,162 @@
+deck:
+  - front: |
+      What are the two main data structures in YAML?
+    back: |
+      - Mappings (key-value pairs)
+      - Sequences (lists)
+  - front: |
+      How do you denote a comment in YAML?
+    back: |
+      ```yaml
+      # This is a comment
+      ```
+  - front: |
+      How do you represent a mapping (key-value pair) in YAML?  Give an example.
+    back: |
+      ```yaml
+      key: value
+      name: John Doe
+      ```
+  - front: |
+      How do you represent a sequence (list) in YAML? Give an example.
+    back: |
+      ```yaml
+      - item1
+      - item2
+      - item3
+
+      # Or, inline:
+      [item1, item2, item3]
+      ```
+  - front: |
+      What is the recommended file extension for YAML files?
+    back: |
+      `.yaml` (although `.yml` is also sometimes used)
+  - front: |
+      How do you represent a multi-line string in YAML, preserving newlines? Give examples using both block style indicators.
+    back: |
+      Using the literal style (`|`):
+
+      ```yaml
+      long_text: |
+        This is a multi-line string.
+        Newlines are preserved.
+          Indentation within the block is significant.
+      ```
+
+      Using the folded style (`>`):
+
+      ```yaml
+      folded_text: >
+        This is a folded multi-line string.
+
+        Newlines are mostly converted to spaces,
+
+        except when there are multiple newlines.
+      ```
+  - front: |
+      Explain the difference between the literal style (`|`) and folded style (`>`) for multi-line strings.
+    back: |
+      - `|` (Literal): Preserves newlines and indentation within the block.
+      - `>` (Folded): Converts single newlines to spaces, but keeps multiple newlines.  Indentation of the first line determines the indentation that will be stripped from the beginning of the rest.
+  - front: |
+      How can you include a double quote (") within a double-quoted string in YAML?
+    back: |
+      Escape it with another double quote (`""`).
+      ```yaml
+      message: "He said, ""Hello!"""
+      ```
+  - front: |
+     How do you create an inline mapping in YAML?
+    back: |
+      ```yaml
+      {key1: value1, key2: value2}
+      ```
+  - front: |
+      How do you create an inline sequence in YAML?
+    back: |
+      ```yaml
+      [item1, item2, item3]
+      ```
+  - front: |
+      What are YAML anchors and aliases, and how are they used? Provide an example.
+    back: |
+      Anchors (`&`) allow you to mark a data structure for later reference.  Aliases (`*`) allow you to refer back to that anchored data structure, avoiding repetition.
+
+      ```yaml
+      defaults: &defaults
+        adapter:  postgres
+        host:     localhost
+
+      development:
+        database: myapp_development
+        <<: *defaults
+
+      test:
+        database: myapp_test
+        <<: *defaults
+      ```
+      `<<:` This is called the merge key, this is not part of the YAML spec and it's considered by some people a bad practice.
+  - front: |
+      What does the `!!` signify in YAML? Give examples of common explicit types.
+    back: |
+      `!!` is used for explicit typing.  It tells the YAML parser to treat the data as a specific type.
+
+      ```yaml
+      integer: !!int 123
+      float: !!float 123.45
+      string: !!str 123
+      boolean: !!bool true
+      null_value: !!null null
+      binary_data: !!binary |
+        R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7
+      ```
+  - front: |
+      What are the three directives defined in the YAML specification?
+    back: |
+      - `%YAML`: Specifies the YAML version.
+      - `%TAG`: Defines tag shorthands.
+      - Reserved directives.
+  - front: |
+      Give an example of the `%YAML` directive.
+    back: |
+      ```yaml
+      %YAML 1.2
+      ---
+      document: content
+      ```
+  - front: |
+      Give an example of the `%TAG` directive.
+    back: |
+      ```yaml
+      %TAG !m! tag:my.org,2024:
+      ---
+      example: !m!foo "Bar"
+      ```
+  - front: |
+      How do you represent a boolean value (true/false) in YAML?
+    back: |
+      ```yaml
+      is_active: true
+      is_valid: false
+
+      # Also acceptable (case-insensitive):
+      #  yes, no, on, off
+      ```
+  - front: |
+      How do you represent null in YAML?
+    back: |
+      ```yaml
+      value: null  # Explicit null
+      another_value: ~   # Tilde (also represents null)
+      empty_value:    # Empty value (also interpreted as null)
+      ```
+  - front: |
+      What are "flow styles" and "block styles" in YAML?
+    back: |
+      - **Flow styles:** Use JSON-like syntax with curly braces `{}` for mappings and square brackets `[]` for sequences. They are more compact but can be less readable.
+      - **Block styles:** Use indentation to define structure. They are generally more readable, especially for complex data.
+  - front: |
+      Explain the concept of "indentation" in YAML and its importance.
+    back: |
+      Indentation (using spaces, *not tabs*) is crucial in YAML.  It

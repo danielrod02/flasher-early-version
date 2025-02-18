@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashy</title>
+
+    <!-- <link rel="stylesheet" href="/styles/vs.css"> -->
+    <link rel="stylesheet" href="/styles/global.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/showdown-katex@0.8.0/dist/showdown-katex.min.js" integrity="sha256-3SVaqAv51DdVXBzHUBt7snnJhGXRZc7aFBC7SgHuNWw=" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.11.1/lib/core.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.11.1/styles/night-owl.min.css">
+    <script>hljs.highlightAll();</script>
+
+    <!-- To automatically render math in text elements, include the auto-render extension: -->
+    <!-- <script  src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script> -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main"></div>
+    <script>
+        (async () => {
+            const converter = new showdown.Converter()
+            const req = await fetch("/decks/python.deck");
+            const deckText = await req.text();
+            const deck = jsyaml.load(deckText);
+            const renderElement = document.querySelector("div.main");
+            for (const card of deck.deck) {
+                const frontElement = converter.makeHtml(card.front);
+                const backElement = converter.makeHtml(card.back);
+                renderElement.insertAdjacentHTML("beforeend", frontElement);
+                renderElement.insertAdjacentHTML("beforeend", backElement);
+            }
+
+         })();
+    </script>
+</body>
+</html>

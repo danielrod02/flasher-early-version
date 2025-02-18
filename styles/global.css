@@ -1,0 +1,11 @@
+body {
+    margin: auto 15vw;
+}
+
+.main > p {
+    font-family: "Afacad Flux", serif;
+    font-optical-sizing: auto;
+    font-size: xx-large;
+    font-weight: medium;
+    font-style: normal;
+}

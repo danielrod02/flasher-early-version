@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Code Highlighting Example</title>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css"> -->
+    <!-- <link rel="stylesheet" href="https://raw.githubusercontent.com/highlightjs/highlight.js/refs/heads/main/src/styles/vs.css"> -->
+    <link rel="stylesheet" href="./vs.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="https://cdn.jsdelivr.net/npm/showdown-katex@0.8.0/dist/showdown-katex.min.js" integrity="sha256-3SVaqAv51DdVXBzHUBt7snnJhGXRZc7aFBC7SgHuNWw=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css" integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
+
+    <!-- The loading of KaTeX is deferred to speed up page rendering -->
+    <script  src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js" integrity="sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh" crossorigin="anonymous"></script>
+
+    <!-- To automatically render math in text elements, include the auto-render extension: -->
+    <script  src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+</head>
+<body>
+
+    <h1>Python Code Example</h1>
+    <pre><code class="language-python">
+    def my_function(x):
+        """This is a docstring."""
+        return x * 2
+
+    print(my_function(5))
+    </code></pre>
+
+    <h1>JavaScript Code Example</h1>
+    <pre><code class="language-javascript">
+    function greet(name) {
+        console.log("Hello, " + name + "!");
+    }
+
+    greet("World");
+    </code></pre>
+    <p>This is an inline formula:
+  <math xmlns="http://www.w3.org/1998/Math/MathML">
+    <mrow>
+      <mi>E</mi>
+      <mo>=</mo>
+      <mi>m</mi>
+      <msup>
+        <mi>c</mi>
+        <mn>2</mn>
+      </msup>
+    </mrow>
+  </math>
+</p>
+
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <mrow>
+    <mi mathvariant="script">F</mi>
+    <mfenced>
+      <mrow>
+        <msup>
+          <mi>e</mi>
+          <mrow>
+            <mo>-</mo>
+            <mi>a</mi>
+            <msup>
+              <mi>t</mi>
+              <mn>2</mn>
+            </msup>
+          </mrow>
+        </msup>
+      </mrow>
+    </mfenced>
+    <mo>=</mo>
+    <msqrt>
+      <mfrac>
+        <mi>π</mi>
+        <mi>a</mi>
+      </mfrac>
+    </msqrt>
+    <msup>
+      <mi>e</mi>
+      <mrow>
+        <mo>-</mo>
+        <mfrac>
+          <msup>
+            <mi>ω</mi>
+            <mn>2</mn>
+          </msup>
+          <mrow>
+            <mn>4</mn>
+            <mi>a</mi>
+          </mrow>
+        </mfrac>
+      </mrow>
+    </msup>
+  </mrow>
+</math>
+
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <mrow>
+    <mi mathvariant="script">F</mi>
+    <mfenced>
+      <mrow>
+        <mi>rect</mi>
+        <mfenced>
+          <mfrac>
+            <mi>t</mi>
+            <mrow>
+              <mn>2</mn>
+              <mi>T</mi>
+            </mrow>
+          </mfrac>
+        </mfenced>
+      </mrow>
+    </mfenced>
+    <mo>=</mo>
+    <mn>2</mn>
+    <mi>T</mi>
+    <mfrac>
+      <mrow>
+        <mi>sin</mi>
+        <mfenced>
+          <mrow>
+            <mi>ω</mi>
+            <mi>T</mi>
+          </mrow>
+        </mfenced>
+      </mrow>
+      <mrow>
+        <mi>ω</mi>
+        <mi>T</mi>
+      </mrow>
+    </mfrac>
+  </mrow>
+</math>
+<div class="showdown"></div>
+<div class="katex"></div>
+<script>
+    const converter = new showdown.Converter();
+    text      = (
+`# hello, markdown!,
+This is a simple paragraph.
+
+## This is a subtitle
+\`\`\`js
+const some = "variable";
+const s = new Date();
+\`\`\`
+
+**The Cauchy-Schwarz Inequality**
+$$\\left( \\sum_{k=1}^n a_k b_k \\right)^2 \\leq \\left( \\sum_{k=1}^n a_k^2 \\right) \\left( \\sum_{k=1}^n b_k^2 \\right)$$
+
+\`\`\`math
+\\left( \\sum_{k=1}^n a_k b_k \\right)^2 \\leq \\left( \\sum_{k=1}^n a_k^2 \\right) \\left( \\sum_{k=1}^n b_k^2 \\right
+\`\`\`
+`
+);
+    html      = converter.makeHtml(text);
+    const showdownRender = document.querySelector(".showdown");
+    showdownRender.innerHTML = html;
+    document.
+    katex.render("c = \\pm\\sqrt{a^2 + b^2}", document.querySelector(".katex"), {
+        throwOnError: false
+    });
+</script>
+</body>
+</html>

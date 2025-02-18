@@ -1,0 +1,548 @@
+deck:
+  - front: |
+      How do you define a function in Python?  Give an example.
+    back: |
+      ```python
+      def my_function(arg1, arg2):
+          """Docstring describing the function."""
+          # Function body
+          return arg1 + arg2
+      ```
+    
+      - `def` keyword
+      - Function name
+      - Parentheses `()` enclosing parameters (optional)
+      - Colon `:`
+      - Indented function body (4 spaces recommended)
+      - Docstrings (optional but highly recommended) enclosed in triple quotes (`"""Docstring"""`)
+      - `return` statement (optional)
+  - front: |
+      What are the main data types in Python? Give examples of each.
+    back: |
+      - **Numbers:**
+        - `int`: `10`, `-5`, `0`
+        - `float`: `3.14`, `-2.5`, `0.0`
+        - `complex`: `2 + 3j`, `1j`
+      - **Strings:**
+        - `str`: `"Hello"`, `'World'`, `"""Multi-line string"""`
+      - **Booleans:**
+        - `bool`: `True`, `False`
+      - **Lists:**
+        - `list`: `[1, 2, 3]`, `['a', 'b', 'c']`, `[1, 'a', True]`
+      - **Tuples:**
+        - `tuple`: `(1, 2, 3)`, `('a', 'b', 'c')`, `(1, 'a', True)`
+      - **Dictionaries:**
+        - `dict`: `{'key1': 'value1', 'key2': 'value2'}`
+      - **Sets:**
+        - `set`: `{1, 2, 3}`, `{'a', 'b', 'c'}`
+      - **NoneType:**
+        - `None`: Represents the absence of a value.
+  - front: |
+      How do you write a comment in Python?  Give examples of single-line and multi-line comments.
+    back: |
+      ```python
+      # This is a single-line comment.
+
+      """
+      This is a multi-line comment
+      (technically a docstring, but often used as a multi-line comment).
+      """
+
+      '''
+      This is also a multi-line comment using single quotes.
+      '''
+      ```
+  - front: |
+      How do you perform string concatenation in Python? Give examples.
+    back: |
+      ```python
+      str1 = "Hello"
+      str2 = "World"
+
+      # Using the + operator:
+      combined_string = str1 + " " + str2  # "Hello World"
+
+      # Using f-strings (formatted string literals):
+      f_string = f"{str1} {str2}"  # "Hello World"
+      
+      # Using the .join() method:
+      words = ["Hello", "World"]
+      joined_string = " ".join(words) # "Hello World"
+      ```
+  - front: |
+      What are the different ways to format strings in Python?
+    back: |
+      - **f-strings (formatted string literals):**  `f"My name is {name} and I am {age} years old."` (Python 3.6+)
+      - **`.format()` method:** `"My name is {} and I am {} years old.".format(name, age)`
+      - **%-formatting (old style):** `"My name is %s and I am %d years old." % (name, age)` (Generally discouraged in favor of f-strings or `.format()`)
+  - front: |
+      How do you create a list in Python? How do you access elements of a list?  Give examples.
+    back: |
+      ```python
+      my_list = [1, 2, 3, "a", "b", "c"]
+
+      # Accessing elements by index (0-based):
+      first_element = my_list[0]   # 1
+      third_element = my_list[2]   # 3
+      last_element = my_list[-1]  # "c" (negative indexing)
+      second_to_last = my_list[-2] # "b"
+      
+      # Slicing:
+      sub_list = my_list[1:4]     # [2, 3, "a"] (from index 1 up to, but not including, index 4)
+      from_beginning = my_list[:3]  # [1, 2, 3] (from the beginning up to, but not including, index 3)
+      to_end = my_list[3:]      # ["a", "b", "c"] (from index 3 to the end)
+      copy_of_list = my_list[:]   # Creates a shallow copy of the list
+      ```
+  - front: |
+      How do you create a tuple in Python? How is it different from a list?
+    back: |
+      ```python
+      my_tuple = (1, 2, 3, "a", "b", "c")
+      empty_tuple = ()
+      single_element_tuple = (1,)  # Note the trailing comma for single-element tuples
+      ```
+
+      **Differences from lists:**
+
+      - **Mutability:** Tuples are *immutable* (cannot be changed after creation), while lists are *mutable*.
+      - **Syntax:** Tuples use parentheses `()`, while lists use square brackets `[]`.
+      - **Performance:** Tuples are generally slightly more memory-efficient and faster than lists, especially for large collections of constant data.
+      - **Use Cases:** Tuples are often used for representing fixed collections of items, such as coordinates, database records, or function arguments where you want to ensure the data doesn't change.
+  - front: |
+      How do you create a dictionary in Python?  How do you access values in a dictionary? Give examples.
+    back: |
+      ```python
+      my_dict = {
+          "name": "Alice",
+          "age": 30,
+          "city": "New York"
+      }
+
+      empty_dict = {}
+
+      # Accessing values by key:
+      name = my_dict["name"]  # "Alice"
+      age = my_dict["age"]   # 30
+
+      # Using the .get() method (handles missing keys gracefully):
+      country = my_dict.get("country", "Unknown")  # "Unknown" (because "country" key doesn't exist)
+      city = my_dict.get("city") # New York
+      # Adding/Updating key-value pairs:
+      my_dict["country"] = "USA"  # Adds a new key-value pair
+      my_dict["age"] = 31       # Updates the value for an existing key
+
+      # Removing key-value pairs
+      del my_dict["city"] # delete item with key "city"
+      popped_value = my_dict.pop("age") # remove and return value of item with key "age"
+      ```
+  - front: |
+      How do you create a set in Python?  What are the key properties of a set?
+    back: |
+      ```python
+      my_set = {1, 2, 3, 3, 4}  # Duplicates are automatically removed
+      empty_set = set() # Use set() to create an empty set, not {} (which creates an empty dictionary)
+      ```
+      **Key properties of sets:**
+        - **Unordered:** Elements have no specific order.
+        - **Unique:** Sets contain only unique elements (duplicates are automatically removed).
+        - **Mutable:** You can add and remove elements from a set (but the elements themselves must be immutable).
+        - **Fast Membership Testing:** Checking if an element is in a set is very efficient (much faster than lists).
+        - **Set Operations:** Support mathematical set operations like union, intersection, difference, etc.
+
+  - front: |
+      Explain the difference between `==` and `is` in Python.
+    back: |
+      - `==` checks for *equality* (whether the values of two objects are the same).
+      - `is` checks for *identity* (whether two variables refer to the *same object* in memory).
+
+      ```python
+      list1 = [1, 2, 3]
+      list2 = [1, 2, 3]
+      list3 = list1
+
+      print(list1 == list2)  # True (values are equal)
+      print(list1 is list2)  # False (different objects in memory)
+      print(list1 is list3)  # True (same object in memory)
+      ```
+  - front: |
+      How do you write an `if`, `elif`, and `else` statement in Python? Give an example.
+    back: |
+      ```python
+      x = 10
+
+      if x > 10:
+          print("x is greater than 10")
+      elif x == 10:
+          print("x is equal to 10")
+      else:
+          print("x is less than 10")
+      ```
+        - `if` statement: Executes code if a condition is `True`.
+        - `elif` statement (optional): Checks additional conditions if the previous `if` or `elif` conditions were `False`.
+        - `else` statement (optional): Executes code if all preceding `if` and `elif` conditions were `False`.
+        - Indentation is crucial to define the code blocks associated with each condition.
+  - front: |
+      How do you write a `for` loop in Python? Give examples of looping through a list, a string, and a dictionary.
+    back: |
+      ```python
+      # Looping through a list:
+      my_list = [1, 2, 3]
+      for item in my_list:
+          print(item)
+
+      # Looping through a string:
+      my_string = "Hello"
+      for char in my_string:
+          print(char)
+
+      # Looping through a dictionary (keys):
+      my_dict = {"a": 1, "b": 2}
+      for key in my_dict:
+          print(key)  # Prints keys: "a", "b"
+      
+      # Looping through dictionary keys and values using .items():
+      for key, value in my_dict.items():
+        print(key, value) # Prints "a 1", "b 2"
+      
+      # Looping through dictionary values using .values()
+      for value in my_dict.values():
+          print(value)
+      
+      # Using range() for numerical loops:
+      for i in range(5):  # Loops from 0 to 4
+          print(i)
+
+      for i in range(2, 10, 2): # Loops from 2 to 9, with the step of 2
+        print(i)
+      ```
+  - front: |
+      How do you write a `while` loop in Python? Give an example.
+    back: |
+      ```python
+      count = 0
+      while count < 5:
+          print(count)
+          count += 1
+      ```
+      - The `while` loop continues to execute as long as the condition is `True`.
+      - Make sure to update the condition within the loop to avoid infinite loops.
+  - front: |
+      What are `break` and `continue` statements in Python loops? Explain their behavior.
+    back: |
+      - `break`: Terminates the loop immediately, regardless of the loop condition.
+      - `continue`: Skips the rest of the current iteration and goes to the next iteration of the loop.
+
+      ```python
+      # Example with break:
+      for i in range(10):
+          if i == 5:
+              break  # Exit the loop when i is 5
+          print(i)  # Output: 0 1 2 3 4
+
+      # Example with continue:
+      for i in range(5):
+          if i == 2:
+              continue  # Skip the rest of the iteration when i is 2
+          print(i)  # Output: 0 1 3 4
+      ```
+  - front: |
+      What is a list comprehension in Python?  Provide examples of different use cases.
+    back: |
+      List comprehensions provide a concise way to create lists based on existing iterables.
+
+      ```python
+      # Basic list comprehension:
+      numbers = [1, 2, 3, 4, 5]
+      squares = [x**2 for x in numbers]  # [1, 4, 9, 16, 25]
+
+      # With a conditional (if):
+      even_squares = [x**2 for x in numbers if x % 2 == 0]  # [4, 16]
+
+      # With if-else (ternary operator):
+      results = [x if x % 2 == 0 else x * 2 for x in numbers]  # [2, 2, 6, 4, 10]
+      
+      # Nested list comprehension
+      matrix = [[1, 2, 3], [4, 5, 6]]
+      flattened = [item for sublist in matrix for item in sublist] # [1, 2, 3, 4, 5, 6]
+      ```
+      General Syntax: `[expression for item in iterable if condition]`
+  - front: |
+      How do you define and use a class in Python? Provide a simple example.
+    back: |
+      ```python
+      class Dog:
+          """A simple class representing a dog."""
+
+          def __init__(self, name, age):
+              """Initialize name and age attributes."""
+              self.name = name
+              self.age = age
+
+          def bark(self):
+              """Simulate a dog barking."""
+              print(f"{self.name} says Woof!")
+
+      # Create instances of the class:
+      my_dog = Dog("Buddy", 3)
+      your_dog = Dog("Lucy", 5)
+
+      # Access attributes:
+      print(my_dog.name)  # "Buddy"
+      print(your_dog.age) # 5
+
+      # Call methods:
+      my_dog.bark()  # "Buddy says Woof!"
+      ```
+        - `class` keyword to define the class.
+        - Class names typically use CamelCase.
+        - `__init__` method is the constructor (initializes the object's attributes).
+        - `self` refers to the instance of the class and is used to access attributes and methods.
+        - Methods are functions defined within the class.
+  - front:
+      What is a module in Python?  How do you import and use modules? Give examples.
+    back: |
+      A module is a file containing Python code (definitions of functions, classes, variables, etc.).  It's a way to organize and reuse code.
+      ```python
+      # Importing the entire module:
+      import math
+
+      print(math.sqrt(16))  # 4.0
+
+      # Importing specific names from a module:
+      from math import sqrt, pi
+
+      print(sqrt(25))  # 5.0
+      print(pi)       # 3.141592653589793
+
+      # Importing with an alias:
+      import math as m
+
+      print(m.cos(0))  # 1.0
+
+      # Importing all names from a module (generally discouraged):
+      from math import * 
+      # This can lead to naming conflicts, and makes it harder to track where the code is from
+
+      ```
+  - front:
+      How do you handle exceptions in Python (try-except blocks)? Provide examples.
+    back: |
+      ```python
+      try:
+          # Code that might raise an exception
+          result = 10 / 0  # This will raise a ZeroDivisionError
+      except ZeroDivisionError:
+          # Handle the ZeroDivisionError
+          print("Cannot divide by zero.")
+      except ValueError:
+          # Handle another exception type
+          print("invalid input")
+      except Exception as e:
+          # handle any other type of exception
+          print("An error occurred:", e)
+      else: 
+          # this code runs if no exception was raised
+          print("Division was successful", result)
+      finally:
+          # Code that always executes, regardless of whether an exception occurred
+          print("This will always run.")
+
+      ```
+      - `try`: Encloses the code that might raise an exception.
+      - `except`: Specifies the type of exception to handle and the code to execute if that exception occurs.  You can have multiple `except` blocks.
+      - `else`: optional block that runs when no exceptions occur in the `try` block
+      - `finally`: optional block, runs always.
+  - front:
+      How do you read from and write to files in Python?
+    back: |
+      ```python
+      # Writing to a file:
+      with open("my_file.txt", "w") as f:  # "w" for write mode (overwrites existing file)
+          f.write("Hello, world!\n")
+          f.write("This is a new line.")
+
+      # Appending to a file:
+      with open("my_file.txt", "a") as f:  # "a" for append mode
+          f.write("\nThis is appended text.")
+
+      # Reading from a file:
+      with open("my_file.txt", "r") as f:  # "r" for read mode (default)
+          content = f.read()  # Reads the entire file into a string
+          print(content)
+
+      # Reading line by line:
+      with open("my_file.txt", "r") as f:
+          for line in f:
+              print(line.strip())  # .strip() removes leading/trailing whitespace
+
+      # reading the file line by line storing the lines in a list
+      with open("my_file.txt", "r") as f:
+        lines = f.readlines()
+      ```
+      - `open()` function: Opens a file and returns a file object.
+      - File modes: `"r"` (read), `"w"` (write), `"a"` (append), `"x"`(create, fails if file exists), `"b"`(binary), `"t"`(text, default)
+      - `with open(...) as f:`:  Uses a context manager, which automatically closes the file when you're done (even if errors occur).  This is the recommended way to work with files.
+      - `f.write()`: Writes a string to the file.
+      - `f.read()`: Reads the entire file content.
+      - `f.readline()`: Reads a single line from the file.
+      - `f.readlines()`: Reads all lines into a list of strings.
+  - front:
+      What are docstrings in Python? How are they used?
+    back: |
+      Docstrings (documentation strings) are multiline strings used to document Python code (functions, classes, modules). They are written within triple quotes (`"""Docstring goes here"""`).
+      ```python
+      def my_function(x, y):
+          """
+          This function adds two numbers.
+
+          Args:
+              x: The first number.
+              y: The second number.
+
+          Returns:
+              The sum of x and y.
+          """
+          return x + y
+
+      class MyClass:
+          """
+          This is a class representing something.
+          """
+          def a_method(self):
+            """This is a method inside MyClass"""
+            pass
+      ```
+      - Docstrings are used by documentation generators (like Sphinx) and IDEs to provide help and information about your code.
+      - They are accessible at runtime using the `__doc__` attribute: `print(my_function.__doc__)`
+      - Follow conventions (like reStructuredText or Google style docstrings) for consistent formatting.
+  - front:
+      Explain the concept of variable scope in Python (local, global, nonlocal).
+    back: |
+      - **Local scope:** Variables defined inside a function are local to that function.  They cannot be accessed from outside the function.
+
+      - **Global scope:** Variables defined outside of any function are global.  They can be accessed from anywhere in the module.
+
+      - **Nonlocal scope:** (Applies to nested functions) Variables in the enclosing function's scope that are not global. The `nonlocal` keyword is used to modify variables in the nearest enclosing scope that is not global.
+
+      ```python
+      global_var = 10  # Global variable
+
+      def outer_function():
+          outer_var = 20  # Enclosing (nonlocal) variable
+
+          def inner_function():
+              nonlocal outer_var  # Refer to the outer_var in the enclosing scope
+              local_var = 30   # Local variable
+              outer_var = 25
+              print(f"Inner: local_var={local_var}, outer_var={outer_var}, global_var={global_var}")
+
+          inner_function()
+          print(f"Outer: outer_var={outer_var}, global_var={global_var}")
+
+      outer_function()
+      print(f"Global: global_var={global_var}")
+
+      def another_function():
+        global global_var # modify the global variable
+        global_var = 40
+      
+      another_function()
+      print(f"Global: global_var={global_var}")
+      ```
+  - front:
+      What is the purpose of the `if __name__ == "__main__":` block in a Python script?
+    back: |
+      The `if __name__ == "__main__":` block is used to control the execution of code when a Python file is run.
+
+      - `__name__` is a special variable that is set to `"__main__"` when the script is run directly (e.g., `python my_script.py`).
+      - If the file is imported as a module into another script, `__name__` is set to the module's name.
+
+      Therefore, the code inside `if __name__ == "__main__":` only runs when the script is executed directly, *not* when it's imported as a module.  This is useful for:
+
+        - Making a file reusable as both a standalone script and a module.
+        - Writing test code that only runs when the script is executed directly.
+      ```python
+      # my_module.py
+
+      def my_function():
+          print("Function executed")
+
+      if __name__ == "__main__":
+          print("Script executed directly")
+          my_function()  # Call the function only when run directly
+      else:
+        print("my_module imported")
+
+      # other_script.py
+      # import my_module # output: my_module imported
+      # my_module.my_function() # output: Function executed
+      ```
+  - front:
+      How do you define a lambda function (anonymous function) in Python?
+    back: |
+      Lambda functions are small, anonymous functions defined using the `lambda` keyword. They can have any number of arguments but only one expression.
+      ```python
+      # Syntax: lambda arguments: expression
+      add = lambda x, y: x + y
+      result = add(5, 3)  # 8
+      print(result)
+      
+      square = lambda x: x**2
+      print(square(4))  # 16
+
+      # Often used with functions like map(), filter(), sorted():
+      numbers = [1, 2, 3, 4, 5]
+      squared_numbers = list(map(lambda x: x**2, numbers))  # [1, 4, 9, 16, 25]
+      print(squared_numbers)
+      ```
+      - Useful for short, throwaway functions where you don't need a full function definition.
+      - Can be used anywhere a function object is expected.
+  - front:
+        What are Python decorators? How do you define and apply a decorator?
+    back: |
+        Decorators are a way to modify the behavior of a function or class in a concise and reusable way. They are functions that take another function as an argument and return a modified version of that function. They use the `@` syntax.
+        ```python
+        def my_decorator(func):
+            def wrapper(*args, **kwargs):
+                print("Before function execution")
+                result = func(*args, **kwargs)
+                print("After function execution")
+                return result
+            return wrapper
+
+        @my_decorator  # Apply the decorator using the @ syntax
+        def say_hello(name):
+            print(f"Hello, {name}!")
+
+        say_hello("Alice") 
+        # Output:
+        # Before function execution
+        # Hello, Alice!
+        # After function execution
+
+        # Equivalent to:
+        # decorated_say_hello = my_decorator(say_hello)
+        # decorated_say_hello("Alice")
+
+        # Example with arguments and return value
+        def repeat(n): # decorator factory
+          def decorator_repeat(func): # decorator
+            def wrapper(*args, **kwargs): # wrapper function
+              for _ in range(n):
+                result = func(*args, **kwargs)
+              return result
+            return wrapper
+          return decorator_repeat
+
+        @repeat(n=3)
+        def greet(name):
+          print(f"Greetings {name}!")
+
+        greet("Bob")
+        # Greetings Bob!
+        # Greetings Bob!
+        # Greetings Bob!
+        ```
+        - Decorators provide a way to add functionality to functions (like logging, timing, access control) without modifying the original function's code directly.
+        - `@my_decorator` is syntactic sugar for `my_function = my_decorator(my_function)`.
+        - `*args` and `**kwargs` allow the wrapper function to accept any number of positional and keyword arguments, making the decorator more flexible.

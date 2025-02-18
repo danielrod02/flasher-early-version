@@ -15,10 +15,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.11.1/styles/night-owl.min.css">
     <script>hljs.highlightAll();</script>
 
-    <!-- To automatically render math in text elements, include the auto-render extension: -->
-    <!-- <script  src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script> -->
-
-
     <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,10 +22,22 @@
 </head>
 <body>
     <div class="main"></div>
+    <script type="module" src="/modules/fetchDeckFiles.js"></script>
     <script>
+        const url = window.location.href;
+        // Create a URL object
+        const urlObj = new URL(url);
+        // Get URLSearchParams object
+        const params = new URLSearchParams(urlObj.search);
+        const queryParams = {};
+        // Iterate over all parameters and add them to the queryParams object
+        params.forEach((value, key) => {
+            queryParams[key] = value;
+        });
+        
         (async () => {
             const converter = new showdown.Converter()
-            const req = await fetch("/decks/python.deck");
+            const req = await fetch(`/decks/${queryParams.deck}`);
             const deckText = await req.text();
             const deck = jsyaml.load(deckText);
             const renderElement = document.querySelector("div.main");
@@ -39,7 +47,6 @@
                 renderElement.insertAdjacentHTML("beforeend", frontElement);
                 renderElement.insertAdjacentHTML("beforeend", backElement);
             }
-
          })();
     </script>
 </body>

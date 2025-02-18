@@ -1,0 +1,276 @@
+---
+- front: |
+    What is `gh`?
+  back: >
+    `gh` is GitHub's official command-line tool.  It brings pull requests,
+    issues, and other GitHub concepts to the terminal, next to where you are
+    already working with `git` and your code.
+- front: |
+    How do you authenticate with `gh`?
+  back: >
+    ```bash
+
+    gh auth login
+
+    ```
+
+    This command will guide you through the authentication process. You can choose between authenticating with a web browser or using a personal access token.
+- front: |
+    What's the command to clone a repository using `gh`?  Give an example.
+  back: >
+    ```bash
+
+    gh repo clone <repository>
+
+    ```
+
+    Example:
+
+    ```bash
+
+    gh repo clone owner/repo  # Clones owner/repo into the ./repo directory
+
+    gh repo clone owner/repo mydir # Clones owner/repo into the ./mydir directory
+
+    ```
+
+    `owner/repo` can be a full URL, e.g. `https://github.com/owner/repo`.
+- front: |
+    How do you view a repository in your web browser using `gh`?
+  back: >
+    ```bash
+
+    gh repo view --web
+
+    # Or, with the short flag
+
+    gh repo view -w
+
+    ```
+
+    This opens the current repository (if run inside a Git repository) or a specified repository (e.g., `gh repo view owner/repo -w`) in your default web browser.  Without `--web`, it prints a summary of the repository to the terminal.
+- front: >
+    How do you list issues in a repository with `gh`? Show the command and a
+    common, useful option.
+  back: |
+    ```bash
+    gh issue list
+    ```
+
+    Common option:
+    ```bash
+    gh issue list --state open  # Only show open issues (or --state closed)
+    gh issue list --assignee "@me"   # List issues assigned to you.
+    gh issue list --label bug      # List issues with the label "bug"
+    gh issue list --limit 10       # List a maximum of 10 issues.
+    ```
+- front: >
+    How do you create a new issue with `gh`? Provide an example showing the
+    title and body.
+  back: >
+    ```bash
+
+    gh issue create --title "My Issue Title" --body "Description of the issue."
+
+    ```
+     You can also use `--body-file` to read the issue body from a file or standard input (`-`).  If you omit `--title` and `--body`, `gh` will prompt you for them interactively.
+- front: |
+    How can you view the details of a specific issue with `gh`?
+  back: |
+    ```bash
+    gh issue view <issue_number>
+    ```
+    Example:
+    ```bash
+    gh issue view 123  # View issue #123
+    ```
+    Add `--web` or `-w` to open the issue in your web browser.
+- front: >
+    How do you list pull requests in a repository using `gh`? Show the
+    command and filtering options.
+  back: >
+    ```bash
+
+    gh pr list
+
+    ```
+
+    Filtering options:
+
+    ```bash
+
+    gh pr list --state open     # Show only open PRs (or --state closed, --state merged)
+
+    gh pr list --base main     # Show PRs targeting the 'main' branch.
+
+    gh pr list --author "@me" # Show PRs you created
+
+    gh pr list --label "help wanted" # List PRs with label "help wanted"
+
+    ```
+- front: >
+    How do you create a pull request using `gh`?  Show an example with title,
+    body, and base/head branches.
+  back: >
+    ```bash
+
+    gh pr create --title "My PR Title" --body "Description of the PR" --base main --head my-feature-branch
+
+    ```
+     - `--base`: The branch you want to merge *into* (defaults to the default branch, usually `main` or `master`).
+     - `--head`: The branch you want to merge (defaults to the current branch).
+     Like `gh issue create`, you can use `--body-file`. If you omit arguments, `gh` will prompt you interactively, often with helpful defaults based on your current branch and git configuration.
+- front: |
+    How do you check out a pull request locally using `gh`?
+  back: >
+    ```bash
+
+    gh pr checkout <pr_number>
+
+    ```
+
+    Example:
+
+    ```bash
+
+    gh pr checkout 42  # Checks out PR #42
+
+    ```
+
+    This command fetches the PR's branch and checks it out locally.  It creates a local branch if one doesn't already exist.
+- front: >
+    How do you view the status of a pull request (checks, reviews, etc.) with
+    `gh`?
+  back: >
+    ```bash
+
+    gh pr status
+
+    ```
+
+    This shows the status of the current branch's pull request (if any), or you can specify a PR number:
+
+    ```bash
+
+    gh pr status 42
+
+    ```
+
+    Add `--web` or `-w` to see the PR in your browser.
+- front: >
+    How do you merge a pull request using `gh`? Show the command and
+    different merge methods.
+  back: |
+    ```bash
+    gh pr merge <pr_number>
+    ```
+    Example:
+    ```bash
+    gh pr merge 42
+    ```
+    Merge methods (options):
+    ```bash
+    gh pr merge --merge  # Create a merge commit (default)
+    gh pr merge --squash # Squash commits into a single commit
+    gh pr merge --rebase # Rebase commits onto the base branch
+    ```
+- front: >
+    What is `gh workflow` used for, and how do you list workflows in a
+    repository?
+  back: |
+    `gh workflow` is used to interact with GitHub Actions workflows.
+
+    To list workflows:
+    ```bash
+    gh workflow list
+    ```
+- front: >
+    How do you run a workflow in a GitHub repository with input parameters
+    using gh cli?
+  back: >
+    ```bash
+     gh workflow run <workflow> --raw-field <key>=<value>
+    ```
+
+    You can call a workflow file by using the command `gh workflow run <workflow-filename.yml>`, you can also use the workflow ID.
+
+    You can pass input parameters using the `--raw-field` argument, for example:
+
+    ```bash
+
+    gh workflow run build.yml --raw-field version=1.1.1 -f environment=stg
+
+    ```
+- front: |
+    How do you view the details of a specific workflow run using `gh`?
+  back: >
+    ```bash
+
+    gh run view <run_id>
+
+    ```
+
+    Example:
+
+    ```bash
+
+    gh run view 123456789
+
+    ```
+
+    You can also use `--web` or `-w` to open the run in your web browser, and `--log` to view the logs of the workflow.
+- front: |
+    How do you download artifacts from a workflow run using `gh`?
+  back: |
+    ```bash
+    gh run download <run_id> -n <artifact_name>
+    ```
+    Example:
+    ```
+    gh run download 1234567 -n my-artifact #Download an artifact by its name
+    gh run download 1234567 #Download all the artifacts.
+    ```
+- front: How can you list the available `gh` commands and get help?
+  back: |
+    List all top-level commands:
+    ```bash
+    gh --help
+    # or simply
+    gh
+    ```
+
+    Get help for a specific command (e.g., `issue`):
+    ```bash
+    gh issue --help
+    ```
+
+    Get help for a subcommand (e.g., `issue create`):
+    ```bash
+    gh issue create --help
+    ```
+- front: How do you create a GitHub gist using `gh`?
+  back: |
+    To create a public gist from a file:
+    ```bash
+    gh gist create myfile.txt
+    ```
+    To create a secret gist:
+    ```bash
+    gh gist create -s myfile.txt
+    ```
+    To create a gist with a description:
+    ```bash
+    gh gist create myfile.txt -d "Description of my gist"
+    ```
+    To create a gist from standard input:
+    ```bash
+    cat myfile.txt | gh gist create -
+    ```
+    To create a multi-file gist:
+    ```bash
+     gh gist create file1.txt file2.py file3.md
+    ```
+- front: How to create a release using `gh` cli?
+  back: |
+    ```bash
+     gh release create <tag> [<files>...]

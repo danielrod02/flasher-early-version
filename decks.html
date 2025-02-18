@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/global.css">
+    <title>Decks</title>
+</head>
+<body>
+    <ul id="deck-files-list"></ul>
+    <script>
+        async function fetchDeckFiles() {
+            const owner = 'danielrod02';
+            const repo = 'flasher';
+            const path = 'decks';
+            const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
+
+            try {
+                const response = await fetch(apiUrl);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const files = await response.json();
+
+                const deckFiles = files.filter(file => file.name.endsWith('.deck'));
+
+                const listElement = document.getElementById('deck-files-list');
+                deckFiles.forEach(file => {
+                    const listItem = document.createElement('li');
+                    const link = document.createElement('a');   
+                    link.dataset.rawFileUrl = file.download_url;
+                    link.href = `/app.html?deck=${file.name}`;
+                    link.textContent = file.name;
+                    listItem.appendChild(link);
+                    listElement.appendChild(listItem);
+                });
+            } catch (error) {
+                console.error('Error fetching deck files:', error);
+            }
+        }
+        (async () => {
+            fetchDeckFiles();
+        })();
+    </script>
+</body>
+</html>

@@ -4,3 +4,7 @@
     --pico-font-family: var(--pico-font-family-sans-serif);
     --pico-font-size: 130%;
 }
+
+body {
+    padding-bottom: 60px;
+}

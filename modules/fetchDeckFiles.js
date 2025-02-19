@@ -1,6 +1,6 @@
 'use strict';
 
-async function fetchDeckFiles(
+export async function fetchDeckFiles(
     owner = 'danielrod02',
     repo = 'flasher',
     path = 'decks'

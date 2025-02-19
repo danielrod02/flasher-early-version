@@ -1,0 +1,6 @@
+:root {
+    --pico-font-family-sans-serif: "Afacad Flux", serif, var(--pico-font-family-emoji);
+    --pico-font-family-monospace:  "DM Mono", monospace, var(--pico-font-family-emoji);
+    --pico-font-family: var(--pico-font-family-sans-serif);
+    --pico-font-size: 130%;
+}

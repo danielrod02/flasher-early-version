@@ -2,10 +2,37 @@ body {
     margin: auto 15vw;
 }
 
-.main > p {
+html {
     font-family: "Afacad Flux", serif;
+}
+
+p, ul {
     font-optical-sizing: auto;
-    font-size: xx-large;
+    font-size: x-large;
     font-weight: medium;
     font-style: normal;
+}
+
+pre > code {
+    font-family: "DM Mono", monospace;
+    font-style: normal;
+    /* font-size: x-large; */
+}
+
+pre {
+    border: solid 2px yellow;
+    border-radius: 15px;
+    overflow-x: auto;
+}
+
+@media (max-width: 1000px) {
+    body {
+        margin: auto 7.5vw;
+    }
+}
+
+@media (max-width: 700px) {
+    body {
+        margin: auto 10px;
+    }
 }

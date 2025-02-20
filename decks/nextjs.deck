@@ -223,3 +223,101 @@ deck:
       - `false`:  Any paths not returned by `getStaticPaths` will result in a 404 page.
       - `true`:   Next.js will *not* return a 404. Instead, it will serve a "fallback" version of the page on the first request.  In the background, it will call `getStaticProps` and statically generate the requested path. Once done, the browser receives the generated page.  Subsequent requests to the same path will serve the generated page.
       - `'blocking'`:  Similar to `true`, but Next.js will server-side render the page on the first request.  The user will see a loading state until the page is fully rendered.  Then, it's added to the static generation cache, and subsequent requests will be fast.  This avoids showing a fallback state.
+  - front: |
+      What are the main top-level folders in a Next.js project?
+    back: |
+      The main top-level folders are:
+      - `app`: For the App Router.
+      - `pages`: For the Pages Router.
+      - `public`: For static assets to be served.
+      - `src`: An optional folder for application source code.
+
+  - front: |
+      What is the purpose of the `app` directory in Next.js?
+    back: |
+      The `app` directory is used for the **App Router**, a newer routing system in Next.js.
+
+  - front: |
+      What is the purpose of the `pages` directory in Next.js?
+    back: |
+      The `pages` directory is used for the **Pages Router**, the original routing system in Next.js.
+
+  - front: |
+      What is the purpose of the `public` directory in Next.js?
+    back: |
+      The `public` directory is used to store **static assets** that should be served directly, such as images, fonts, or other files.
+
+  - front: |
+      What is the purpose of the optional `src` directory in Next.js?
+    back: |
+      The `src` directory is an optional top-level folder that can be used to organize your application's source code, separating it from configuration files.  It's a convention, not a requirement.
+
+  - front: |
+      List some common top-level *files* used in a Next.js project.
+    back: |
+      Some common top-level files include:
+      - `next.config.js`: Configuration file for Next.js.
+      - `package.json`: Project dependencies and scripts.
+      - `instrumentation.ts`: For OpenTelemetry and Instrumentation.
+      - `middleware.ts`: For Next.js request middleware.
+      - `.env`, `.env.local`, `.env.production`, `.env.development`: Environment variables.
+      - `.eslintrc.json`: Configuration for ESLint.
+      - `.gitignore`: Specifies intentionally untracked files that Git should ignore.
+      - `next-env.d.ts`: TypeScript declaration file for Next.js.
+      - `tsconfig.json`: Configuration file for TypeScript.
+      - `jsconfig.json`: Configuration file for JavaScript.
+
+  - front: What is the purpose of `next.config.js`?
+    back: |
+      `next.config.js` is the main **configuration file** for a Next.js application.  It allows you to customize various aspects of Next.js's behavior.
+
+  - front: What is the purpose of `instrumentation.ts`?
+    back: |
+      `instrumentation.ts` is used for setting up **OpenTelemetry and Instrumentation**, which helps with monitoring and performance analysis of your application.
+
+  - front: What is the purpose of `middleware.ts`?
+    back: |
+      `middleware.ts` allows you to run code **before a request is completed**.  You can use it for tasks like authentication, redirects, modifying headers, etc.
+
+  - front: What are the different `.env` files used for in Next.js?
+    back: |
+      - `.env`:  Default environment variables.
+      - `.env.local`: Local overrides of environment variables (not committed to Git).
+      - `.env.development`: Environment variables for the development environment.
+      - `.env.production`: Environment variables for the production environment.
+
+  - front: What files are used to define routes in the `pages` directory?
+    back: |
+      Routes in the `pages` directory are defined by the file structure.
+      - `index.js`, `index.jsx`, or `index.tsx` files represent the root of a directory (e.g., `/` for `pages/index.js`).
+      - Other `.js`, `.jsx`, or `.tsx` files represent nested routes (e.g., `pages/about.js` maps to `/about`).
+
+  - front: How do you create a dynamic route segment in the `pages` directory?
+    back: |
+      You create a dynamic route segment by using square brackets `[]` around a filename or folder name.
+      For example: `pages/blog/[slug].js` creates a dynamic route where `slug` is a parameter.
+
+  - front: How do you create a catch-all route segment in the `pages` directory?
+    back: |
+      You create a catch-all route segment using square brackets with an ellipsis `[...paramName]`.
+      For example, `pages/docs/[...slug].js` would match `/docs/a`, `/docs/a/b`, etc.
+
+  - front: How do you create an *optional* catch-all route segment in the `pages` directory?
+    back: |
+      You create an optional catch-all route segment by using double square brackets with ellipsis: `[[...paramName]]`.
+      For example, `pages/optional/[[...slug]].js` matches `/optional`, `/optional/a`, `/optional/a/b`, etc. The route is optional, also will match at the root level.
+
+  - front: What are the file extensions allowed for page files in Next.js?
+    back: |
+      The allowed file extensions are:
+      - `.js`
+      - `.jsx`
+      - `.tsx`
+
+  - front: What special files can be used in the `pages` directory to customize behavior? Give the extensions allowed.
+    back: |
+      - `_app`: Custom App component. `.js`, `.jsx`, `.tsx`
+      - `_document`: Custom Document component. `.js`, `.jsx`, `.tsx`
+      - `_error`: Custom Error Page. `.js`, `.jsx`, `.tsx`
+      - `404`: Custom 404 Error Page. `.js`, `.jsx`, `.tsx`
+      - `500`: Custom 500 Error Page. `.js`, `.jsx`, `.tsx`

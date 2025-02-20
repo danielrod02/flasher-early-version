@@ -1,4 +1,8 @@
 .hidden {
+    visibility: hidden;
+}
+
+.display-none {
     display: none;
 }
 
@@ -9,7 +13,13 @@
     width: 100vw;
 }
 
-footer {
-    background-color: #13171f;
+main.main article {
     text-align: center;
+}
+
+footer[role=group] {
+    margin-bottom: 0;
+    position: fixed;
+    padding-bottom: 0;
+    padding-top: 0;
 }

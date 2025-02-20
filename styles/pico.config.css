@@ -1,10 +1,20 @@
 :root {
-    --pico-font-family-sans-serif: "Afacad Flux", serif, var(--pico-font-family-emoji);
-    --pico-font-family-monospace:  "DM Mono", monospace, var(--pico-font-family-emoji);
+    --pico-font-family-sans-serif: "Lexend", serif, var(--pico-font-family-emoji);
+    --pico-font-family-monospace: "DM Mono", monospace, var(--pico-font-family-emoji);
+    /* --pico-font-family-monospace:  monospace, var(--pico-font-family-emoji); */
     --pico-font-family: var(--pico-font-family-sans-serif);
     --pico-font-size: 130%;
 }
 
 body {
     padding-bottom: 60px;
+}
+
+code {
+    --pico-font-size: 200%;
+    /* font-family: monospace ,var(--pico-font-family-monospace); */
+}
+
+header h1 {
+    margin-bottom: 10px;
 }

@@ -1,0 +1,14 @@
+deck:
+  - front: |
+      this is *front* 1
+    back: |
+      This is *back* 1 
+  - front: |
+      this is *front* 1
+    back: |
+      ```bash
+
+      echo "This is some code"
+
+      ```
+      In the back

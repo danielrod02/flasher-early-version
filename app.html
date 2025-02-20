@@ -18,26 +18,32 @@
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.11.1/styles/stackoverflow-dark.min.css"> -->
     <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js"></script>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.red.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.amber.min.css">
     <link rel="stylesheet" href="/styles/pico.config.css">
 
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header class="container"><h1></h1></header>
+    <header class="container"><h1></h1><a href="/decks.html">Go to decks</a></header>
     <main class="main container">
         <article>
             <button id="start-deck-session">Click here to start</button>
         </article>
     </main>
-    <footer class="fixed-bottom ml-10"><a href="/decks.html">Go to decks</a></footer>
+    <footer role="group" class="fixed-bottom ml-10 hidden">
+        <button id="right-button" class="display-none">Right</button>
+        <button id="wrong-button" class="secondary display-none">Wrong</button>
+        <button id="show-back-button" class="display-none contrast">Show answer</button>
+    </footer>
 
     <script type="module">
         import { fetchDeck } from '/modules/fetchDeck.js';
         import { shuffleArray } from '/modules/utils.js';
+
+        const converter = new showdown.Converter();
 
         const url = window.location.href;
         const urlObj = new URL(url);
@@ -47,10 +53,14 @@
             queryParams[key] = value;
         });
 
-        document.querySelector('header > h1').append(`${queryParams.deck}`)
+        document.querySelector('header > h1').append(`${queryParams.deck}`);
+        const fixedFooter = document.querySelector('footer[role="group"]');
+        const showAnswerButton = document.getElementById('show-back-button');
+        const wrongButton = document.getElementById('wrong-button');
+        const rightButton = document.getElementById('right-button');
+        const renderElement = document.querySelector("main.main");
 
         document.getElementById('start-deck-session').addEventListener('click', async () => {
-            const renderElement = document.querySelector("main.main");
             renderElement.replaceChildren("");
             const deck = await fetchDeck('danielrod02', 'flasher', `decks/${queryParams.deck}`)
             const shuffledDeck = shuffleArray(deck.deck)
@@ -60,16 +70,78 @@
                 localStorage.setItem(`current_deck:card${i}:back`, card.back)
             });
 
-            const converter = new showdown.Converter()
-            for (const card of shuffledDeck) {
-                const frontElement = converter.makeHtml(card.front);
-                const backElement = converter.makeHtml(card.back);
-                renderElement.insertAdjacentHTML("beforeend", frontElement);
-                renderElement.insertAdjacentHTML("beforeend", backElement);
-            }
+            localStorage.setItem('current_deck:wrong', 0);
+            localStorage.setItem('current_deck:right', 0);
+            localStorage.setItem('current_deck:size', shuffledDeck.length);
+
+            const current_card = 0
+            localStorage.setItem('current_deck', queryParams.deck);
+            localStorage.setItem('current_deck:current_card', current_card);
+
+            const frontElement = converter.makeHtml(
+                localStorage.getItem(`current_deck:card${current_card}:front`)
+            );
+
+            renderElement.insertAdjacentHTML("beforeend", frontElement);
+            fixedFooter.classList.toggle('hidden');
+            showAnswerButton.classList.toggle('display-none');
 
             hljs.highlightAll();
          });
+
+
+         showAnswerButton.addEventListener('click', async (e) => {
+            const current_card = localStorage.getItem('current_deck:current_card');
+            const backElement = converter.makeHtml(
+                localStorage.getItem(`current_deck:card${current_card}:back`)
+            );
+            const hrElement = document.createElement('hr');
+            renderElement.append(hrElement);
+            renderElement.insertAdjacentHTML("beforeend", backElement);
+
+            showAnswerButton.classList.toggle('display-none');
+            wrongButton.classList.toggle('display-none');
+            rightButton.classList.toggle('display-none');
+
+            hljs.highlightAll();
+         });
+
+
+         const nextCardHandler = async (e) => {
+            switch (e.target.id) {
+                case 'wrong-button':
+                    localStorage.setItem('current_deck:wrong', parseInt(localStorage.getItem('current_deck:wrong') || 0) + 1);
+                    break;
+                case 'right-button':
+                    localStorage.setItem('current_deck:right', parseInt(localStorage.getItem('current_deck:right') || 0) + 1);
+                    break;
+                default:
+                    break;
+            }
+
+            let current_card = parseInt(localStorage.getItem('current_deck:current_card'));
+            if ( current_card + 1 >= parseInt(localStorage.getItem('current_deck:size')) ) {
+                renderElement.innerHTML = "";
+                renderElement.append("Done!");
+                wrongButton.remove();
+                rightButton.remove();
+            }
+
+            localStorage.setItem('current_deck:current_card', current_card + 1);
+            current_card = localStorage.getItem('current_deck:current_card');
+
+            const frontElement = converter.makeHtml(
+                localStorage.getItem(`current_deck:card${current_card}:front`)
+            );
+            renderElement.innerHTML = "";
+            renderElement.insertAdjacentHTML("beforeend", frontElement);
+
+            showAnswerButton.classList.toggle('display-none');
+            wrongButton.classList.toggle('display-none');
+            rightButton.classList.toggle('display-none');
+         };
+         wrongButton.addEventListener('click', nextCardHandler);
+         rightButton.addEventListener('click', nextCardHandler);
     </script>
 </body>
 </html>

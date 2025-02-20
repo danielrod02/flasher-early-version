@@ -38,6 +38,7 @@
         <button id="wrong-button" class="secondary display-none">Wrong</button>
         <button id="show-back-button" class="display-none contrast">Show answer</button>
     </footer>
+    <p id="progress-indicator"></p>
 
     <script type="module">
         import { fetchDeck } from '/modules/fetchDeck.js';
@@ -53,12 +54,15 @@
             queryParams[key] = value;
         });
 
+        localStorage.clear();
+
         document.querySelector('header > h1').append(`${queryParams.deck}`);
         const fixedFooter = document.querySelector('footer[role="group"]');
         const showAnswerButton = document.getElementById('show-back-button');
         const wrongButton = document.getElementById('wrong-button');
         const rightButton = document.getElementById('right-button');
         const renderElement = document.querySelector("main.main");
+        const progressIndicator = document.getElementById("progress-indicator");
 
         document.getElementById('start-deck-session').addEventListener('click', async () => {
             renderElement.replaceChildren("");
@@ -85,6 +89,8 @@
             renderElement.insertAdjacentHTML("beforeend", frontElement);
             fixedFooter.classList.toggle('hidden');
             showAnswerButton.classList.toggle('display-none');
+
+            progressIndicator.append(`1/${shuffledDeck.length}`);
 
             hljs.highlightAll();
          });
@@ -120,15 +126,31 @@
             }
 
             let current_card = parseInt(localStorage.getItem('current_deck:current_card'));
-            if ( current_card + 1 >= parseInt(localStorage.getItem('current_deck:size')) ) {
-                renderElement.innerHTML = "";
-                renderElement.append("Done!");
+            const deckSize = parseInt(localStorage.getItem('current_deck:size'))
+            if ( current_card + 1 >= deckSize ) {
+
+                renderElement.style.textAlign = 'center';
+                renderElement.innerHTML = "<p>Done!</p>";
                 wrongButton.remove();
                 rightButton.remove();
+
+                const wrong = document.createElement("article");
+                wrong.classList.add("secondary");
+                const right = document.createElement("article");
+
+                wrong.append(`You got ${localStorage.getItem('current_deck:wrong')} wrong answers`);
+                right.append(`You got ${localStorage.getItem('current_deck:right')} right answers`);
+
+                renderElement.append(wrong, right);
+
+                return;
             }
 
+
             localStorage.setItem('current_deck:current_card', current_card + 1);
-            current_card = localStorage.getItem('current_deck:current_card');
+            current_card = parseInt(localStorage.getItem('current_deck:current_card'));
+
+            progressIndicator.innerText = `${current_card + 1}/${deckSize}`;
 
             const frontElement = converter.makeHtml(
                 localStorage.getItem(`current_deck:card${current_card}:front`)

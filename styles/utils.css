@@ -23,3 +23,14 @@ footer[role=group] {
     padding-bottom: 0;
     padding-top: 0;
 }
+
+#progress-indicator {
+    position: fixed;
+    right: 0; top: 0;
+    width: 80px;
+    height: 24px;
+    font-family: monospace;
+    color: white;
+    background-color: rgb(68, 68, 68);
+    text-align: center;
+}

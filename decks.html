@@ -16,8 +16,9 @@
     <header>
         <h1>Decks</h1>
     </header>
-    <main>
-        <ul id="deck-files-list"></ul>
+    <main class="">
+        <div id="deck-files-list" class="grid">
+        </div>
     </main>
     <script>
         async function fetchDeckFiles() {
@@ -37,7 +38,7 @@
 
                 const listElement = document.getElementById('deck-files-list');
                 deckFiles.forEach(file => {
-                    const listItem = document.createElement('li');
+                    const listItem = document.createElement('div');
                     const link = document.createElement('a');   
                     link.dataset.rawFileUrl = file.download_url;
                     link.href = `/app.html?deck=${file.name}`;

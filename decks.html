@@ -14,6 +14,30 @@
         main.main {
             padding-top: 0;
         }
+        #deck-files-list > tr > td:last-child, thead th:last-child {
+            text-align: right;
+        }
+        #github-config-form {
+            position: fixed;
+            width: 90vw;
+            left: 5vw;
+            top: 20vh;
+            background-color: var(--pico-background-color);
+            padding: 25px 20px 0;
+            border: solid var(--pico-secondary);
+            border-radius: var(--pico-border-radius);
+        }
+        .display-none {
+            display: none;
+        }
+        #close-github-config-form {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+        }
+        #close-github-config-form:hover {
+            cursor: pointer;
+        }
     </style>
     <title>Decks</title>
 </head>
@@ -26,24 +50,67 @@
         </form>
     </header>
     <main class="main">
-        <div id="deck-files-list" class="grid" aria-busy="true">
-        </div>
+        <table class="striped">
+            <thead>
+                <tr>
+                    <th>Deck</th>
+                    <th>Source</th>
+                </tr>
+            </thead>
+            <tbody id="deck-files-list" aria-busy="true">
+            </tbody>
+        </table>
     </main>
+    <div id="github-config-form-container"></div>
+    <form action="" id="github-config-form">
+        <fieldset>
+            <svg id="close-github-config-form" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+            </svg>
+            <label for="github-user">Github User</label>
+            <input type="text" name="github-user" id="github-user">
+            <label for="repo-name">Repository Name</label>
+            <input type="text" name="repo-name" id="repo-name">
+            <label for="folder-path">Deck folder</label>
+            <input type="text" name="folder-path" id="folder-path">
+            <div role="group">
+                <input type="submit" value="Save">
+                <button class="outline" style="background-color: transparent;">Cancel</button>
+                <!-- <input type="button" class="secondary" value="Cancel"> -->
+            </div>
+        </fieldset>
+    </form>
     <script type="module">
         const listElement = document.getElementById('deck-files-list');
         const resetButton = document.querySelector('input[type="reset"][value="Clear"]');
         const searchDeckField = document.getElementById('search-deck');
+        const githubConfigForm = document.getElementById('github-config-form');
+
+        document.getElementById('close-github-config-form').addEventListener('click', (e) => {
+            githubConfigForm.classList.add('display-none');
+        });
 
         function renderDeckFilesList(deckFiles) {
             listElement.innerHTML = "";
             deckFiles.forEach(file => {
-                const listItem = document.createElement('div');
-                const link = document.createElement('a');   
+                const listItem = document.createElement('tr');
+                const deckData = document.createElement('td');
+                const deckSourceButtons = document.createElement('td');
+                const downloadDeckButton = `<a href="${file.download_url}" download="${file.name}" style="padding-right: 15px;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-arrow-down-fill" viewBox="0 0 16 16">
+  <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0M9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1m-1 4v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 .708-.708L7.5 11.293V7.5a.5.5 0 0 1 1 0"/>
+</svg></a>`;
+                const openGithubDeckButton = `<a href="${file.html_url}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+  <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+</svg></a>`;
+                deckSourceButtons.insertAdjacentHTML('beforeend', downloadDeckButton);
+                deckSourceButtons.insertAdjacentHTML('beforeend', openGithubDeckButton);
+                const link = document.createElement('a');
                 link.dataset.rawFileUrl = file.download_url;
                 link.href = `/app.html?deck=${file.name}`;
                 link.textContent = file.name;
-                listItem.appendChild(link);
-                listElement.appendChild(listItem);
+                deckData.append(link);
+                listItem.append(deckData, deckSourceButtons);
+                listElement.append(listItem);
             });
         }
 

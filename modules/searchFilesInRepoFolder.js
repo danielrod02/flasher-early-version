@@ -6,9 +6,6 @@ export async function searchFilesInRepoFolder(searchText, owner, repo, folderPat
     const matchingFiles = files.filter(file => file.name.toLowerCase().includes(searchText.toLowerCase()));
 
     return matchingFiles.map(file => ({
-        name: file.name,
-        path: file.path,
-        sha: file.sha,
-        download_url: file.download_url,
+        ...file
     }));
-}
+} 

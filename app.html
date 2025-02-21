@@ -25,6 +25,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        h1::first-letter {
+            text-transform: uppercase;
+        }
+    </style>
 </head>
 <body>
     <header class="container"><h1></h1><a href="/decks.html">Go to decks</a></header>
@@ -48,7 +53,7 @@
         params.forEach((value, key) => {
             queryParams[key] = value;
         });
-        document.querySelector('header > h1').append(`${queryParams.deck}`);
+        document.querySelector('header > h1').append(`${queryParams.deck.replace(".deck", "")}`);
         
         import { fetchDeck } from '/modules/fetchDeck.js';
         import { shuffleArray } from '/modules/utils.js';
@@ -139,7 +144,6 @@
                 rightButton.remove();
 
                 const wrong = document.createElement("article");
-                wrong.classList.add("secondary");
                 const right = document.createElement("article");
 
                 wrong.append(`You got ${localStorage.getItem('current_deck:wrong')} wrong answers`);

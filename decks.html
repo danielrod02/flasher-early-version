@@ -10,17 +10,43 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        main.main {
+            padding-top: 0;
+        }
+    </style>
     <title>Decks</title>
 </head>
 <body>
     <header>
         <h1>Decks</h1>
+        <form role="search">
+            <input type="text" name="search-deck" id="search-deck">
+            <input type="reset" value="Clear" />
+        </form>
     </header>
-    <main class="">
-        <div id="deck-files-list" class="grid">
+    <main class="main">
+        <div id="deck-files-list" class="grid" aria-busy="true">
         </div>
     </main>
-    <script>
+    <script type="module">
+        const listElement = document.getElementById('deck-files-list');
+        const resetButton = document.querySelector('input[type="reset"][value="Clear"]');
+        const searchDeckField = document.getElementById('search-deck');
+
+        function renderDeckFilesList(deckFiles) {
+            listElement.innerHTML = "";
+            deckFiles.forEach(file => {
+                const listItem = document.createElement('div');
+                const link = document.createElement('a');   
+                link.dataset.rawFileUrl = file.download_url;
+                link.href = `/app.html?deck=${file.name}`;
+                link.textContent = file.name;
+                listItem.appendChild(link);
+                listElement.appendChild(listItem);
+            });
+        }
+
         async function fetchDeckFiles() {
             const owner = 'danielrod02';
             const repo = 'flasher';
@@ -33,19 +59,12 @@
                     throw new Error('Network response was not ok');
                 }
                 const files = await response.json();
+                console.debug(files);
 
                 const deckFiles = files.filter(file => file.name.endsWith('.deck'));
 
-                const listElement = document.getElementById('deck-files-list');
-                deckFiles.forEach(file => {
-                    const listItem = document.createElement('div');
-                    const link = document.createElement('a');   
-                    link.dataset.rawFileUrl = file.download_url;
-                    link.href = `/app.html?deck=${file.name}`;
-                    link.textContent = file.name;
-                    listItem.appendChild(link);
-                    listElement.appendChild(listItem);
-                });
+                listElement.ariaBusy = "false";
+                renderDeckFilesList(deckFiles);
             } catch (error) {
                 console.error('Error fetching deck files:', error);
             }
@@ -53,6 +72,31 @@
         (async () => {
             fetchDeckFiles();
         })();
+
+        import debounceAsync from "/modules/debounceAsync.js";
+        import { searchFilesInRepoFolder } from "/modules/searchFilesInRepoFolder.js";
+        const searchDeckChangeHandler = debounceAsync(async (e) => {
+            console.debug('it changed');
+            listElement.innerHTML = "";
+            listElement.ariaBusy = "true";
+            console.debug('searching decks');
+            const deckFiles = await searchFilesInRepoFolder(e.target.value, 'danielrod02', 'flasher', 'decks');
+            console.debug('decks found');
+            listElement.ariaBusy = "false";
+            console.debug(deckFiles);
+            renderDeckFilesList(deckFiles);
+        }, 800);
+        searchDeckField.addEventListener('input',  searchDeckChangeHandler);
+        document.querySelector('header > form[role="search"]').addEventListener('submit', (e) => {
+            console.debug("submit!");
+            e.preventDefault()
+        });
+        document.querySelector('header > form[role="search"]').addEventListener('keydown', (e) => {
+            if (event.key === "Enter") {
+                event.preventDefault();
+            }
+        });
+        resetButton.addEventListener('click', (e) => fetchDeckFiles());
     </script>
 </body>
 </html>

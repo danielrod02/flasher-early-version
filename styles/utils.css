@@ -27,10 +27,12 @@ footer[role=group] {
 #progress-indicator {
     position: fixed;
     right: 0; top: 0;
-    width: 80px;
-    height: 24px;
+    width: 60px;
+    height: 16px;
     font-family: monospace;
+    font-size: smaller;
     color: white;
     background-color: rgb(68, 68, 68);
     text-align: center;
+    vertical-align: middle;
 }

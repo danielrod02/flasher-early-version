@@ -38,14 +38,9 @@
         <button id="wrong-button" class="secondary display-none">Wrong</button>
         <button id="show-back-button" class="display-none contrast">Show answer</button>
     </footer>
-    <p id="progress-indicator"></p>
+    <p id="progress-indicator" class="display-none"></p>
 
     <script type="module">
-        import { fetchDeck } from '/modules/fetchDeck.js';
-        import { shuffleArray } from '/modules/utils.js';
-
-        const converter = new showdown.Converter();
-
         const url = window.location.href;
         const urlObj = new URL(url);
         const params = new URLSearchParams(urlObj.search);
@@ -53,10 +48,16 @@
         params.forEach((value, key) => {
             queryParams[key] = value;
         });
+        document.querySelector('header > h1').append(`${queryParams.deck}`);
+        
+        import { fetchDeck } from '/modules/fetchDeck.js';
+        import { shuffleArray } from '/modules/utils.js';
+        
+        
+        const converter = new showdown.Converter();
 
         localStorage.clear();
 
-        document.querySelector('header > h1').append(`${queryParams.deck}`);
         const fixedFooter = document.querySelector('footer[role="group"]');
         const showAnswerButton = document.getElementById('show-back-button');
         const wrongButton = document.getElementById('wrong-button');
@@ -66,6 +67,7 @@
 
         document.getElementById('start-deck-session').addEventListener('click', async () => {
             renderElement.replaceChildren("");
+            renderElement.ariaBusy = "true";
             const deck = await fetchDeck('danielrod02', 'flasher', `decks/${queryParams.deck}`)
             const shuffledDeck = shuffleArray(deck.deck)
 
@@ -86,10 +88,12 @@
                 localStorage.getItem(`current_deck:card${current_card}:front`)
             );
 
+            renderElement.ariaBusy = "false";
             renderElement.insertAdjacentHTML("beforeend", frontElement);
             fixedFooter.classList.toggle('hidden');
             showAnswerButton.classList.toggle('display-none');
 
+            progressIndicator.classList.toggle("display-none");
             progressIndicator.append(`1/${shuffledDeck.length}`);
 
             hljs.highlightAll();

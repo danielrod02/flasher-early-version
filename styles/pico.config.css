@@ -3,17 +3,17 @@
     --pico-font-family-monospace: "DM Mono", monospace, var(--pico-font-family-emoji);
     /* --pico-font-family-monospace:  monospace, var(--pico-font-family-emoji); */
     --pico-font-family: var(--pico-font-family-sans-serif);
-    --pico-font-size: 130%;
+    --pico-font-size: 105%;
 }
 
 body {
     padding-bottom: 60px;
 }
 
-code {
+/* code {
     --pico-font-size: 200%;
-    /* font-family: monospace ,var(--pico-font-family-monospace); */
-}
+    font-family: monospace ,var(--pico-font-family-monospace);
+} */
 
 header h1 {
     margin-bottom: 10px;

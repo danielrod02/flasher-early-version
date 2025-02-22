@@ -3,7 +3,7 @@
 }
 
 .display-none {
-    display: none;
+    display: none !important;
 }
 
 .fixed-bottom {
@@ -13,9 +13,6 @@
     width: 100vw;
 }
 
-main.main article {
-    text-align: center;
-}
 
 footer[role=group] {
     margin-bottom: 0;

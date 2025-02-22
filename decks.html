@@ -18,32 +18,54 @@
             text-align: right;
         }
         #github-config-form {
+            display: flex;
+            justify-content: center;
+            align-items: start;
             position: fixed;
-            width: 90vw;
-            left: 5vw;
-            top: 20vh;
-            background-color: var(--pico-background-color);
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.8);
+            left: 0;
+            top: 0;
+        }
+        #github-config-form fieldset {
+            position: relative;
+            width: max(50vw, 500px);
             padding: 25px 20px 0;
+            margin: 65px 10px 0;
             border: solid var(--pico-secondary);
             border-radius: var(--pico-border-radius);
+            background-color: var(--pico-background-color);
+            overflow: auto;
         }
         .display-none {
-            display: none;
+            display: none !important;
         }
         #close-github-config-form {
             position: absolute;
             top: 15px;
-            right: 15px;
+            right: 0px;
+            z-index: 1000;
         }
         #close-github-config-form:hover {
             cursor: pointer;
+        }
+        #settings-button {
+            position: fixed;
+            bottom: 10px;
+            right: 15px;
+            z-index: 10;
+        }
+        header h1 {
+            display: flex;
+            justify-content: space-between;
         }
     </style>
     <title>Decks</title>
 </head>
 <body>
     <header>
-        <h1>Decks</h1>
+        <h1>Decks<span aria-busy="true" style="width: 29.39px;"></span></h1>
         <form role="search">
             <input type="text" name="search-deck" id="search-deck">
             <input type="reset" value="Clear" />
@@ -57,14 +79,14 @@
                     <th>Source</th>
                 </tr>
             </thead>
-            <tbody id="deck-files-list" aria-busy="true">
+            <tbody id="deck-files-list">
             </tbody>
         </table>
     </main>
     <div id="github-config-form-container"></div>
-    <form action="" id="github-config-form">
+    <form action="" id="github-config-form" class="display-none">
         <fieldset>
-            <svg id="close-github-config-form" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+            <svg id="close-github-config-form" xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 35 35">
                 <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
             </svg>
             <label for="github-user">Github User</label>
@@ -78,16 +100,53 @@
                 <button class="outline" style="background-color: transparent;">Cancel</button>
                 <!-- <input type="button" class="secondary" value="Cancel"> -->
             </div>
+            <p><svg style="vertical-align:middle; transform:translateY(-1px);" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
+                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
+              </svg> &nbsp;Set the the location in Github where to search for decks</p>
         </fieldset>
     </form>
+    <button id="settings-button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16 16">
+            <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
+        </svg>
+    </button>
     <script type="module">
         const listElement = document.getElementById('deck-files-list');
+        const headerElement = document.querySelector('header h1 span');
         const resetButton = document.querySelector('input[type="reset"][value="Clear"]');
         const searchDeckField = document.getElementById('search-deck');
         const githubConfigForm = document.getElementById('github-config-form');
+        const configButton = document.getElementById('settings-button');
+
+        let config = {};
+        
+        if (localStorage.getItem("github_config") === null) {
+            githubConfigForm.classList.remove("display-none");
+        } else {
+            config = JSON.parse( localStorage.getItem("github_config") );
+            githubConfigForm['github-user'].value = config.user;
+            githubConfigForm['repo-name'].value = config.repo;
+            githubConfigForm['folder-path'].value = config.folderPath;
+        }
+
+        githubConfigForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            localStorage.setItem("github_config", JSON.stringify({
+                user: githubConfigForm['github-user'].value,
+                repo: githubConfigForm['repo-name'].value,
+                folderPath: githubConfigForm['folder-path'].value,
+            }));
+            githubConfigForm.classList.add("display-none");
+        });
+
 
         document.getElementById('close-github-config-form').addEventListener('click', (e) => {
+            console.debug('clicked close button');
             githubConfigForm.classList.add('display-none');
+        });
+
+        configButton.addEventListener("click", (e) => {
+            githubConfigForm.classList.remove('display-none');
         });
 
         function renderDeckFilesList(deckFiles) {
@@ -115,9 +174,9 @@
         }
 
         async function fetchDeckFiles() {
-            const owner = 'danielrod02';
-            const repo = 'flasher';
-            const path = 'decks';
+            const { user: owner, repo , folderPath: path } = JSON.parse(
+                localStorage.getItem("github_config")
+            );
             const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
 
             try {
@@ -130,7 +189,7 @@
 
                 const deckFiles = files.filter(file => file.name.endsWith('.deck'));
 
-                listElement.ariaBusy = "false";
+                headerElement.ariaBusy = "false";
                 renderDeckFilesList(deckFiles);
             } catch (error) {
                 console.error('Error fetching deck files:', error);
@@ -143,13 +202,16 @@
         import debounceAsync from "/modules/debounceAsync.js";
         import { searchFilesInRepoFolder } from "/modules/searchFilesInRepoFolder.js";
         const searchDeckChangeHandler = debounceAsync(async (e) => {
+            const { user: owner, repo , folderPath: path } = JSON.parse(
+                localStorage.getItem("github_config")
+            );
             console.debug('it changed');
             listElement.innerHTML = "";
-            listElement.ariaBusy = "true";
+            headerElement.ariaBusy = "true";
             console.debug('searching decks');
-            const deckFiles = await searchFilesInRepoFolder(e.target.value, 'danielrod02', 'flasher', 'decks');
+            const deckFiles = await searchFilesInRepoFolder(e.target.value, owner, repo, path);
             console.debug('decks found');
-            listElement.ariaBusy = "false";
+            headerElement.ariaBusy = "false";
             console.debug(deckFiles);
             renderDeckFilesList(deckFiles);
         }, 800);

@@ -1,5 +1,5 @@
 // Import the js-yaml library
-import jsYaml from 'https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/+esm'
+import jsYaml from 'https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/+esm';
 
 
 /**

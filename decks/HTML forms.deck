@@ -82,14 +82,14 @@ deck:
           *   Appends form data to the URL as query parameters (e.g., `example.com/page?name=John&age=30`).
           *   Data is visible in the browser's address bar.
           *   Limited amount of data can be sent (URL length restrictions).
-          *   Should be used for idempotent operations (retrieving data, searching, filtering – operations that don't change server-side state).
+          *   Should be used for idempotent operations (retrieving data, searching, filtering operations that don't change server-side state).
           *   Bookmarks and browser history include the form data.
 
       *   **`POST`**:
           *   Sends form data in the body of the HTTP request.
           *   Data is not visible in the browser's address bar.
           *   No practical limit on the amount of data that can be sent.
-          *   Should be used for non-idempotent operations (creating, updating, deleting data – operations that change server-side state).
+          *   Should be used for non-idempotent operations (creating, updating, deleting data operations that change server-side state).
           *   More secure for sensitive data (though HTTPS is still required for true security).
           *   Bookmarks and browser history do *not* include the form data.
 

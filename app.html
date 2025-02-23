@@ -86,7 +86,7 @@
             renderElement.replaceChildren("");
             renderElement.ariaBusy = "true";
             const deck = await fetchDeck('danielrod02', 'flasher', `decks/${queryParams.deck}`)
-            const shuffledDeck = shuffleArray(deck.deck)
+            const shuffledDeck = shuffleArray(deck.deck);
 
             shuffledDeck.forEach( (card, i) => {
                 localStorage.setItem(`current_deck:card${i}:front`, card.front)

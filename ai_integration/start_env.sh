@@ -1,0 +1,1 @@
+docker run -it --user $(id -u):$(id -g) --mount type=bind,src="$(pwd)",target=/app -w /app --name python-langchain python:latest /bin/sh

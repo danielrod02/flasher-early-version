@@ -1,0 +1,294 @@
+deck:
+  - front: |
+      What is the purpose of an HTML `<form>` element?
+    back: |
+      The `<form>` element is used to create an HTML form for user input. It acts as a container for form controls such as text fields, checkboxes, radio buttons, submit buttons, and more. Forms allow users to interact with a web page and send data to a server for processing.
+
+  - front: |
+      What are the key attributes of the `<form>` element? Explain each.
+    back: |
+      *   **`action`**: Specifies the URL where the form data should be sent when the form is submitted.  If omitted, the data is sent to the current page's URL.
+      *   **`method`**: Specifies the HTTP method used to submit the form data.  The two most common methods are:
+          *   **`GET`**: Appends the form data to the URL as query parameters (e.g., `?name=John&age=30`).  Suitable for small amounts of data and idempotent operations (operations that can be repeated without changing the result).  Data is visible in the URL.
+          *   **`POST`**: Sends the form data in the body of the HTTP request.  Suitable for larger amounts of data, sensitive data, and non-idempotent operations (operations that change something, like creating a new record). Data is not visible in the URL.
+      *   **`enctype`**: Specifies how the form data should be encoded when submitted (only relevant for `method="POST"`).  The common values are:
+          *   **`application/x-www-form-urlencoded`**:  The default encoding.  Spaces are replaced with `+`, and special characters are URL-encoded.
+          *   **`multipart/form-data`**:  Used for forms that include file uploads.  Data is sent as a series of parts, one for each form control.
+          *   **`text/plain`**:  Spaces are converted to `+`, but no other encoding is performed.  Rarely used.
+      *   **`target`**: Specifies where to display the response after submitting the form (e.g., `_blank` for a new window/tab, `_self` for the same frame, `_parent` for the parent frame, `_top` for the full body of the window).
+      *   **`autocomplete`**: Specifies whether the browser should attempt to automatically complete form fields (e.g., `on` or `off`).
+      * **`name`**: Give a name to the form.
+      *   **`novalidate`**: A boolean attribute. If present specifies that the form-data should not be validated on submit.
+
+  - front: |
+      Describe the purpose and usage of the following HTML form controls:
+      *   `<input>`
+      *   `<textarea>`
+      *   `<select>`
+      *   `<button>`
+      *   `<label>`
+    back: |
+      *   **`<input>`**: The most versatile form control.  Its behavior depends on the `type` attribute.  Common `type` values include:
+          *   `text`: Single-line text input.
+          *   `password`:  Text input where characters are masked.
+          *   `submit`:  A button to submit the form.
+          *   `reset`: A button to reset the form to its initial values.
+          *   `radio`:  A radio button (select one from a group).
+          *   `checkbox`:  A checkbox (select zero or more from a group).
+          *   `button`: A clickable button (often used with JavaScript).
+          *   `file`:  Allows the user to select a file for upload.
+          *   `hidden`:  A hidden input field (not displayed to the user, but its value is submitted with the form).
+          *   `number`: Input field for numeric values.
+          *   `email`: Input field for email addresses (often includes basic validation).
+          *   `tel`: Input for a telephone number.
+          *   `url`: Input field for URLs (often includes basic validation).
+          *   `date`: Input for date.
+          *   `time`: Input for time.
+          *   `datetime-local`: Input for both date and time.
+          *   `color`:  A color picker.
+          *   `range`: A slider control.
+
+      *   **`<textarea>`**: Creates a multi-line text input area.  Useful for allowing users to enter longer blocks of text.
+          ```html
+          <textarea name="message" rows="4" cols="50"></textarea>
+          ```
+
+      *   **`<select>`**: Creates a dropdown list of options. The `<option>` element is used to define each option.
+          ```html
+          <select name="country">
+            <option value="us">United States</option>
+            <option value="ca">Canada</option>
+            <option value="uk">United Kingdom</option>
+          </select>
+          ```
+
+      *   **`<button>`**: Creates a clickable button. Can be used within a form to submit or reset the form, or used independently with JavaScript. The `type` attribute can be `submit`, `reset`, or `button`.
+          ```html
+          <button type="submit">Submit</button>
+          <button type="reset">Reset</button>
+          <button type="button" onclick="alert('Hello')">Click Me</button>
+          ```
+
+      *   **`<label>`**: Defines a label for a form control.  Associating a label with a control improves accessibility (clicking the label focuses the control) and user experience.  Use the `for` attribute (on the `<label>`) to match the `id` attribute (on the form control).
+          ```html
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username">
+          ```
+
+  - front: |
+      Explain the difference between `GET` and `POST` methods in HTML forms.  When should you use each?
+    back: |
+      *   **`GET`**:
+          *   Appends form data to the URL as query parameters (e.g., `example.com/page?name=John&age=30`).
+          *   Data is visible in the browser's address bar.
+          *   Limited amount of data can be sent (URL length restrictions).
+          *   Should be used for idempotent operations (retrieving data, searching, filtering – operations that don't change server-side state).
+          *   Bookmarks and browser history include the form data.
+
+      *   **`POST`**:
+          *   Sends form data in the body of the HTTP request.
+          *   Data is not visible in the browser's address bar.
+          *   No practical limit on the amount of data that can be sent.
+          *   Should be used for non-idempotent operations (creating, updating, deleting data – operations that change server-side state).
+          *   More secure for sensitive data (though HTTPS is still required for true security).
+          *   Bookmarks and browser history do *not* include the form data.
+
+      **When to use which:**
+
+      *   Use `GET` for requests that *retrieve* data without modifying anything on the server.
+      *   Use `POST` for requests that *change* something on the server, or when sending sensitive data, or when sending large amounts of data.
+
+  - front: |
+      How can you create a form that allows users to upload files?  What attributes and elements are necessary?
+    back: |
+      To create a file upload form, you need to use the following:
+
+      1.  **`method="POST"`**:  File uploads *must* use the `POST` method.
+      2.  **`enctype="multipart/form-data"`**: This attribute is *essential*. It tells the browser to encode the form data in a way that supports file uploads.  Without it, the file data won't be sent correctly.
+      3.  **`<input type="file">`**: This creates the file input control, allowing the user to browse and select a file.
+
+      ```html
+      <form action="/upload" method="POST" enctype="multipart/form-data">
+        <label for="myFile">Select a file:</label>
+        <input type="file" id="myFile" name="myFile">
+        <button type="submit">Upload</button>
+      </form>
+      ```
+
+      You can also add the `multiple` attribute to allow multiple files:
+
+      ```html
+      <input type="file" id="myFiles" name="myFiles" multiple>
+      ```
+
+      The server-side code (at `/upload` in this example) will need to handle the file upload and save it appropriately. The specific implementation depends on the server-side language/framework (e.g., Node.js, Python/Flask, PHP).
+
+  - front: |
+      How do you create radio buttons and checkboxes in HTML forms? How do you group them?
+    back: |
+      *   **Radio Buttons:**
+          *   Use `<input type="radio">`.
+          *   To group radio buttons, give them all the *same* `name` attribute.  Only one radio button within a group can be selected at a time.
+          *   Use the `value` attribute to specify the value that will be submitted for each radio button.
+          *   Use the `checked` attribute to pre-select a radio button.
+
+          ```html
+          <form>
+            <input type="radio" id="option1" name="choice" value="option1">
+            <label for="option1">Option 1</label><br>
+
+            <input type="radio" id="option2" name="choice" value="option2" checked>
+            <label for="option2">Option 2</label><br>
+
+            <input type="radio" id="option3" name="choice" value="option3">
+            <label for="option3">Option 3</label><br>
+          </form>
+          ```
+
+      *   **Checkboxes:**
+          *   Use `<input type="checkbox">`.
+          *   Checkboxes are independent by default. If you intend them as a "group," you might use the same `name`, but this is more for the server-side processing.  Unlike radio buttons, multiple checkboxes with the same name *can* be selected simultaneously.
+          *   Use the `value` attribute to specify the value for each checkbox.
+          *   Use the `checked` attribute to pre-select a checkbox.
+
+          ```html
+          <form>
+            <input type="checkbox" id="item1" name="items" value="item1" checked>
+            <label for="item1">Item 1</label><br>
+
+            <input type="checkbox" id="item2" name="items" value="item2">
+            <label for="item2">Item 2</label><br>
+
+            <input type="checkbox" id="item3" name="items" value="item3">
+            <label for="item3">Item 3</label><br>
+          </form>
+          ```
+
+      The key difference: Radio buttons within a group (same `name`) are mutually exclusive; checkboxes are not.  The server receives an array of values for checkboxes with the same name if multiple are selected.
+
+  - front: |
+      How can you create a dropdown list (select box) in an HTML form? Explain the use of `<select>`, `<option>`, and `<optgroup>`.
+    back: |
+      *   **`<select>`**:  The main element that creates the dropdown list container.
+      *   **`<option>`**:  Defines each individual option within the dropdown list.  The `value` attribute of the `<option>` is what gets submitted with the form.  The text content of the `<option>` element is what the user sees in the dropdown.
+      *   **`<optgroup>`**:  Used to group related options within the `<select>` element.  This provides a visual grouping for the user, making it easier to navigate long lists.  The `label` attribute of the `<optgroup>` is used to provide a label for the group.
+
+      ```html
+      <form>
+        <label for="car">Choose a car:</label>
+        <select id="car" name="car">
+          <optgroup label="Swedish Cars">
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+          </optgroup>
+          <optgroup label="German Cars">
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option>
+          </optgroup>
+          <option value="bmw">BMW</option>
+        </select>
+        <button type="submit">Submit</button>
+      </form>
+      ```
+
+      Key attributes:
+
+      *   `<select>`:
+          *   `name`: The name of the control, used when submitting the form.
+          *   `id`:  Unique identifier, used for associating with a `<label>`.
+          *   `multiple`:  If present, allows the user to select multiple options (usually by holding Ctrl/Cmd while clicking).
+          *   `size`: Determines how many options are visible at once (turns it into a scrollable list box).
+          *   `required`:  If present, the user must select an option before the form can be submitted.
+
+      *   `<option>`:
+          *   `value`:  The value submitted to the server.
+          *   `selected`:  If present, this option is pre-selected when the page loads.
+          *   `disabled`: If present the option is shown but is unselectable.
+
+      *   `<optgroup>`:
+          *   `label`: The label for the group of options.
+          *   `disabled`: If present the complete group is unselectable.
+
+  - front: |
+      How can you associate a label with a form control? Why is this important?
+    back: |
+      You associate a label with a form control using the `for` attribute of the `<label>` element and the `id` attribute of the form control.  The values of these attributes must match.
+
+      ```html
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" name="firstName">
+      ```
+
+      This is important for several reasons:
+
+      1.  **Accessibility:** Screen readers use the `<label>` to announce the purpose of the form control to users with visual impairments.  Without a label, the control might be incomprehensible.
+      2.  **Usability:** Clicking on the label focuses the associated form control. This increases the clickable area, making it easier for users to interact with the form, especially on touch devices.
+      3.  **User Experience:** Labels provide clear, visible descriptions of what input is expected in each field. This makes the form easier to understand and use.
+
+      There's also an alternative, *implicit* labeling, where you wrap the form control *inside* the `<label>` element:
+
+      ```html
+      <label>
+        Last Name:
+        <input type="text" name="lastName">
+      </label>
+      ```
+
+      While this works, the *explicit* method (using `for` and `id`) is generally preferred because it's more flexible (the label and control don't have to be next to each other in the HTML) and provides better compatibility with assistive technologies.
+
+  - front: |
+      What is the purpose of the `fieldset` and `legend` elements in HTML forms?
+    back: |
+      *   **`<fieldset>`**:  Used to group related form controls together, both visually and semantically.  It creates a box around the grouped elements.
+      *   **`<legend>`**:  Used to provide a caption or title for the `<fieldset>`. It should be the *first* child element within the `<fieldset>`.
+
+      ```html
+      <form>
+        <fieldset>
+          <legend>Personal Information</legend>
+
+          <label for="firstName">First Name:</label>
+          <input type="text" id="firstName" name="firstName"><br>
+
+          <label for="lastName">Last Name:</label>
+          <input type="text" id="lastName" name="lastName"><br>
+        </fieldset>
+
+        <fieldset>
+          <legend>Contact Information</legend>
+
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email"><br>
+
+          <label for="phone">Phone:</label>
+          <input type="tel" id="phone" name="phone"><br>
+        </fieldset>
+
+        <button type="submit">Submit</button>
+      </form>
+      ```
+
+      Benefits of using `<fieldset>` and `<legend>`:
+
+      *   **Improved Organization:** Visually groups related form elements, making the form easier to scan and understand.
+      *   **Accessibility:**  Screen readers can announce the `<legend>` to provide context for the group of controls within the `<fieldset>`.
+      *   **Styling:**  Provides convenient hooks for CSS styling to visually distinguish different sections of the form.
+
+  - front: How to make a button that is outside of a form element to belong to that form?
+    back: |
+      You can associate a `<button>` element that's *outside* a `<form>` with that form using the `form` attribute on the `<button>`.  The value of the `form` attribute should be the `id` of the `<form>` element.
+
+      ```html
+      <form id="myForm" action="/submit" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br>
+      </form>
+
+      <button type="submit" form="myForm">Submit Form (Outside)</button>
+      ```
+
+      In this example, even though the `<button>` is *not* a child of the `<form>` element, clicking it will still submit the form with the `id` "myForm".  This is because of the `form="myForm"` attribute on the button. The `type="submit"` is crucial; otherwise, the button won't submit the form. You can also use `type="reset"` to reset the form.
+
+      This is useful when you need to place the submit button somewhere else on the page, outside the structure of the form itself, for layout or design reasons.

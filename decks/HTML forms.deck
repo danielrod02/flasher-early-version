@@ -82,7 +82,7 @@ deck:
           *   Appends form data to the URL as query parameters (e.g., `example.com/page?name=John&age=30`).
           *   Data is visible in the browser's address bar.
           *   Limited amount of data can be sent (URL length restrictions).
-          *   Should be used for idempotent operations (retrieving data, searching, filtering – operations that don't change server-side state).
+          *   Should be used for idempotent operations (retrieving data, searching, filtering – operations that don't change server-side state)
           *   Bookmarks and browser history include the form data.
 
       *   **`POST`**:

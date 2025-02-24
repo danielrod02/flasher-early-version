@@ -9,14 +9,14 @@
     <!-- <link rel="stylesheet" href="/styles/global.css"> -->
      <link rel="stylesheet" href="/styles/utils.css">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/showdown-katex@0.8.0/dist/showdown-katex.min.js" integrity="sha256-3SVaqAv51DdVXBzHUBt7snnJhGXRZc7aFBC7SgHuNWw=" crossorigin="anonymous"></script>
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.min.css"/>
 
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.11.1/styles/atom-one-dark.css"> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.11.1/styles/monokai-sublime.css">
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.11.1/styles/night-owl.min.css"> -->
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.11.1/styles/stackoverflow-dark.min.css"> -->
-    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js"></script> -->
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.amber.min.css">
     <link rel="stylesheet" href="/styles/pico.config.css">
@@ -64,9 +64,9 @@
         
         import { fetchDeck } from '/modules/fetchDeck.js';
         import { shuffleArray } from '/modules/utils.js';
+        import renderHTMLfromMD from '/modules/renderHTMLfromMD.js' ;
         
         
-        const converter = new showdown.Converter();
 
         const configStr = localStorage.getItem('github_config');
         localStorage.clear();
@@ -98,7 +98,7 @@
             localStorage.setItem('current_deck', queryParams.deck);
             localStorage.setItem('current_deck:current_card', current_card);
 
-            const frontElement = converter.makeHtml(
+            const frontElement = renderHTMLfromMD(
                 localStorage.getItem(`current_deck:card${current_card}:front`)
             );
 
@@ -116,7 +116,7 @@
 
          showAnswerButton.addEventListener('click', async (e) => {
             const current_card = localStorage.getItem('current_deck:current_card');
-            const backElement = converter.makeHtml(
+            const backElement = renderHTMLfromMD(
                 localStorage.getItem(`current_deck:card${current_card}:back`)
             );
             const hrElement = document.createElement('hr');
@@ -198,7 +198,7 @@
 
             progressIndicator.innerText = `${current_card + 1}/${deckSize}`;
 
-            const frontElement = converter.makeHtml(
+            const frontElement = renderHTMLfromMD(
                 localStorage.getItem(`current_deck:card${current_card}:front`)
             );
             renderElement.innerHTML = "";

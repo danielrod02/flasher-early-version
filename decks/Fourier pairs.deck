@@ -1,261 +1,224 @@
 deck:
   - front: |
-      What is the Fourier Transform of the Rectangular Function?
-
-      $$\text{rect}(t) = \begin{cases} 1, & |t| < \frac{1}{2} \\ 0, & |t| > \frac{1}{2} \end{cases}$$
-    back: |
-      The Fourier Transform of the rectangular function is the sinc function:
-
-      $$\text{rect}(t) \xrightarrow{\mathcal{F}} \text{sinc}(f) = \frac{\sin(\pi f)}{\pi f}$$
-
-      **Derivation:**
-
-      $$\begin{aligned}
-      \mathcal{F}\{\text{rect}(t)\} &= \int_{-\infty}^{\infty} \text{rect}(t) e^{-j2\pi ft} dt \\
-      &= \int_{-1/2}^{1/2} e^{-j2\pi ft} dt \\
-      &= \frac{e^{-j2\pi ft}}{-j2\pi f} \bigg|_{-1/2}^{1/2} \\
-      &= \frac{e^{-j\pi f} - e^{j\pi f}}{-j2\pi f} \\
-      &= \frac{e^{j\pi f} - e^{-j\pi f}}{j2\pi f} \\
-      &= \frac{2j\sin(\pi f)}{j2\pi f} \\
-      &= \frac{\sin(\pi f)}{\pi f} = \text{sinc}(f)
-      \end{aligned}$$
-  - front: |
-      What is the Fourier Transform of the Sinc Function?
-
-      $$\text{sinc}(t) = \frac{\sin(\pi t)}{\pi t}$$
-    back: |
-      The Fourier Transform of the sinc function is the rectangular function:
-
-      $$\text{sinc}(t) \xrightarrow{\mathcal{F}} \text{rect}(f) = \begin{cases} 1, & |f| < \frac{1}{2} \\ 0, & |f| > \frac{1}{2} \end{cases}$$
-
-      This follows from the duality property of the Fourier Transform and the result for the rectangular function.
-  - front: What is the Fourier Transform of a Dirac Delta Function  $$\delta(t)$$?
-    back: |
-      The Fourier Transform of a Dirac delta function is a constant:
-
-      $$\delta(t) \xrightarrow{\mathcal{F}} 1$$
-
-      **Derivation:**
-
-      $$\begin{aligned}
-      \mathcal{F}\{\delta(t)\} &= \int_{-\infty}^{\infty} \delta(t) e^{-j2\pi ft} dt \\
-      &= e^{-j2\pi f(0)} \\
-      &= 1
-      \end{aligned}$$
-
-      This uses the sifting property of the Dirac delta function.
-  - front: What is the Fourier Transform of a constant function $$x(t) = 1$$?
-    back: |
-      The Fourier Transform of a constant function is a Dirac delta function:
-
-      $$1 \xrightarrow{\mathcal{F}} \delta(f)$$
-
-      This is the dual of the Dirac delta transform pair.
-  - front: What is the Fourier Transform of a complex exponential $$e^{j2\pi f_0 t}$$?
-    back: |
-      The Fourier Transform of a complex exponential is a shifted Dirac delta function:
-
-      $$e^{j2\pi f_0 t} \xrightarrow{\mathcal{F}} \delta(f - f_0)$$
-
-      **Derivation (Intuitive):**
-
-      The complex exponential represents a single frequency  $$f_0$$.  Therefore, its Fourier Transform should be a delta function at that frequency.
-
-      **Derivation (Formal - using inverse transform):**
-
-      Let $$X(f) = \delta(f - f_0)$$. Then, using the inverse Fourier Transform:
-        
-      $$\begin{aligned}
-        x(t) &= \int_{-\infty}^{\infty} X(f)e^{j2\pi ft}df \\
-            &= \int_{-\infty}^{\infty} \delta(f - f_0)e^{j2\pi ft}df \\
-            &= e^{j2\pi f_0 t}
-      \end{aligned}$$
-      Because of the sifting property.
-  - front: What is the Fourier Transform of $$\cos(2\pi f_0 t)$$?
-    back: |
-      The Fourier Transform of $$\cos(2\pi f_0 t)$$ is:
-
-      $$\cos(2\pi f_0 t) \xrightarrow{\mathcal{F}} \frac{1}{2}[\delta(f - f_0) + \delta(f + f_0)]$$
-
-      **Derivation:**
-
-      Using Euler's formula:
-
-      $$\cos(2\pi f_0 t) = \frac{1}{2}(e^{j2\pi f_0 t} + e^{-j2\pi f_0 t})$$
-
-      Then, using the linearity of the Fourier Transform and the transform of a complex exponential:
-
-      $$\begin{aligned}
-      \mathcal{F}\{\cos(2\pi f_0 t)\} &= \frac{1}{2}\mathcal{F}\{e^{j2\pi f_0 t}\} + \frac{1}{2}\mathcal{F}\{e^{-j2\pi f_0 t}\} \\
-      &= \frac{1}{2}[\delta(f - f_0) + \delta(f + f_0)]
-      \end{aligned}$$
-  - front: What is the Fourier Transform of $$\sin(2\pi f_0 t)$$?
-    back: |
-      The Fourier Transform of  $$\sin(2\pi f_0 t)$$ is:
-
-      $$\sin(2\pi f_0 t) \xrightarrow{\mathcal{F}} \frac{1}{2j}[\delta(f - f_0) - \delta(f + f_0)]$$
-
-      **Derivation:**
-
-      Using Euler's formula:
-
-      $$\sin(2\pi f_0 t) = \frac{1}{2j}(e^{j2\pi f_0 t} - e^{-j2\pi f_0 t})$$
-
-      Then, using the linearity of the Fourier Transform and the transform of a complex exponential:
-
-      $$\begin{aligned}
-      \mathcal{F}\{\sin(2\pi f_0 t)\} &= \frac{1}{2j}\mathcal{F}\{e^{j2\pi f_0 t}\} - \frac{1}{2j}\mathcal{F}\{e^{-j2\pi f_0 t}\} \\
-      &= \frac{1}{2j}[\delta(f - f_0) - \delta(f + f_0)]
-      \end{aligned}$$
-  - front: What is the Fourier Transform of the Gaussian function $$e^{-\pi t^2}$$?
-    back: |
-      The Fourier Transform of the Gaussian function  $$e^{-\pi t^2}$$ is another Gaussian function:
-
-      $$e^{-\pi t^2} \xrightarrow{\mathcal{F}} e^{-\pi f^2}$$
-
-      **Derivation (Sketch):**
-      This is more involved, but relies on properties of the Fourier Transform, differential equation solving with initial conditions.
-          1.  Calculate the derivative of $$x(t)$$ and its Fourier transform $$X(f)$$
-          2.  Compute the derivative of $$X(f)$$
-          3.  Find the relation between derivative of $$X(f)$$ and $$X(f)$$ to get a differential equation.
-          4. Solve the differential equation.
-
-  - front: What is the Fourier transform of a time-shifted signal $$x(t - t_0)$$?
-    back: |
-      The Fourier transform of a time-shifted signal $$x(t - t_0)$$ is:
-      $$x(t - t_0) \xrightarrow{\mathcal{F}} e^{-j2\pi f t_0}X(f)$$
-      where $$X(f)$$ is the Fourier transform of $$x(t)$$.  This is the *Time-Shift Property*.
-
-      **Derivation:**
+      What is the Fourier Transform of a rectangular pulse?
       
-      $$\begin{aligned}
-        \mathcal{F}\{x(t-t_0)\} &= \int_{-\infty}^{\infty} x(t-t_0)e^{-j2\pi ft} dt \\
-        \text{Let } \tau = t - t_0 &\implies t = \tau + t_0 \text{ and } d\tau = dt \\
-        &= \int_{-\infty}^{\infty} x(\tau)e^{-j2\pi f(\tau + t_0)} d\tau \\
-        &= e^{-j2\pi f t_0} \int_{-\infty}^{\infty} x(\tau)e^{-j2\pi f\tau} d\tau \\
-        &= e^{-j2\pi ft_0}X(f)
-      \end{aligned}$$
-  - front: What is the Fourier Transform of a frequency-shifted signal,  $$x(t)e^{j2\pi f_0 t}$$?
+      Given a rectangular pulse defined as:
+      
+      $$
+      \Pi(t) = \begin{cases}
+        1, & |t| < \frac{1}{2} \\
+        0, & |t| > \frac{1}{2}
+      \end{cases}
+      $$
     back: |
-        The Fourier Transform of $$x(t)e^{j2\pi f_0 t}$$ is:
+      The Fourier Transform of a rectangular pulse is a sinc function:
+      
+      $$
+      \mathcal{F}\{\Pi(t)\} = \text{sinc}(f) = \frac{\sin(\pi f)}{\pi f}
+      $$
+      
+      Where:
+      
+      *   $\Pi(t)$ represents the rectangular pulse.
+      *   $\text{sinc}(f)$ is the normalized sinc function.
 
-        $$x(t)e^{j2\pi f_0 t} \xrightarrow{\mathcal{F}} X(f - f_0)$$
+  - front: |
+      What is the inverse Fourier Transform of a sinc function?
 
-        where  $$X(f)$$ is the Fourier Transform of $$x(t)$$. This is the *Frequency-Shift Property* (or *Modulation Property*).
-
-        **Derivation:**
-
-        $$\begin{aligned}
-        \mathcal{F}\{x(t)e^{j2\pi f_0 t}\} &= \int_{-\infty}^{\infty} x(t)e^{j2\pi f_0 t} e^{-j2\pi ft} dt \\
-        &= \int_{-\infty}^{\infty} x(t)e^{-j2\pi (f - f_0)t} dt \\
-        &= X(f - f_0)
-        \end{aligned}$$
-  - front:  What is the Fourier Transform of the derivative of a signal, $$\frac{dx(t)}{dt}$$?
+      $$
+      \text{sinc}(t) = \frac{\sin(\pi t)}{\pi t}
+      $$
     back: |
-      The Fourier Transform of the derivative of a signal is:
+      The inverse Fourier Transform of a sinc function is a rectangular pulse:
+      
+      $$
+      \mathcal{F}^{-1}\{\text{sinc}(t)\} = \Pi(f) = \begin{cases}
+        1, & |f| < \frac{1}{2} \\
+        0, & |f| > \frac{1}{2}
+      \end{cases}
+      $$
+      
+      Where:
+      *   $\text{sinc}(t)$ represents the normalized sinc function
+      *   $\Pi(f)$ is the rectangular pulse.
 
-      $$\frac{dx(t)}{dt} \xrightarrow{\mathcal{F}} j2\pi fX(f)$$
-
-      where $$X(f)$$ is the Fourier Transform of $$x(t)$$.  This is the *Differentiation in Time Property*.
-
-      **Derivation (using integration by parts):**
-
-      $$\begin{aligned}
-      \mathcal{F}\left\{\frac{dx(t)}{dt}\right\} &= \int_{-\infty}^{\infty} \frac{dx(t)}{dt} e^{-j2\pi ft} dt \\
-      \text{Let } u = e^{-j2\pi ft}, dv &= \frac{dx(t)}{dt} dt  \implies du = -j2\pi fe^{-j2\pi ft} dt, v = x(t) \\
-      &= x(t)e^{-j2\pi ft} \bigg|_{-\infty}^{\infty} - \int_{-\infty}^{\infty} x(t)(-j2\pi f)e^{-j2\pi ft} dt \\
-      &= 0 + j2\pi f \int_{-\infty}^{\infty} x(t)e^{-j2\pi ft} dt \\
-      &= j2\pi fX(f)
-      \end{aligned}$$
-
-      We assume that $$x(t)$$ goes to zero as $$t$$ approaches positive and negative infinity.
-  - front: What is the Fourier Transform of the integral of a signal,  $$\int_{-\infty}^{t} x(\tau) d\tau$$?
+  - front: What is the Fourier Transform of a Dirac delta function,  δ(t)?
     back: |
-      The Fourier Transform of the integral of a signal is:
+      The Fourier Transform of a Dirac delta function is 1.
+      
+      $$
+      \mathcal{F}\{\delta(t)\} = 1
+      $$
 
-      $$\int_{-\infty}^{t} x(\tau) d\tau \xrightarrow{\mathcal{F}} \frac{1}{j2\pi f}X(f) + \frac{1}{2}X(0)\delta(f)$$
-
-      where $$X(f)$$ is the Fourier Transform of $$x(t)$$.  This is the *Integration Property*. The second term, involving $$X(0)$$, accounts for the DC component (average value) of the signal.
-  - front: What is the Fourier Transform of a scaled signal $$x(at)$$?
+  - front: What is the Inverse Fourier Transform of a constant value of 1?
     back: |
-      The fourier transform of a scaled signal  $$x(at)$$ is:
+      The Inverse Fourier Transform of 1 is the Dirac delta function:
+      
+      $$
+      \mathcal{F}^{-1}\{1\} = \delta(t)
+      $$
 
-      $$x(at) \xrightarrow{\mathcal{F}} \frac{1}{|a|}X\left(\frac{f}{a}\right)$$
-
-      where  $$X(f)$$ is the Fourier Transform of  $$x(t)$$. This is the *Time Scaling Property*.  If $$|a| > 1$$, the signal is compressed in time, and its spectrum is expanded in frequency.  If $$|a| < 1$$, the signal is expanded in time, and its spectrum is compressed in frequency.
-
-      **Derivation:**
-
-      **Case 1: $$a > 0$$**
-
-      $$\begin{aligned}
-      \mathcal{F}\{x(at)\} &= \int_{-\infty}^{\infty} x(at)e^{-j2\pi ft} dt \\
-      \text{Let } \tau = at &\implies t = \frac{\tau}{a} \text{ and } dt = \frac{1}{a} d\tau\\
-      &= \int_{-\infty}^{\infty} x(\tau)e^{-j2\pi f(\tau/a)} \frac{1}{a} d\tau \\
-      &= \frac{1}{a} \int_{-\infty}^{\infty} x(\tau)e^{-j2\pi (f/a)\tau} d\tau \\
-      &= \frac{1}{a} X\left(\frac{f}{a}\right)
-      \end{aligned}$$
-
-      **Case 2: $$a < 0$$**
-
-      $$\begin{aligned}
-        \mathcal{F}\{x(at)\} &= \int_{-\infty}^{\infty} x(at)e^{-j2\pi ft} dt \\
-          \text{Let } \tau = at &\implies t = \frac{\tau}{a} \text{ and } dt = \frac{1}{a} d\tau\\
-        &= \int_{\infty}^{-\infty} x(\tau)e^{-j2\pi f(\tau/a)} \frac{1}{a} d\tau \\
-        &= -\frac{1}{a} \int_{-\infty}^{\infty} x(\tau)e^{-j2\pi (f/a)\tau} d\tau\\
-        &= -\frac{1}{a} X\left(\frac{f}{a}\right)
-      \end{aligned}$$
-      Since $$ a < 0 \implies |a| = -a$$, in general, $$x(at) \xrightarrow{\mathcal{F}} \frac{1}{|a|}X\left(\frac{f}{a}\right)$$
-  - front: State the *Convolution Theorem* for Fourier Transforms.
+  - front: What is the Fourier Transform of a constant value A?
     back: |
-      The Convolution Theorem states that the Fourier Transform of the convolution of two signals is the product of their individual Fourier Transforms:
+      The Fourier Transform of a constant value A is A times the Dirac delta function:
 
-      $$x(t) * y(t) \xrightarrow{\mathcal{F}} X(f)Y(f)$$
+      $$
+      \mathcal{F}\{A\} = A\delta(f)
+      $$
 
-      where $$*$$ denotes convolution, $$X(f) = \mathcal{F}\{x(t)\}$$, and $$Y(f) = \mathcal{F}\{y(t)\}$$.  Equivalently, convolution in the time domain is equivalent to multiplication in the frequency domain.
-  - front: State the *Multiplication Theorem* (or *Modulation Theorem*) for Fourier Transforms.
+  - front: What is the Fourier Transform of a complex exponential function, $e^{j2\pi f_0 t}$?
     back: |
-      The Multiplication Theorem states that the Fourier Transform of the product of two signals is the convolution of their individual Fourier Transforms:
+      The Fourier Transform of a complex exponential is a Dirac delta function shifted in frequency:
 
-      $$x(t)y(t) \xrightarrow{\mathcal{F}} X(f) * Y(f)$$
+      $$
+      \mathcal{F}\{e^{j2\pi f_0 t}\} = \delta(f - f_0)
+      $$
 
-      where  $$*$$  denotes convolution,  $$X(f) = \mathcal{F}\{x(t)\}$$, and  $$Y(f) = \mathcal{F}\{y(t)\}$$.  Equivalently, multiplication in the time domain is equivalent to convolution in the frequency domain.  It's often expressed with a scaling factor:
-
-      $$x(t)y(t) \xrightarrow{\mathcal{F}} \frac{1}{2\pi}[X(f) * Y(f)]$$
-      This factor is only necessary depending if we defined Fourier transform with or without $$\frac{1}{2\pi}$$ factor.
-
-  - front: State *Parseval's Theorem* (or *Rayleigh's Energy Theorem*) for Fourier Transforms.
+  - front: What is the Inverse Fourier Transform of a frequency-shifted Dirac delta function, $\delta(f - f_0)$?
     back: |
-      Parseval's Theorem states that the energy of a signal calculated in the time domain is equal to the energy calculated in the frequency domain:
+      The Inverse Fourier transform is a complex exponential:
+      $$
+      \mathcal{F}^{-1}\{\delta(f - f_0)\} = e^{j2\pi f_0 t}
+      $$
 
-      $$\int_{-\infty}^{\infty} |x(t)|^2 dt = \int_{-\infty}^{\infty} |X(f)|^2 df$$
-
-      where  $$X(f) = \mathcal{F}\{x(t)\}$$. This theorem expresses the conservation of energy between the time and frequency domains.
-  - front: What is the Fourier transform of $$x^*(t)$$ (the complex conjugate of $$x(t)$$).
-    back:
-      $$x^*(t) \xrightarrow{\mathcal{F}} X^*(-f)$$
-
-      Where $$X(f)$$ is the Fourier transform of x(t).
-
-      **Derivation:**
-
-      $$\begin{aligned}
-          \mathcal{F}[x^*(t)] &= \int_{-\infty}^{\infty}x^*(t)e^{-j2\pi ft}dt \\
-          &=  \left( \int_{-\infty}^{\infty}x(t)e^{j2\pi ft}dt \right)^* \\
-          &=  \left( \int_{-\infty}^{\infty}x(t)e^{-j2\pi (-f)t}dt \right)^* \\
-          &= X^*(-f)
-      \end{aligned}$$
-  - front: What is the Fourier transform of a real and even signal $$x(t)$$?
+  - front: What is the Fourier Transform of a cosine function, $\cos(2\pi f_0 t)$?
     back: |
-      If $$x(t)$$ is a real and even signal, its Fourier transform $$X(f)$$ is also real and even.
+      The Fourier Transform of a cosine function consists of two Dirac delta functions, one at $f_0$ and the other at $-f_0$:
 
-      *   **Real:** Since $$x(t)$$ is real, $$x(t) = x^*(t)$$. Therefore, $$X(f) = X^*(-f)$$.  But for an even function, $$X(-f) = X(f)$$.  Combining these, we get $$X(f) = X^*(f)$$, which means $$X(f)$$ is real.
+      $$
+      \mathcal{F}\{\cos(2\pi f_0 t)\} = \frac{1}{2}[\delta(f - f_0) + \delta(f + f_0)]
+      $$
 
-      *   **Even:** Since $$x(t)$$ is even, $$x(-t) = x(t)$$.  Using the time-reversal property, $$\mathcal{F}\{x(-t)\} = X(-f)$$.  Since $$x(-t) = x(t)$$, we have $$X(-f) = X(f)$$, which means $$X(f)$$ is even.
-  - front: What is the Fourier Transform of a real and odd signal $$x(t)$$?
-    back:
-        If $$x(t)$$ is a real and odd signal, its Fourier transform $$X(f)$$ is purely imaginary and odd.
+  - front: What is the Fourier Transform of a sine function, $\sin(2\pi f_0 t)$?
+    back: |
+      The Fourier Transform of a sine function consists of two imaginary Dirac delta functions with opposite signs, one at  $f_0$ and the other at $-f_0$:
 
-        * **Imaginary:** If $$x(t)$$ is real, then $$X^*(-f) = \mathcal{F}[x^*(t)] =  \mathcal{F}[x(t)] = X(f)$$. Also since x(t) is odd $$x(-t) = -x(t) \implies X(-f) = -X(f)$$. Substituting this into first equation, we get $$X^*(f) = -X(f)$$, meaning that $$X(f)$$ is purely imaginary.
+      $$
+      \mathcal{F}\{\sin(2\pi f_0 t)\} = \frac{1}{2j}[\delta(f - f_0) - \delta(f + f_0)]
+      $$
 
-        *   **Odd:** Since $$x(t)$$ is odd, $$x(-t) = -x(t)$$. Using the time-reversal property, $$\mathcal{F}\{x(-t)\} = X(-f)$$. Since $$x(-t) = -x(t)$$, we have $$X(-f) = -X(f)$$, which means $$X(f)$$ is odd.
+  - front: State the Fourier Transform duality (or symmetry) property.
+    back: |
+      If  $x(t)$ has the Fourier Transform $X(f)$, then $X(t)$ has the Fourier transform $x(-f)$. Mathematically:
+
+      If $\mathcal{F}\{x(t)\} = X(f)$, then $\mathcal{F}\{X(t)\} = x(-f)$.
+
+  - front: What is the Fourier Transform of a Gaussian function $e^{-\pi t^2}$?
+    back: |
+      The Fourier Transform of a Gaussian function is also a Gaussian function.  Specifically:
+
+      $$
+      \mathcal{F}\{e^{-\pi t^2}\} = e^{-\pi f^2}
+      $$
+      The Gaussian function is its own Fourier Transform.
+
+  - front: What is the Fourier Transform of the derivative of a function, $\frac{dx(t)}{dt}$?
+    back: |
+      The Fourier Transform of the derivative of a function is $j2\pi f$  times the Fourier Transform of the original function:
+
+      $$
+      \mathcal{F}\left\{\frac{dx(t)}{dt}\right\} = j2\pi f X(f)
+      $$
+      where $X(f) = \mathcal{F}\{x(t)\}$.
+
+  - front: What is the Fourier Transform of the integral of a function,  $\int_{-\infty}^{t} x(\tau) d\tau$?
+    back: |
+      The Fourier transform is:
+      $$
+      \mathcal{F}\left\{\int_{-\infty}^{t} x(\tau) d\tau\right\} = \frac{1}{j2\pi f}X(f) + \frac{1}{2}X(0)\delta(f)
+      $$
+      where  $X(f) = \mathcal{F}\{x(t)\}$.  The second term accounts for the DC component.
+
+  - front: What is the Fourier transform of a time-shifted function, $x(t - t_0)$?
+    back: |
+      The Fourier Transform of a time-shifted function is the Fourier Transform of the original function multiplied by a complex exponential:
+
+      $$
+      \mathcal{F}\{x(t - t_0)\} = e^{-j2\pi f t_0}X(f)
+      $$
+      where $X(f) = \mathcal{F}\{x(t)\}$.
+
+  - front: What is the Fourier transform of a frequency-shifted function $x(t)e^{j2 \pi f_0 t}$ (Modulation property)?
+    back: |
+    The Fourier Transform of a frequency-shifted function is a shift in the frequency domain of the original Fourier transform:
+
+      $$
+      \mathcal{F}\{x(t)e^{j2\pi f_0 t}\} = X(f - f_0)
+      $$
+      where $X(f) = \mathcal{F}\{x(t)\}$.
+
+  - front:  What is the Fourier Transform of a time-scaled function, $x(at)$?
+    back: |
+      The Fourier Transform of a time-scaled function is a scaled and amplified/attenuated version of the original Fourier Transform:
+
+      $$
+      \mathcal{F}\{x(at)\} = \frac{1}{|a|}X\left(\frac{f}{a}\right)
+      $$
+      where $X(f) = \mathcal{F}\{x(t)\}$.
+
+  - front: What is the Fourier Transform of the convolution of two functions, $x(t) * h(t)$?
+    back: |
+      The Fourier Transform of the convolution of two functions is the product of their individual Fourier Transforms:
+
+      $$
+      \mathcal{F}\{x(t) * h(t)\} = X(f)H(f)
+      $$
+      where $X(f) = \mathcal{F}\{x(t)\}$ and $H(f) = \mathcal{F}\{h(t)\}$.
+
+  - front: What is the Inverse Fourier Transform of the product of two functions in the frequency domain, $X(f)H(f)$?
+    back: |
+      The Inverse Fourier Transform of the product of two functions in the frequency domain is the convolution of the Inverse Fourier transform of each function:
+
+      $$
+      \mathcal{F}^{-1}\{X(f)H(f)\} = x(t) * h(t)
+      $$
+      where  $x(t) = \mathcal{F}^{-1}\{X(f)\}$ and $h(t) = \mathcal{F}^{-1}\{H(f)\}$.
+
+  - front: What is the Fourier Transform of the product of two functions, x(t)h(t)
+    back: |
+    The Fourier Transform of a product of two functions is the convolution of their respective Fourier Transforms, scaled by $\frac{1}{2\pi}$ in the angular frequency, but by 1 in the cyclic frequency:
+      $$
+      \mathcal{F}\{x(t)h(t)\} = X(f) * H(f)
+      $$
+
+  - front: "Write in Latex code the definition of the Unit Step (Heaviside) function, denoted as u(t)."
+    back: |
+      $$
+      u(t) = \begin{cases}
+          0, & t < 0 \\
+          1, & t \ge 0
+      \end{cases}
+      $$
+
+  - front: "What's the Fourier transform of the Unit Step function, u(t)?"
+    back: |
+      $$
+      \mathcal{F}\{u(t)\} = \frac{1}{j2\pi f} + \frac{1}{2}\delta(f)
+      $$
+
+      Where:
+
+      -  `j` is the imaginary unit.
+      -  `f` is the frequency.
+      -  `\delta(f)` is the Dirac delta function.
+
+  - front: "What's the Fourier transform of the signum function, sgn(t)?"
+    back: |
+      $$
+      \mathcal{F}\{\text{sgn}(t)\} = \frac{1}{j\pi f}
+      $$
+
+      Where:
+
+      -  `j` is the imaginary unit.
+      -  `f` is the frequency.
+
+  - front: "Write the definition of the signum function, sgn(t) in Latex code."
+    back: |
+      $$
+      \text{sgn}(t) = \begin{cases}
+      -1, & t < 0 \\
+      0, & t = 0 \\
+      1, & t > 0
+      \end{cases}
+      $$

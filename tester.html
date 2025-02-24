@@ -5,61 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="light dark">
     <title>Flashy</title>
-
-    <!-- <link rel="stylesheet" href="/styles/global.css"> -->
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/showdown-katex@0.8.0/dist/showdown-katex.min.js" integrity="sha256-3SVaqAv51DdVXBzHUBt7snnJhGXRZc7aFBC7SgHuNWw=" crossorigin="anonymous"></script>
-
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.11.1/styles/atom-one-dark.css"> -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.11.1/styles/monokai-sublime.css">
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.11.1/styles/night-owl.min.css"> -->
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.11.1/styles/stackoverflow-dark.min.css"> -->
-    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.red.min.css">
-    <link rel="stylesheet" href="/styles/pico.config.css">
-
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/katex@0.10.0/dist/katex.min.css">
 </head>
 <body>
-    <header><h1></h1></header>
-    <main class="main container"></main>
-    <footer class="fixed container"><a href="/decks.html">Go to decks</a></footer>
-    <script type="module" src="/modules/fetchDeckFiles.js"></script>
-    <script>
-        const url = window.location.href;
-        // Create a URL object
-        const urlObj = new URL(url);
-        // Get URLSearchParams object
-        const params = new URLSearchParams(urlObj.search);
-        const queryParams = {};
-        // Iterate over all parameters and add them to the queryParams object
-        params.forEach((value, key) => {
-            queryParams[key] = value;
-        });
-        
+    <div id="app" class="app"></div>
+    <pre id="code">
+    </pre>
+    <script type="module">
+        import showdown from 'https://cdn.jsdelivr.net/npm/showdown@2.1.0/+esm';
+        import showdownKatex from 'https://cdn.jsdelivr.net/npm/showdown-katex@0.8.0/+esm'
         (async () => {
-            const converter = new showdown.Converter()
-            const req = await fetch(`/decks/${queryParams.deck}`);
-            const deckText = await req.text();
-            const deck = jsyaml.load(deckText);
-            const renderElement = document.querySelector("main.main");
-            for (const card of deck.deck) {
-                const frontElement = converter.makeHtml(card.front);
-                const backElement = converter.makeHtml(card.back);
-                renderElement.insertAdjacentHTML("beforeend", frontElement);
-                renderElement.insertAdjacentHTML("beforeend", backElement);
-            }
-
-
-            hljs.highlightAll();
-         })();
+            const res = await fetch("/math.md");
+            const md = await res.text();
+            const converter = new showdown.Converter({
+                extensions: [
+                    showdownKatex({
+                        throwOnError: true,
+                        displayMode: true,
+                        errorColor: '#1500ff',
+                        // output: "html",
+                    }),
+                ],
+            });
+            const frontElement = converter.makeHtml(
+                md
+            );
+            document.getElementById("app").innerHTML = frontElement;
+        })();
     </script>
 </body>
 </html>

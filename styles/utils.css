@@ -25,7 +25,7 @@ footer[role=group] {
     position: fixed;
     right: 0; top: 0;
     width: 60px;
-    height: 17px;
+    padding: 1px 0;
     font-family: monospace;
     font-size: smaller;
     color: white;

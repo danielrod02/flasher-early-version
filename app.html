@@ -82,7 +82,10 @@
         document.getElementById('start-deck-session').addEventListener('click', async () => {
             renderElement.replaceChildren("");
             renderElement.ariaBusy = "true";
-            const deck = await fetchDeck('danielrod02', 'flasher', `decks/${queryParams.deck}`)
+            const { user: owner, repo , folderPath: path } = JSON.parse(
+                localStorage.getItem("github_config")
+            );
+            const deck = await fetchDeck(owner, repo, `${path}/${queryParams.deck}`)
             const shuffledDeck = shuffleArray(deck.deck);
 
             shuffledDeck.forEach( (card, i) => {
@@ -127,11 +130,11 @@
             wrongButton.classList.toggle('display-none');
             rightButton.classList.toggle('display-none');
 
-            hljs.highlightAll();
             document.querySelector('main.main hr + *').scrollIntoView({
                 behavior: 'smooth',  // Smooth scrolling
                 block: 'start'      // Scrolls to the center of the visible area of the scrollable ancestor
             });
+            hljs.highlightAll();
          });
          document.addEventListener('keydown', function(e) {
             if (

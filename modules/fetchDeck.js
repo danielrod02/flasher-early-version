@@ -26,9 +26,10 @@ export async function fetchDeck(owner, repo, path) {
         }
 
         const yamlContent = await fileResponse.text();
-        console.log(yamlContent);
-        
-        return jsYaml.load(yamlContent);
+
+        const parsedYaml = jsYaml.load(yamlContent);
+
+        return parsedYaml;
     } catch (error) {
         console.error('Error fetching the YAML file:', error);
         throw error;

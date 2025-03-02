@@ -1,0 +1,345 @@
+deck:
+  - front: "What is the shortcut to show the Command Palette in Visual Studio Code on Windows?"
+    back: "`Ctrl+Shift+P` or `F1`"
+
+  - front: "How do you quickly open a file or go to a file in Visual Studio Code (Windows)?"
+    back: "`Ctrl+P`"
+
+  - front: "What is the shortcut to open a new window/instance in Visual Studio Code (Windows)?"
+    back: "`Ctrl+Shift+N`"
+
+  - front: "How do you close the current window/instance in Visual Studio Code (Windows)?"
+    back: "`Ctrl+Shift+W`"
+
+  - front: "What is the keyboard shortcut to access User Settings in Visual Studio Code (Windows)?"
+    back: "`Ctrl+,`"
+
+  - front: "How do you access Keyboard Shortcuts settings in Visual Studio Code (Windows)?"
+    back: "`Ctrl+K Ctrl+S`"
+
+  - front: "What is the shortcut to cut an entire line in Visual Studio Code (Windows) when there's no selection?"
+    back: "`Ctrl+X`"
+
+  - front: "How do you copy an entire line in Visual Studio Code (Windows) when there's no selection?"
+    back: "`Ctrl+C`"
+
+  - front: "What is the shortcut to move a line up or down in Visual Studio Code (Windows)?"
+    back: "`Alt+↑` / `Alt+↓`"
+
+  - front: "How can you copy a line up or down in Visual Studio Code (Windows)?"
+    back: "`Shift+Alt+↑` / `Shift+Alt+↓`"
+
+  - front: "What is the shortcut to delete a line in Visual Studio Code (Windows)?"
+    back: "`Ctrl+Shift+K`"
+
+  - front: "How do you insert a new line below the current one in Visual Studio Code (Windows)?"
+    back: "`Ctrl+Enter`"
+
+  - front: "What is the shortcut to insert a new line above the current one in Visual Studio Code (Windows)?"
+    back: "`Ctrl+Shift+Enter`"
+
+  - front: "How do you jump to the matching bracket in Visual Studio Code (Windows)?"
+    back: "`Ctrl+Shift+\`"
+
+  - front: "What are the shortcuts to indent or outdent a line in Visual Studio Code (Windows)?"
+    back: "`Ctrl+]` for indent, `Ctrl+[` for outdent"
+
+  - front: "How do you go to the beginning or end of a line in Visual Studio Code (Windows)?"
+    back: "`Home` for beginning, `End` for end"
+
+  - front: "What is the shortcut to go to the beginning of a file in Visual Studio Code (Windows)?"
+    back: "`Ctrl+Home`"
+
+  - front: "How do you go to the end of a file in Visual Studio Code (Windows)?"
+    back: "`Ctrl+End`"
+
+  - front: "What is the shortcut to scroll line by line up or down in Visual Studio Code (Windows)?"
+    back: "`Ctrl+↑` / `Ctrl+↓`"
+
+  - front: "How do you scroll page by page up or down in Visual Studio Code (Windows)?"
+    back: "`Alt+PgUp` / `Alt+PgDn`"
+
+  - front: "What is the shortcut to fold (collapse) a region in Visual Studio Code (Windows)?"
+    back: "`Ctrl+Shift+[`"
+
+  - front: "How do you unfold (uncollapse) a region in Visual Studio Code (Windows)?"
+    back: "`Ctrl+Shift+]`"
+
+  - front: "What is the shortcut to fold (collapse) all subregions in Visual Studio Code (Windows)?"
+    back: "`Ctrl+K Ctrl+[`"
+
+  - front: "How do you unfold (uncollapse) all subregions in Visual Studio Code (Windows)?"
+    back: "`Ctrl+K Ctrl+]`"
+
+  - front: "What is the shortcut to fold (collapse) all regions in Visual Studio Code (Windows)?"
+    back: "`Ctrl+K Ctrl+0`"
+
+  - front: "How do you unfold (uncollapse) all regions in Visual Studio Code (Windows)?"
+    back: "`Ctrl+K Ctrl+J`"
+
+  - front: "What is the shortcut to add a line comment in Visual Studio Code (Windows)?"
+    back: "`Ctrl+K Ctrl+C`"
+
+  - front: "How do you remove a line comment in Visual Studio Code (Windows)?"
+    back: "`Ctrl+K Ctrl+U`"
+
+  - front: "What is the shortcut to toggle a line comment in Visual Studio Code (Windows)?"
+    back: "`Ctrl+/`"
+
+  - front: "How do you toggle a block comment in Visual Studio Code (Windows)?"
+    back: "`Shift+Alt+A`"
+
+  - front: "What is the shortcut to toggle word wrap in Visual Studio Code (Windows)?"
+    back: "`Alt+Z`"
+
+  - front: "How do you show all symbols in Visual Studio Code (Windows)?"
+    back: "`Ctrl+T`"
+
+  - front: "What is the shortcut to go to a specific line in Visual Studio Code (Windows)?"
+    back: "`Ctrl+G`"
+
+  - front: "How do you go to a symbol in the current file in Visual Studio Code (Windows)?"
+    back: "`Ctrl+Shift+O`"
+
+  - front: "What is the shortcut to show the Problems panel in Visual Studio Code (Windows)?"
+    back: "`Ctrl+Shift+M`"
+
+  - front: "How do you navigate to the next error or warning in Visual Studio Code (Windows)?"
+    back: "`F8`"
+
+  - front: "What is the shortcut to navigate to the previous error or warning in Visual Studio Code (Windows)?"
+    back: "`Shift+F8`"
+
+  - front: "How do you navigate through the editor group history in Visual Studio Code (Windows)?"
+    back: "`Ctrl+Shift+Tab`"
+
+  - front: "What is the shortcut to go back or forward in navigation history in Visual Studio Code (Windows)?"
+    back: "`Alt+←` / `Alt+→`"
+
+  - front: "How do you toggle whether Tab moves focus in Visual Studio Code (Windows)?"
+    back: "`Ctrl+M`"
+
+  - front: "What is the shortcut to find text in Visual Studio Code (Windows)?"
+    back: "`Ctrl+F`"
+
+  - front: "How do you replace text in Visual Studio Code (Windows)?"
+    back: "`Ctrl+H`"
+
+  - front: "What is the shortcut to find the next occurrence of a search term in Visual Studio Code (Windows)?"
+    back: "`F3`"
+
+  - front: "How do you find the previous occurrence of a search term in Visual Studio Code (Windows)?"
+    back: "`Shift+F3`"
+
+  - front: "What is the shortcut to select all occurrences of a search match in Visual Studio Code (Windows)?"
+    back: "`Alt+Enter`"
+
+  - front: "How do you add the next occurrence of a search match to your selection in Visual Studio Code (Windows)?"
+    back: "`Ctrl+D`"
+
+  - front: "What is the shortcut to move the last selection to the next find match in Visual Studio Code (Windows)?"
+    back: "`Ctrl+K Ctrl+D`"
+
+  - front: "How do you toggle case-sensitive search in Visual Studio Code (Windows)?"
+    back: "`Alt+C`"
+
+  - front: "What is the shortcut to toggle regex search in Visual Studio Code (Windows)?"
+    back: "`Alt+R`"
+
+  - front: "How do you toggle whole word search in Visual Studio Code (Windows)?"
+    back: "`Alt+W`"
+
+  - front: "What is the shortcut to insert multiple cursors with a mouse click in Visual Studio Code (Windows)?"
+    back: "`Alt+Click`"
+
+  - front: "How do you insert multiple cursors above or below the current cursor position in Visual Studio Code (Windows)?"
+    back: "`Ctrl+Alt+↑` / `Ctrl+Alt+↓`"
+
+  - front: "What is the shortcut to undo the last cursor operation in Visual Studio Code (Windows)?"
+    back: "`Ctrl+U`"
+
+  - front: "How do you insert cursors at the end of each selected line in Visual Studio Code (Windows)?"
+    back: "`Shift+Alt+I`"
+
+  - front: "What is the shortcut to select the current line in Visual Studio Code (Windows)?"
+    back: "`Ctrl+L`"
+
+  - front: "How do you select all occurrences of the current selection in Visual Studio Code (Windows)?"
+    back: "`Ctrl+Shift+L`"
+
+  - front: "What is the shortcut to select all occurrences of the current word in Visual Studio Code (Windows)?"
+    back: "`Ctrl+F2`"
+
+  - front: "How do you expand your selection in Visual Studio Code (Windows)?"
+    back: "`Shift+Alt+→`"
+
+  - front: "What is the shortcut to shrink your selection in Visual Studio Code (Windows)?"
+    back: "`Shift+Alt+←`"
+
+  - front: "How do you perform column (box) selection in Visual Studio Code (Windows)?"
+    back: "`Shift+Alt+drag mouse` or `Ctrl+Shift+Alt+(arrow key)`"
+
+  - front: "What is the shortcut to trigger code suggestions in Visual Studio Code (Windows)?"
+    back: "`Ctrl+Space` or `Ctrl+I`"
+
+  - front: "How do you trigger parameter hints in Visual Studio Code (Windows)?"
+    back: "`Ctrl+Shift+Space`"
+
+  - front: "What is the shortcut to format the entire document in Visual Studio Code (Windows)?"
+    back: "`Shift+Alt+F`"
+
+  - front: "How do you format only the selected portion of code in Visual Studio Code (Windows)?"
+    back: "`Ctrl+K Ctrl+F`"
+
+  - front: "What is the shortcut to go to the definition of a symbol in Visual Studio Code (Windows)?"
+    back: "`F12`"
+
+  - front: "How do you peek at the definition of a symbol without navigating away from your current location in Visual Studio Code (Windows)?"
+    back: "`Alt+F12`"
+
+  - front: "What is the shortcut to open the definition of a symbol to the side in Visual Studio Code (Windows)?"
+    back: "`Ctrl+K F12`"
+
+  - front: "How do you trigger a quick fix for a problem in Visual Studio Code (Windows)?"
+    back: "`Ctrl+. `"
+
+  - front: "What is the shortcut to show all references to a symbol in Visual Studio Code (Windows)?"
+    back: "`Shift+F12`"
+
+  - front: "How do you rename a symbol across your codebase in Visual Studio Code (Windows)?"
+    back: "`F2`"
+
+  - front: "What is the shortcut to trim trailing whitespace in Visual Studio Code (Windows)?"
+    back: "`Ctrl+K Ctrl+X`"
+
+  - front: "How do you change the language mode of a file in Visual Studio Code (Windows)?"
+    back: "`Ctrl+K M`"
+
+  - front: "What is the shortcut to close the current editor tab in Visual Studio Code (Windows)?"
+    back: "`Ctrl+F4` or `Ctrl+W`"
+
+  - front: "How do you close the currently open folder in Visual Studio Code (Windows)?"
+    back: "`Ctrl+K F`"
+
+  - front: "What is the shortcut to split the editor into multiple panes in Visual Studio Code (Windows)?"
+    back: "`Ctrl+\`"
+
+  - front: "How do you focus on different editor groups in Visual Studio Code (Windows)?"
+    back: "`Ctrl+1`, `Ctrl+2`, `Ctrl+3` for focusing on the first, second, and third editor groups respectively."
+
+  - front: "What is the shortcut to move focus between previous and next editor groups in Visual Studio Code (Windows)?"
+    back: "`Ctrl+K Ctrl+←` / `Ctrl+K Ctrl+→`"
+
+  - front: "How do you move the active editor left or right in Visual Studio Code (Windows)?"
+    back: "`Ctrl+Shift+PgUp` / `Ctrl+Shift+PgDn`"
+
+  - front: "What is the shortcut to create a new file in Visual Studio Code (Windows)?"
+    back: "`Ctrl+N`"
+
+  - front: "How do you open a file in Visual Studio Code (Windows)?"
+    back: "`Ctrl+O`"
+
+  - front: "What is the shortcut to save the current file in Visual Studio Code (Windows)?"
+    back: "`Ctrl+S`"
+
+  - front: "How do you save the current file with a different name (Save As) in Visual Studio Code (Windows)?"
+    back: "`Ctrl+Shift+S`"
+
+  - front: "What is the shortcut to save all open files in Visual Studio Code (Windows)?"
+    back: "`Ctrl+K S`"
+
+  - front: "How do you close all open editors in Visual Studio Code (Windows)?"
+    back: "`Ctrl+K Ctrl+W`"
+
+  - front: "What is the shortcut to reopen a recently closed editor in Visual Studio Code (Windows)?"
+    back: "`Ctrl+Shift+T`"
+
+  - front: "How do you keep the preview mode editor open in Visual Studio Code (Windows)?"
+    back: "`Ctrl+K Enter`"
+
+  - front: "What is the shortcut to toggle full screen mode in Visual Studio Code (Windows)?"
+    back: "`F11`"
+
+  - front: "How do you toggle between horizontal and vertical editor layout in Visual Studio Code (Windows)?"
+    back: "`Shift+Alt+0`"
+
+  - front: "What is the shortcut to zoom in or out in Visual Studio Code (Windows)?"
+    back: "`Ctrl+=` to zoom in, `Ctrl+-` to zoom out"
+
+  - front: "How do you toggle the visibility of the sidebar in Visual Studio Code (Windows)?"
+    back: "`Ctrl+B`"
+
+  - front: "What is the shortcut to show or focus on the Explorer view in Visual Studio Code (Windows)?"
+    back: "`Ctrl+Shift+E`"
+
+  - front: "How do you show or focus on the Search view in Visual Studio Code (Windows)?"
+    back: "`Ctrl+Shift+F`"
+
+  - front: "What is the shortcut to show or focus on the Source Control view in Visual Studio Code (Windows)?"
+    back: "`Ctrl+Shift+G`"
+
+  - front: "How do you show or focus on the Debug view in Visual Studio Code (Windows)?"
+    back: "`Ctrl+Shift+D`"
+
+  - front: "What is the shortcut to show or focus on the Extensions view in Visual Studio Code (Windows)?"
+    back: "`Ctrl+Shift+X`"
+
+  - front: "How do you replace text across files in Visual Studio Code (Windows)?"
+    back: "`Ctrl+Shift+H`"
+
+  - front: "What is the shortcut to toggle detailed search options in Visual Studio Code (Windows)?"
+    back: "`Ctrl+Shift+J`"
+
+  - front: "How do you show the Output panel in Visual Studio Code (Windows)?"
+    back: "`Ctrl+Shift+U`"
+
+  - front: "What is the shortcut to open a Markdown preview in Visual Studio Code (Windows)?"
+    back: "`Ctrl+Shift+V`"
+
+  - front: "How do you open a Markdown preview to the side in Visual Studio Code (Windows)?"
+    back: "`Ctrl+K V`"
+
+  - front: "What is the shortcut to enter Zen Mode in Visual Studio Code (Windows)?"
+    back: "`Ctrl+K Z`"
+
+  - front: "How do you toggle a breakpoint in the debugger in Visual Studio Code (Windows)?"
+    back: "`F9`"
+
+  - front: "What is the shortcut to start or continue execution in the debugger in Visual Studio Code (Windows)?"
+    back: "`F5`"
+
+  - front: "How do you stop debugging in Visual Studio Code (Windows)?"
+    back: "`Shift+F5`"
+
+  - front: "What is the shortcut to step into code during debugging in Visual Studio Code (Windows)?"
+    back: "`F11`"
+
+  - front: "How do you step out of a function during debugging in Visual Studio Code (Windows)?"
+    back: "`Shift+F11`"
+
+  - front: "What is the shortcut to step over code during debugging in Visual Studio Code (Windows)?"
+    back: "`F10`"
+
+  - front: "How do you show hover information for a symbol in Visual Studio Code (Windows)?"
+    back: "`Ctrl+K Ctrl+I`"
+
+  - front: "What is the shortcut to show the integrated terminal in Visual Studio Code (Windows)?"
+    back: "`Ctrl+` `"
+
+  - front: "How do you create a new terminal instance in Visual Studio Code (Windows)?"
+    back: "`Ctrl+Shift+` `"
+
+  - front: "What is the shortcut to copy selected text in the integrated terminal in Visual Studio Code (Windows)?"
+    back: "`Ctrl+C`"
+
+  - front: "How do you paste into the active terminal in Visual Studio Code (Windows)?"
+    back: "`Ctrl+V`"
+
+  - front: "What is the shortcut to scroll up or down in the integrated terminal in Visual Studio Code (Windows)?"
+    back: "`Ctrl+↑` / `Ctrl+↓`"
+
+  - front: "How do you scroll page up or down in the integrated terminal in Visual Studio Code (Windows)?"
+    back: "`Shift+PgUp` / `Shift+PgDn`"
+
+  - front: "What is the shortcut to scroll to the top or bottom in the integrated terminal in Visual Studio Code (Windows)?"
+    back: "`Ctrl+Home` / `Ctrl+End`"

@@ -1,697 +1,698 @@
-- front: |
-    What is the shortcut to show the **Command Palette** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+Shift+P, F1
-    ```
-- front: |
-    What is the shortcut to **Quick Open, Go to File...** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+P
-    ```
-- front: |
-    What is the shortcut to open a **New window/instance** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+Shift+N
-    ```
-- front: |
-    What is the shortcut to **Close window/instance** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+W
-    ```
-- front: |
-    What is the shortcut to open **User Settings** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+,
-    ```
-- front: |
-    What is the shortcut to open **Keyboard Shortcuts** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+K Ctrl+S
-    ```
-- front: |
-    What is the shortcut to **Cut line (empty selection)** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+X
-    ```
-- front: |
-    What is the shortcut to **Copy line (empty selection)** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+C
-    ```
-- front: |
-    What is the shortcut to **Move line down/up** in VSCode on Linux?
-  back: |
-    ```
-    Alt+↓/↑
-    ```
-- front: |
-    What is the shortcut to **Delete line** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+Shift+K
-    ```
-- front: |
-    What is the shortcut to **Insert line below/above** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+Enter / Ctrl+Shift+Enter
-    ```
-- front: |
-    What is the shortcut to **Jump to matching bracket** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+Shift+\
-    ```
-- front: |
-    What is the shortcut to **Indent/Outdent line** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+] / Ctrl+[
-    ```
-- front: |
-    What is the shortcut to **Go to beginning/end of line** in VSCode on Linux?
-  back: |
-    ```
-    Home / End
-    ```
-- front: |
-    What is the shortcut to **Go to beginning/end of file** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+Home / End
-    ```
-- front: |
-    What is the shortcut to **Scroll line up/down** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+↑ / ↓
-    ```
-- front: |
-    What is the shortcut to **Scroll page up/down** in VSCode on Linux?
-  back: |
-    ```
-    Alt+PgUp / PgDn
-    ```
-- front: |
-    What is the shortcut to **Fold/unfold region** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+Shift+[ / ]
-    ```
-- front: |
-    What is the shortcut to **Fold/unfold all subregions** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+K Ctrl+[ / ]
-    ```
-- front: |
-    What is the shortcut to **Fold/Unfold all regions** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+K Ctrl+0 / Ctrl+K Ctrl+J
-    ```
-- front: |
-    What is the shortcut to **Add line comment** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+K Ctrl+C
-    ```
-- front: |
-    What is the shortcut to **Remove line comment** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+K Ctrl+U
-    ```
-- front: |
-    What is the shortcut to **Toggle line comment** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+/
-    ```
-- front: |
-    What is the shortcut to **Toggle block comment** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+Shift+A
-    ```
-- front: |
-    What is the shortcut to **Toggle word wrap** in VSCode on Linux?
-  back: |
-    ```
-    Alt+Z
-    ```
-- front: |
-    What is the shortcut to **Insert cursor** in VSCode on Linux?
-  back: |
-    ```
-    Alt+Click
-    ```
-- front: |
-    What is the shortcut to **Insert cursor above/below** in VSCode on Linux?
-  back: |
-    ```
-    Shift+Alt+↑/↓
-    ```
-- front: |
-   What is the shortcut to **Undo last cursor operation** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+U
-    ```
-- front: |
-    What is the shortcut to **Insert cursor at end of each line selected** in VSCode on Linux?
-  back: |
-    ```
-    Shift+Alt+I
-    ```
-- front: |
-    What is the shortcut to **Select current line** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+L
-    ```
-- front: |
-    What is the shortcut to **Select all occurrences of current selection** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+Shift+L
-    ```
-- front: |
-    What is the shortcut to **Select all occurrences of current word** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+F2
-    ```
-- front: |
-    What is the shortcut to **Expand selection** in VSCode on Linux?
-  back: |
-    ```
-    Shift+Alt+→
-    ```
-- front: |
-    What is the shortcut to **Shrink selection** in VSCode on Linux?
-  back: |
-    ```
-    Shift+Alt+←
-    ```
-- front: |
-    What is the shortcut to perform a **Column (box) selection** in VSCode on Linux?
-  back: |
-    ```
-    Shift+Alt+drag mouse
-    ```
-- front: |
-    What is the shortcut to **Toggle full screen** in VSCode on Linux?
-  back: |
-    ```
-    F11
-    ```
-- front: |
-    What is the shortcut to **Toggle editor layout (horizontal/vertical)** in VSCode on Linux?
-  back: |
-    ```
-    Shift+Alt+0
-    ```
-- front: |
-    What is the shortcut to **Zoom in/out** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+= / -
-    ```
-- front: |
-    What is the shortcut to **Toggle Sidebar visibility** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+B
-    ```
-- front: |
-    What is the shortcut to **Show Explorer / Toggle focus** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+Shift+E
-    ```
-- front: |
-    What is the shortcut to **Show Search** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+Shift+F
-    ```
-- front: |
-    What is the shortcut to **Show Source Control** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+Shift+G
-    ```
-- front: |
-    What is the shortcut to **Show Debug** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+Shift+D
-    ```
-- front: |
-    What is the shortcut to **Show Extensions** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+Shift+X
-    ```
-- front: |
-    What is the shortcut to **Replace in files** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+Shift+H
-    ```
-- front: |
-    What is the shortcut to **Toggle Search details** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+Shift+J
-    ```
-- front: |
-    What is the shortcut to **Open new command prompt/terminal** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+Shift+C
-    ```
-- front: |
-    What is the shortcut to **Show Output panel** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+K Ctrl+H
-    ```
-- front: |
-    What is the shortcut to **Open Markdown preview** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+Shift+V
-    ```
-- front: |
-    What is the shortcut to **Open Markdown preview to the side** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+K V
-    ```
-- front: |
-    What is the shortcut to enter **Zen Mode (Esc Esc to exit)** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+K Z
-    ```
-- front: |
-    What is the shortcut to **Close editor** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+W
-    ```
-- front: |
-    What is the shortcut to **Close folder** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+K F
-    ```
-- front: |
-    What is the shortcut to **Split editor** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+\
-    ```
-- front: |
-    What is the shortcut to **Focus into 1st, 2nd, 3rd editor group** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+1 / 2 / 3
-    ```
-- front: |
-    What is the shortcut to **Focus into previous editor group** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+K Ctrl+←
-    ```
-- front: |
-    What is the shortcut to **Focus into next editor group** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+K Ctrl+→
-    ```
-- front: |
-    What is the shortcut to **Move editor left** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+Shift+PgUp
-    ```
-- front: |
-    What is the shortcut to **Move editor right** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+Shift+PgDn
-    ```
-- front: |
-    What is the shortcut to **Move active editor group left/up** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+K ← / Ctrl+K ↑
-    ```
-- front: |
-    What is the shortcut to **Move active editor group right/down** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+K → / Ctrl+K ↓
-    ```
-- front: |
-    What is the shortcut to open a **New File** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+N
-    ```
-- front: |
-    What is the shortcut to **Open File...** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+O
-    ```
-- front: |
-    What is the shortcut to **Save** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+S
-    ```
-- front: |
-    What is the shortcut to **Save As...** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+Shift+S
-    ```
-- front: |
-    What is the shortcut to **Close** the current file in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+W
-    ```
-- front: |
-    What is the shortcut to **Close All** files in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+K Ctrl+W
-    ```
-- front: |
-    What is the shortcut to **Reopen closed editor** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+Shift+T
-    ```
-- front: |
-    What is the shortcut to **Keep preview mode editor open** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+K Enter
-    ```
-- front: |
-    What is the shortcut to **Open next** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+Tab
-    ```
-- front: |
-    What is the shortcut to **Open previous** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+Shift+Tab
-    ```
-- front: |
-    What is the shortcut to **Copy path of active file** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+K P
-    ```
-- front: |
-    What is the shortcut to **Reveal active file in Explorer** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+K R
-    ```
-- front: |
-    What is the shortcut to **Show active file in new window/instance** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+K O
-    ```
-- front: |
-    What is the shortcut to **Find** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+F
-    ```
-- front: |
-    What is the shortcut to **Replace** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+H
-    ```
-- front: |
-    What is the shortcut to **Find next/previous** in VSCode on Linux?
-  back: |
-    ```
-    F3 / Shift+F3
-    ```
-- front: |
-    What is the shortcut to **Select all occurrences of Find match** in VSCode on Linux?
-  back: |
-    ```
-    Alt+Enter
-    ```
-- front: |
-    What is the shortcut to **Add selection to next Find match** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+D
-    ```
-- front: |
-    What is the shortcut to **Move last selection to next Find match** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+K Ctrl+D
-    ```
-- front: |
-    What is the shortcut to **Show all Symbols** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+T
-    ```
-- front: |
-    What is the shortcut to **Go to Line...** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+G
-    ```
-- front: |
-    What is the shortcut to quickly **Go to File...** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+P
-    ```
-- front: |
-    What is the shortcut to **Go to Symbol...** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+Shift+O
-    ```
-- front: |
-    What is the shortcut to **Show Problems panel** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+Shift+M
-    ```
-- front: |
-    What is the shortcut to **Go to next error or warning** in VSCode on Linux?
-  back: |
-    ```
-    F8
-    ```
-- front: |
-    What is the shortcut to **Go to previous error or warning** in VSCode on Linux?
-  back: |
-    ```
-    Shift+F8
-    ```
-- front: |
-    What is the shortcut to **Navigate editor group history** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+Shift+Tab
-    ```
-- front: |
-    What is the shortcut to **Go back** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+Alt+-
-    ```
-- front: |
-    What is the shortcut to **Go forward** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+Shift+-
-    ```
-- front: |
-    What is the shortcut to **Toggle Tab moves focus** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+M
-    ```
-- front: |
-    What is the shortcut to **Trigger suggestion** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+Space, Ctrl+I
-    ```
-- front: |
-    What is the shortcut to **Trigger parameter hints** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+Shift+Space
-    ```
-- front: |
-    What is the shortcut to **Format document** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+Shift+I
-    ```
-- front: |
-    What is the shortcut to **Format selection** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+K Ctrl+F
-    ```
-- front: |
-    What is the shortcut to **Go to Definition** in VSCode on Linux?
-  back: |
-    ```
-    F12
-    ```
-- front: |
-    What is the shortcut to **Peek Definition** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+Shift+F10
-    ```
-- front: |
-    What is the shortcut to **Open Definition to the side** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+K F12
-    ```
-- front: |
-    What is the shortcut to access **Quick Fix** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+.
-    ```
-- front: |
-    What is the shortcut to **Show References** in VSCode on Linux?
-  back: |
-    ```
-    Shift+F12
-    ```
-- front: |
-    What is the shortcut to **Rename Symbol** in VSCode on Linux?
-  back: |
-    ```
-    F2
-    ```
-- front: |
-    What is the shortcut to **Trim trailing whitespace** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+K Ctrl+X
-    ```
-- front: |
-    What is the shortcut to **Change file language** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+K M
-    ```
-- front: |
-    What is the shortcut to **Toggle breakpoint** in VSCode on Linux?
-  back: |
-    ```
-    F9
-    ```
-- front: |
-    What is the shortcut to **Start / Continue** debugging in VSCode on Linux?
-  back: |
-    ```
-    F5
-    ```
-- front: |
-    What is the shortcut to **Step into/out** during debugging in VSCode on Linux?
-  back: |
-    ```
-    F11 / Shift+F11
-    ```
-- front: |
-    What is the shortcut to **Step over** during debugging in VSCode on Linux?
-  back: |
-    ```
-    F10
-    ```
-- front: |
-    What is the shortcut to **Stop** debugging in VSCode on Linux?
-  back: |
-    ```
-    Shift+F5
-    ```
-- front: |
-    What is the shortcut to **Show hover** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+K Ctrl+I
-    ```
-- front: |
-    What is the shortcut to **Show integrated terminal** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+`
-    ```
-- front: |
-    What is the shortcut to **Create new terminal** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+Shift+`
-    ```
-- front: |
-    What is the shortcut to **Copy selection** in the terminal in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+Shift+C
-    ```
-- front: |
-    What is the shortcut to **Paste into active terminal** in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+Shift+V
-    ```
-- front: What is the shortcut to **Scroll up/down** in integrated terminal in VSCode on Linux?
-  back: |
-    ```
-    Ctrl+Shift+↑/↓
-    ```
-- front: |
-    What is the shortcut to **Scroll page up/down** the terminal in VSCode on Linux?
-  back: |
-    ```
-    Shift+PgUp / PgDn
-    ```
-- front: |
-    What is the shortcut to **Scroll to top/bottom** in the integrated terminal in VSCode on Linux?
-  back: |
-    ```
-    Shift+Home / End
-    ```
-- front: Note about using Alt+Click to insert cursor
-  back: The Alt+Click gesture may not work on some Linux distributions. You can change the modifier key for the Insert cursor command to Ctrl+Click with the "editor.multiCursorModifier" setting.
+deck:
+  - front: |
+      What is the shortcut to show the **Command Palette** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+Shift+P, F1
+      ```
+  - front: |
+      What is the shortcut to **Quick Open, Go to File...** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+P
+      ```
+  - front: |
+      What is the shortcut to open a **New window/instance** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+Shift+N
+      ```
+  - front: |
+      What is the shortcut to **Close window/instance** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+W
+      ```
+  - front: |
+      What is the shortcut to open **User Settings** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+,
+      ```
+  - front: |
+      What is the shortcut to open **Keyboard Shortcuts** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+K Ctrl+S
+      ```
+  - front: |
+      What is the shortcut to **Cut line (empty selection)** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+X
+      ```
+  - front: |
+      What is the shortcut to **Copy line (empty selection)** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+C
+      ```
+  - front: |
+      What is the shortcut to **Move line down/up** in VSCode on Linux?
+    back: |
+      ```
+      Alt+↓/↑
+      ```
+  - front: |
+      What is the shortcut to **Delete line** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+Shift+K
+      ```
+  - front: |
+      What is the shortcut to **Insert line below/above** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+Enter / Ctrl+Shift+Enter
+      ```
+  - front: |
+      What is the shortcut to **Jump to matching bracket** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+Shift+\
+      ```
+  - front: |
+      What is the shortcut to **Indent/Outdent line** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+] / Ctrl+[
+      ```
+  - front: |
+      What is the shortcut to **Go to beginning/end of line** in VSCode on Linux?
+    back: |
+      ```
+      Home / End
+      ```
+  - front: |
+      What is the shortcut to **Go to beginning/end of file** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+Home / End
+      ```
+  - front: |
+      What is the shortcut to **Scroll line up/down** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+↑ / ↓
+      ```
+  - front: |
+      What is the shortcut to **Scroll page up/down** in VSCode on Linux?
+    back: |
+      ```
+      Alt+PgUp / PgDn
+      ```
+  - front: |
+      What is the shortcut to **Fold/unfold region** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+Shift+[ / ]
+      ```
+  - front: |
+      What is the shortcut to **Fold/unfold all subregions** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+K Ctrl+[ / ]
+      ```
+  - front: |
+      What is the shortcut to **Fold/Unfold all regions** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+K Ctrl+0 / Ctrl+K Ctrl+J
+      ```
+  - front: |
+      What is the shortcut to **Add line comment** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+K Ctrl+C
+      ```
+  - front: |
+      What is the shortcut to **Remove line comment** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+K Ctrl+U
+      ```
+  - front: |
+      What is the shortcut to **Toggle line comment** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+/
+      ```
+  - front: |
+      What is the shortcut to **Toggle block comment** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+Shift+A
+      ```
+  - front: |
+      What is the shortcut to **Toggle word wrap** in VSCode on Linux?
+    back: |
+      ```
+      Alt+Z
+      ```
+  - front: |
+      What is the shortcut to **Insert cursor** in VSCode on Linux?
+    back: |
+      ```
+      Alt+Click
+      ```
+  - front: |
+      What is the shortcut to **Insert cursor above/below** in VSCode on Linux?
+    back: |
+      ```
+      Shift+Alt+↑/↓
+      ```
+  - front: |
+    What is the shortcut to **Undo last cursor operation** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+U
+      ```
+  - front: |
+      What is the shortcut to **Insert cursor at end of each line selected** in VSCode on Linux?
+    back: |
+      ```
+      Shift+Alt+I
+      ```
+  - front: |
+      What is the shortcut to **Select current line** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+L
+      ```
+  - front: |
+      What is the shortcut to **Select all occurrences of current selection** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+Shift+L
+      ```
+  - front: |
+      What is the shortcut to **Select all occurrences of current word** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+F2
+      ```
+  - front: |
+      What is the shortcut to **Expand selection** in VSCode on Linux?
+    back: |
+      ```
+      Shift+Alt+→
+      ```
+  - front: |
+      What is the shortcut to **Shrink selection** in VSCode on Linux?
+    back: |
+      ```
+      Shift+Alt+←
+      ```
+  - front: |
+      What is the shortcut to perform a **Column (box) selection** in VSCode on Linux?
+    back: |
+      ```
+      Shift+Alt+drag mouse
+      ```
+  - front: |
+      What is the shortcut to **Toggle full screen** in VSCode on Linux?
+    back: |
+      ```
+      F11
+      ```
+  - front: |
+      What is the shortcut to **Toggle editor layout (horizontal/vertical)** in VSCode on Linux?
+    back: |
+      ```
+      Shift+Alt+0
+      ```
+  - front: |
+      What is the shortcut to **Zoom in/out** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+= / -
+      ```
+  - front: |
+      What is the shortcut to **Toggle Sidebar visibility** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+B
+      ```
+  - front: |
+      What is the shortcut to **Show Explorer / Toggle focus** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+Shift+E
+      ```
+  - front: |
+      What is the shortcut to **Show Search** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+Shift+F
+      ```
+  - front: |
+      What is the shortcut to **Show Source Control** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+Shift+G
+      ```
+  - front: |
+      What is the shortcut to **Show Debug** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+Shift+D
+      ```
+  - front: |
+      What is the shortcut to **Show Extensions** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+Shift+X
+      ```
+  - front: |
+      What is the shortcut to **Replace in files** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+Shift+H
+      ```
+  - front: |
+      What is the shortcut to **Toggle Search details** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+Shift+J
+      ```
+  - front: |
+      What is the shortcut to **Open new command prompt/terminal** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+Shift+C
+      ```
+  - front: |
+      What is the shortcut to **Show Output panel** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+K Ctrl+H
+      ```
+  - front: |
+      What is the shortcut to **Open Markdown preview** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+Shift+V
+      ```
+  - front: |
+      What is the shortcut to **Open Markdown preview to the side** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+K V
+      ```
+  - front: |
+      What is the shortcut to enter **Zen Mode (Esc Esc to exit)** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+K Z
+      ```
+  - front: |
+      What is the shortcut to **Close editor** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+W
+      ```
+  - front: |
+      What is the shortcut to **Close folder** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+K F
+      ```
+  - front: |
+      What is the shortcut to **Split editor** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+\
+      ```
+  - front: |
+      What is the shortcut to **Focus into 1st, 2nd, 3rd editor group** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+1 / 2 / 3
+      ```
+  - front: |
+      What is the shortcut to **Focus into previous editor group** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+K Ctrl+←
+      ```
+  - front: |
+      What is the shortcut to **Focus into next editor group** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+K Ctrl+→
+      ```
+  - front: |
+      What is the shortcut to **Move editor left** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+Shift+PgUp
+      ```
+  - front: |
+      What is the shortcut to **Move editor right** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+Shift+PgDn
+      ```
+  - front: |
+      What is the shortcut to **Move active editor group left/up** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+K ← / Ctrl+K ↑
+      ```
+  - front: |
+      What is the shortcut to **Move active editor group right/down** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+K → / Ctrl+K ↓
+      ```
+  - front: |
+      What is the shortcut to open a **New File** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+N
+      ```
+  - front: |
+      What is the shortcut to **Open File...** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+O
+      ```
+  - front: |
+      What is the shortcut to **Save** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+S
+      ```
+  - front: |
+      What is the shortcut to **Save As...** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+Shift+S
+      ```
+  - front: |
+      What is the shortcut to **Close** the current file in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+W
+      ```
+  - front: |
+      What is the shortcut to **Close All** files in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+K Ctrl+W
+      ```
+  - front: |
+      What is the shortcut to **Reopen closed editor** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+Shift+T
+      ```
+  - front: |
+      What is the shortcut to **Keep preview mode editor open** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+K Enter
+      ```
+  - front: |
+      What is the shortcut to **Open next** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+Tab
+      ```
+  - front: |
+      What is the shortcut to **Open previous** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+Shift+Tab
+      ```
+  - front: |
+      What is the shortcut to **Copy path of active file** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+K P
+      ```
+  - front: |
+      What is the shortcut to **Reveal active file in Explorer** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+K R
+      ```
+  - front: |
+      What is the shortcut to **Show active file in new window/instance** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+K O
+      ```
+  - front: |
+      What is the shortcut to **Find** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+F
+      ```
+  - front: |
+      What is the shortcut to **Replace** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+H
+      ```
+  - front: |
+      What is the shortcut to **Find next/previous** in VSCode on Linux?
+    back: |
+      ```
+      F3 / Shift+F3
+      ```
+  - front: |
+      What is the shortcut to **Select all occurrences of Find match** in VSCode on Linux?
+    back: |
+      ```
+      Alt+Enter
+      ```
+  - front: |
+      What is the shortcut to **Add selection to next Find match** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+D
+      ```
+  - front: |
+      What is the shortcut to **Move last selection to next Find match** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+K Ctrl+D
+      ```
+  - front: |
+      What is the shortcut to **Show all Symbols** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+T
+      ```
+  - front: |
+      What is the shortcut to **Go to Line...** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+G
+      ```
+  - front: |
+      What is the shortcut to quickly **Go to File...** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+P
+      ```
+  - front: |
+      What is the shortcut to **Go to Symbol...** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+Shift+O
+      ```
+  - front: |
+      What is the shortcut to **Show Problems panel** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+Shift+M
+      ```
+  - front: |
+      What is the shortcut to **Go to next error or warning** in VSCode on Linux?
+    back: |
+      ```
+      F8
+      ```
+  - front: |
+      What is the shortcut to **Go to previous error or warning** in VSCode on Linux?
+    back: |
+      ```
+      Shift+F8
+      ```
+  - front: |
+      What is the shortcut to **Navigate editor group history** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+Shift+Tab
+      ```
+  - front: |
+      What is the shortcut to **Go back** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+Alt+-
+      ```
+  - front: |
+      What is the shortcut to **Go forward** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+Shift+-
+      ```
+  - front: |
+      What is the shortcut to **Toggle Tab moves focus** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+M
+      ```
+  - front: |
+      What is the shortcut to **Trigger suggestion** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+Space, Ctrl+I
+      ```
+  - front: |
+      What is the shortcut to **Trigger parameter hints** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+Shift+Space
+      ```
+  - front: |
+      What is the shortcut to **Format document** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+Shift+I
+      ```
+  - front: |
+      What is the shortcut to **Format selection** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+K Ctrl+F
+      ```
+  - front: |
+      What is the shortcut to **Go to Definition** in VSCode on Linux?
+    back: |
+      ```
+      F12
+      ```
+  - front: |
+      What is the shortcut to **Peek Definition** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+Shift+F10
+      ```
+  - front: |
+      What is the shortcut to **Open Definition to the side** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+K F12
+      ```
+  - front: |
+      What is the shortcut to access **Quick Fix** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+.
+      ```
+  - front: |
+      What is the shortcut to **Show References** in VSCode on Linux?
+    back: |
+      ```
+      Shift+F12
+      ```
+  - front: |
+      What is the shortcut to **Rename Symbol** in VSCode on Linux?
+    back: |
+      ```
+      F2
+      ```
+  - front: |
+      What is the shortcut to **Trim trailing whitespace** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+K Ctrl+X
+      ```
+  - front: |
+      What is the shortcut to **Change file language** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+K M
+      ```
+  - front: |
+      What is the shortcut to **Toggle breakpoint** in VSCode on Linux?
+    back: |
+      ```
+      F9
+      ```
+  - front: |
+      What is the shortcut to **Start / Continue** debugging in VSCode on Linux?
+    back: |
+      ```
+      F5
+      ```
+  - front: |
+      What is the shortcut to **Step into/out** during debugging in VSCode on Linux?
+    back: |
+      ```
+      F11 / Shift+F11
+      ```
+  - front: |
+      What is the shortcut to **Step over** during debugging in VSCode on Linux?
+    back: |
+      ```
+      F10
+      ```
+  - front: |
+      What is the shortcut to **Stop** debugging in VSCode on Linux?
+    back: |
+      ```
+      Shift+F5
+      ```
+  - front: |
+      What is the shortcut to **Show hover** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+K Ctrl+I
+      ```
+  - front: |
+      What is the shortcut to **Show integrated terminal** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+`
+      ```
+  - front: |
+      What is the shortcut to **Create new terminal** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+Shift+`
+      ```
+  - front: |
+      What is the shortcut to **Copy selection** in the terminal in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+Shift+C
+      ```
+  - front: |
+      What is the shortcut to **Paste into active terminal** in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+Shift+V
+      ```
+  - front: What is the shortcut to **Scroll up/down** in integrated terminal in VSCode on Linux?
+    back: |
+      ```
+      Ctrl+Shift+↑/↓
+      ```
+  - front: |
+      What is the shortcut to **Scroll page up/down** the terminal in VSCode on Linux?
+    back: |
+      ```
+      Shift+PgUp / PgDn
+      ```
+  - front: |
+      What is the shortcut to **Scroll to top/bottom** in the integrated terminal in VSCode on Linux?
+    back: |
+      ```
+      Shift+Home / End
+      ```
+  - front: Note about using Alt+Click to insert cursor
+    back: The Alt+Click gesture may not work on some Linux distributions. You can change the modifier key for the Insert cursor command to Ctrl+Click with the "editor.multiCursorModifier" setting.

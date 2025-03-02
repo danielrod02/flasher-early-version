@@ -20,8 +20,14 @@ export async function fetchDeck(owner, repo, path) {
 
         const fileData = await response.json();
         console.log(fileData);
-        const yamlContent = atob(fileData.content);
+        const fileResponse = await fetch(fileData.download_url);
+        if (!fileResponse.ok) {
+            throw new Error('Network response was not ok');
+        }
 
+        const yamlContent = await fileResponse.text();
+        console.log(yamlContent);
+        
         return jsYaml.load(yamlContent);
     } catch (error) {
         console.error('Error fetching the YAML file:', error);

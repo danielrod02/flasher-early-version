@@ -162,7 +162,7 @@ deck:
       Shift+Alt+↑/↓
       ```
   - front: |
-    What is the shortcut to **Undo last cursor operation** in VSCode on Linux?
+      What is the shortcut to **Undo last cursor operation** in VSCode on Linux?
     back: |
       ```
       Ctrl+U

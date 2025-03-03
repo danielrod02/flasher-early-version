@@ -1,0 +1,252 @@
+deck:
+  - front: >  
+      **What is the `useRouter` hook in Next.js and what is its purpose?**  
+    back: >  
+      The `useRouter` hook in Next.js is used to access the router object, allowing you to programmatically navigate between pages and query router properties such as the current route and query parameters.  
+    
+      Example usage:  
+      ```javascript  
+      import { useRouter } from 'next/router';  
+    
+      function Component() {  
+        const router = useRouter();  
+    
+        const handleClick = () => {  
+          router.push('/about');  
+        };  
+    
+        return <button onClick={handleClick}>Go to About</button>;  
+      }  
+      ```  
+    
+  - front: >  
+      **What is returned by the `useRouter` hook in Next.js?**  
+    back: >  
+      The `useRouter` hook returns an object with the following properties and methods:  
+      - `pathname`: The path of the current route.  
+      - `query`: The query string parameters of the current route.  
+      - `asPath`: The string shown in the browser, including the path and query.  
+      - `push(url, as, options)`: Navigate to a different route.  
+      - `replace(url, as, options)`: Replace the current route.  
+      - `reload()`: Reload the current page.  
+      - `back()`: Navigate back in history.  
+      - `prefetch(url, as, options)`: Prefetch a page.  
+      - `beforePopState(callback)`: Intercept `popstate` events.  
+      - `events`: Router events.  
+    
+  - front: >  
+      **How do you programmatically navigate to a new route using `useRouter`? Provide an example.**  
+    back: >  
+      To navigate to a new route programmatically, you can use the `push` method of the `useRouter` hook.  
+    
+      Example:  
+      ```javascript  
+      import { useRouter } from 'next/router';  
+    
+      function Component() {  
+        const router = useRouter();  
+    
+        const goToAbout = () => {  
+          router.push('/about');  
+        };  
+    
+        return <button onClick={goToAbout}>Go to About</button>;  
+      }  
+      ```  
+    
+  - front: >  
+      **What is the difference between the `push` and `replace` methods in the `useRouter` hook?**  
+    back: >  
+      - `push(url, as, options)`: Adds a new entry to the browser's history stack and navigates to the specified route.  
+      - `replace(url, as, options)`: Replaces the current entry in the browser's history stack with the specified route, without adding a new entry.  
+    
+      Example:  
+      ```javascript  
+      router.push('/new-page'); // Adds a new entry.  
+      router.replace('/new-page'); // Replaces the current entry.  
+      ```  
+    
+  - front: >  
+      **How can you access query parameters from the current route using the `useRouter` hook?**  
+    back: >  
+      You can access query parameters using the `query` property of the router object returned by `useRouter`.  
+    
+      Example:  
+      ```javascript  
+      import { useRouter } from 'next/router';  
+    
+      function Component() {  
+        const router = useRouter();  
+        const { id, name } = router.query;  
+    
+        return (  
+          <div>  
+            <p>Id: {id}</p>  
+            <p>Name: {name}</p>  
+          </div>  
+        );  
+      }  
+      ```  
+    
+  - front: >  
+      **What is the `asPath` property in the `useRouter` hook used for?**  
+    back: >  
+      The `asPath` property is a string representation of the actual path shown in the browser, including the query string parameters. It can be useful for custom logic or rendering based on the current path.  
+    
+      Example:  
+      ```javascript  
+      import { useRouter } from 'next/router';  
+    
+      function Component() {  
+        const router = useRouter();  
+    
+        return <p>Current path: {router.asPath}</p>;  
+      }  
+      ```  
+    
+  - front: >  
+      **What is the `beforePopState` method in the `useRouter` hook, and what is its purpose?**  
+    back: >  
+      The `beforePopState` method allows you to intercept and customize the behavior of `popstate` events (e.g., when the user clicks the back or forward buttons in the browser).  
+    
+      Example:  
+      ```javascript  
+      import { useRouter } from 'next/router';  
+    
+      function Component() {  
+        const router = useRouter();  
+    
+        router.beforePopState(({ url, as, options }) => {  
+          // Custom logic before navigating  
+          return true; // Allow navigation  
+        });  
+    
+        return <p>Custom popstate logic</p>;  
+      }  
+      ```  
+    
+  - front: >  
+      **What is the purpose of the `prefetch` method in the `useRouter` hook?**  
+    back: >  
+      The `prefetch` method is used to prefetch a page's resources (such as JavaScript and data) to improve navigation speed. This is especially useful for links that users are likely to click on.  
+    
+      Example:  
+      ```javascript  
+      import { useRouter } from 'next/router';  
+      import { useEffect } from 'react';  
+    
+      function Component() {  
+        const router = useRouter();  
+    
+        useEffect(() => {  
+          router.prefetch('/about');  
+        }, []);  
+    
+        return <p>Prefetching the About page</p>;  
+      }  
+      ```  
+    
+  - front: >  
+      **What are Router Events in Next.js, and how can you use them?**  
+    back: >  
+      Router Events in Next.js are lifecycle events that occur during route changes. You can listen to these events using the `router.events` object.  
+    
+      Example:  
+      ```javascript  
+      import { useRouter } from 'next/router';  
+      import { useEffect } from 'react';  
+    
+      function Component() {  
+        const router = useRouter();  
+    
+        useEffect(() => {  
+          const handleRouteChange = (url) => {  
+            console.log('App is changing to:', url);  
+          };  
+    
+          router.events.on('routeChangeStart', handleRouteChange);  
+    
+          return () => {  
+            router.events.off('routeChangeStart', handleRouteChange);  
+          };  
+        }, []);  
+    
+        return <p>Listening to route changes</p>;  
+      }  
+      ```  
+    
+  - front: >  
+      **What are the key lifecycle Router Events available in Next.js?**  
+    back: >  
+      Key lifecycle Router Events in Next.js include:  
+      - `routeChangeStart`: Triggered when a route change starts.  
+      - `routeChangeComplete`: Triggered when a route change completes.  
+      - `routeChangeError`: Triggered when a route change fails.  
+      - `beforeHistoryChange`: Triggered before the browser's history is updated.  
+      - `hashChangeStart`: Triggered when a hash change starts.  
+      - `hashChangeComplete`: Triggered when a hash change completes.  
+    
+  - front: >  
+      **What is the purpose of dynamic routing in Next.js, and how is it implemented?**  
+    back: >  
+      Dynamic routing in Next.js allows you to create routes with dynamic parameters. It is implemented by defining a file with square brackets in the `pages` directory.  
+    
+      Example:  
+      ```  
+      pages/post/[id].js  
+      ```  
+    
+      In the above example, the `id` parameter can be accessed using the `query` property of the `useRouter` hook.  
+    
+      ```javascript  
+      import { useRouter } from 'next/router';  
+    
+      function Post() {  
+        const router = useRouter();  
+        const { id } = router.query;  
+    
+        return <p>Post ID: {id}</p>;  
+      }  
+    
+      export default Post;  
+      ```  
+    
+  - front: >  
+      **How does the `reload` method work in the `useRouter` hook?**  
+    back: >  
+      The `reload` method in the `useRouter` hook reloads the current page, similar to a browser refresh. It does not add a new entry to the browser's history stack.  
+    
+      Example:  
+      ```javascript  
+      import { useRouter } from 'next/router';  
+    
+      function Component() {  
+        const router = useRouter();  
+    
+        const reloadPage = () => {  
+          router.reload();  
+        };  
+    
+        return <button onClick={reloadPage}>Reload Page</button>;  
+      }  
+      ```  
+    
+  - front: >  
+      **How can you navigate back in browser history using the `useRouter` hook?**  
+    back: >  
+      You can navigate back in browser history using the `back` method of the `useRouter` hook.  
+    
+      Example:  
+      ```javascript  
+      import { useRouter } from 'next/router';  
+    
+      function Component() {  
+        const router = useRouter();  
+    
+        const goBack = () => {  
+          router.back();  
+        };  
+    
+        return <button onClick={goBack}>Go Back</button>;  
+      }  
+      ```  

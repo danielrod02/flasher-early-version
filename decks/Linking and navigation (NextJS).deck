@@ -1,0 +1,145 @@
+deck:
+  - front: |  
+      **What is the purpose of the `Link` component in Next.js?**  
+    back: |  
+      The `Link` component in Next.js is used to enable client-side route transitions between pages, similar to a single-page application.  
+    
+  - front: |  
+      **How do you use the `Link` component in Next.js to navigate between pages? Provide an example.**  
+    back: |  
+      The `Link` component is used with an `href` attribute to specify the path of the page to navigate to. Here's an example:  
+    
+      ```jsx  
+      import Link from 'next/link';  
+    
+      function Home() {  
+        return (  
+          <ul>  
+            <li><Link href="/about">About</Link></li>  
+            <li><Link href="/blog/hello-world">Blog Post</Link></li>  
+          </ul>  
+        );  
+      }  
+    
+      export default Home;  
+      ```  
+    
+  - front: |  
+      **What happens when you click on a `Link` in Next.js?**  
+    back: |  
+      Clicking on a `Link` in Next.js performs a client-side navigation to the specified path. The corresponding code for that page is fetched, and for server-rendered pages, the content is fetched only when the `Link` is clicked.  
+    
+  - front: |  
+      **How can you use dynamic paths with the `Link` component in Next.js?**  
+    back: |  
+      Dynamic paths can be created using string interpolation or a URL object. Here's an example using string interpolation:  
+    
+      ```jsx  
+      import Link from 'next/link';  
+    
+      function Posts() {  
+        const posts = [  
+          { id: 'post-1', title: 'Post 1' },  
+          { id: 'post-2', title: 'Post 2' },  
+        ];  
+    
+        return (  
+          <ul>  
+            {posts.map(post => (  
+              <li key={post.id}>  
+                <Link href={`/blog/${encodeURIComponent(post.id)}`}>  
+                  {post.title}  
+                </Link>  
+              </li>  
+            ))}  
+          </ul>  
+        );  
+      }  
+    
+      export default Posts;  
+      ```  
+    
+  - front: |  
+      **How can you use a URL object in the `href` attribute of the `Link` component?**  
+    back: |  
+      You can use a URL object to specify the path and query parameters. Here's an example:  
+    
+      ```jsx  
+      import Link from 'next/link';  
+    
+      function Posts() {  
+        const posts = [  
+          { id: 'post-1', title: 'Post 1' },  
+          { id: 'post-2', title: 'Post 2' },  
+        ];  
+    
+        return (  
+          <ul>  
+            {posts.map(post => (  
+              <li key={post.id}>  
+                <Link href={{ pathname: '/blog/[slug]', query: { slug: post.id } }}>  
+                  {post.title}  
+                </Link>  
+              </li>  
+            ))}  
+          </ul>  
+        );  
+      }  
+    
+      export default Posts;  
+      ```  
+    
+  - front: |  
+      **How can you inject the `router` object in a React component in Next.js?**  
+    back: |  
+      You can inject the `router` object using either `useRouter` (a React hook) or `withRouter` (a higher-order component). In general, it is recommended to use `useRouter`.  
+    
+  - front: |  
+      **What is imperative routing in Next.js? Provide an example using the `router` object.**  
+    back: |  
+      Imperative routing allows you to programmatically navigate between pages using the `router` object. Here's an example:  
+    
+      ```jsx  
+      import { useRouter } from 'next/router';  
+    
+      function NavigationButton() {  
+        const router = useRouter();  
+    
+        return (  
+          <button onClick={() => router.push('/about')}>  
+            Click here to read more  
+          </button>  
+        );  
+      }  
+    
+      export default NavigationButton;  
+      ```  
+    
+  - front: |  
+      **What is shallow routing in Next.js, and how is it enabled?**  
+    back: |  
+      Shallow routing in Next.js allows you to change the URL without running data fetching methods again (like `getStaticProps`, `getServerSideProps`, or `getInitialProps`). To enable shallow routing, pass `{ shallow: true }` as the second argument to the `router.push` or `router.replace` method.  
+    
+      Example:  
+    
+      ```jsx  
+      router.push('/route?name=John', '/route?name=John', { shallow: true });  
+      ```  
+    
+  - front: |  
+      **What are the caveats of using shallow routing in Next.js?**  
+    back: |  
+      Shallow routing works only for URL changes in the current page. It does not reload the page but may not re-run the data-fetching logic. It should not be used with middleware as it can skip route-matching logic.  
+    
+  - front: |  
+      **How can you watch for URL changes in Next.js using `componentDidUpdate`?**  
+    back: |  
+      You can watch for URL changes using `componentDidUpdate` by comparing the current router query with the previous one. Here's an example:  
+    
+      ```jsx  
+      componentDidUpdate(prevProps) {  
+        if (this.props.router.query.name !== prevProps.router.query.name) {  
+          // Handle the URL change  
+        }  
+      }  
+      ```  

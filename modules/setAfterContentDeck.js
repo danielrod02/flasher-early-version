@@ -10,5 +10,12 @@ export function setAfterContentDeck(deckElement, deckName) {
     const now = new Date();
     const diffTime = Math.abs(now - lastSessionDate);
     const diffDays = Math.ceil(diffTime / (1000 * 60));
+    if (diffDays > 60) {
+        deckElement.dataset.afterContent = `${Math.ceil(diffDays / 60)} hours ago`;
+        return;
+    } else if (diffDays > 1440) {
+        deckElement.dataset.afterContent = `${Math.ceil(diffDays / 1440)} days ago`;
+        return;
+    }
     deckElement.dataset.afterContent = `${diffDays} minutes ago`;
 }

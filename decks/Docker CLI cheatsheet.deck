@@ -1,0 +1,329 @@
+deck:
+  - front: How do you create and start a container from an image using Docker?
+    back: |
+      You can create and start a container from an image using the `docker run` command. Here's an example:
+      ```bash
+      docker run -d --name my_container_name my_image:tag
+      ```
+      Replace `my_container_name` with the desired name for your container, and `my_image:tag` with the name and tag of the Docker image you want to use.
+
+  - front: How can you execute a command inside a running Docker container?
+    back: |
+      You can execute a command inside a running Docker container using the `docker exec` command. Here's an example:
+      ```bash
+      docker exec -it my_container_name ls /app
+      ```
+      This command would execute the `ls /app` command inside the container named `my_container_name`.
+
+  - front: How do you start a stopped Docker container?
+    back: |
+      You can start a stopped Docker container using the `docker start` command. Here's an example:
+      ```bash
+      docker start my_container_name
+      ```
+
+  - front: How do you stop a running Docker container gracefully?
+    back: |
+      You can stop a running Docker container gracefully using the `docker stop` command. Here's an example:
+      ```bash
+      docker stop my_container_name
+      ```
+
+  - front: How do you list all running Docker containers?
+    back: |
+      You can list all running Docker containers using the `docker ps` command:
+      ```bash
+      docker ps
+      ```
+
+  - front: How do you list all Docker containers including stopped ones?
+    back: |
+      You can list all Docker containers, including stopped ones, using the `docker ps -a` command:
+      ```bash
+      docker ps -a
+      ```
+
+  - front: How do you view the logs of a Docker container?
+    back: |
+      You can view the logs of a Docker container using the `docker logs` command. Optionally, use the `-f` flag to follow the log output:
+      ```bash
+      docker logs [-f] container
+      ```
+
+  - front: How do you show the differences between a Docker container and its base image?
+    back: |
+      You can show the differences between a Docker container and its base image using the `docker diff` command:
+      ```bash
+      docker diff container
+      ```
+
+  - front: How do you display the running processes of a Docker container?
+    back: |
+      You can display the running processes of a Docker container using the `docker top` command:
+      ```bash
+      docker top container
+      ```
+
+  - front: How do you inspect a Docker container and extract specific information?
+    back: |
+      You can inspect a Docker container and extract specific information using the `docker inspect` command with the `--format` option. For example, to get the image used by a container:
+      ```bash
+      docker inspect --format='{{.Config.Image}}' my_container_name
+      ```
+
+  - front: How do you attach to a running Docker container?
+    back: |
+      You can attach to a running Docker container using the `docker attach` command:
+      ```bash
+      docker attach container
+      ```
+
+  - front: How do you copy files between a Docker container and the host system?
+    back: |
+      You can copy files between a Docker container and the host system using the `docker cp` command. To copy from the container to the host:
+      ```bash
+      docker cp container:path hostpath
+      ```
+      To copy from the host to the container:
+      ```bash
+      docker cp hostpath container:path
+      ```
+
+  - front: How do you export the content of a Docker container as a tar archive?
+    back: |
+      You can export the content of a Docker container as a tar archive using the `docker export` command:
+      ```bash
+      docker export container > image.tar
+      ```
+
+  - front: How do you commit a new Docker image from a container?
+    back: |
+      You can commit a new Docker image from a container using the `docker commit` command:
+      ```bash
+      docker commit container image
+      ```
+
+  - front: How do you list all local Docker images?
+    back: |
+      You can list all local Docker images using the `docker images` command:
+      ```bash
+      docker images
+      ```
+
+  - front: How do you show the history of a Docker image?
+    back: |
+      You can show the history of a Docker image using the `docker history` command:
+      ```bash
+      docker history image
+      ```
+
+  - front: How do you delete a Docker image?
+    back: |
+      You can delete a Docker image using the `docker rmi` command:
+      ```bash
+      docker rmi image
+      ```
+
+  - front: How do you push a Docker image to a registry?
+    back: |
+      You can push a Docker image to a registry using the `docker push` command:
+      ```bash
+      docker push repo[:tag]
+      ```
+
+  - front: How do you pull a Docker image from a registry?
+    back: |
+      You can pull a Docker image from a registry using the `docker pull` command:
+      ```bash
+      docker pull repo[:tag]
+      ```
+
+  - front: How do you search for a Docker image on the official registry?
+    back: |
+      You can search for a Docker image on the official registry using the `docker search` command:
+      ```bash
+      docker search text
+      ```
+
+  - front: How do you log in to a Docker registry?
+    back: |
+      You can log in to a Docker registry using the `docker login` command:
+      ```bash
+      docker login
+      ```
+
+  - front: How do you log out from a Docker registry?
+    back: |
+      You can log out from a Docker registry using the `docker logout` command:
+      ```bash
+      docker logout
+      ```
+
+  - front: How do you import a Docker image from a tarball?
+    back: |
+      You can import a Docker image from a tarball using the `docker import` command:
+      ```bash
+      docker import image.tar <image_name>:<tag>
+      ```
+
+  - front: How do you export a Docker image as a tarball?
+    back: |
+      You can export a Docker image as a tarball using the `docker save` command:
+      ```bash
+      docker save repo[:tag] > image.tar
+      ```
+
+  - front: How do you load a Docker image from a tarball?
+    back: |
+      You can load a Docker image from a tarball using the `docker load` command:
+      ```bash
+      docker load < image.tar
+      ```
+
+  - front: What is the purpose of the `FROM` instruction in a Dockerfile?
+    back: |
+      The `FROM` instruction in a Dockerfile specifies the base image for the build stage. It sets up the build environment and contains all the tools and dependencies needed for building the application. Example:
+      ```Dockerfile
+      FROM golang:1.16 AS build_stage
+      ```
+
+  - front: What does the `RUN` instruction do in a Dockerfile?
+    back: |
+      The `RUN` instruction in a Dockerfile executes commands inside the build stage container. It is used to install dependencies, compile code, or perform any other build-related tasks. Example:
+      ```Dockerfile
+      RUN apt-get update && apt-get install -y build-essential
+      ```
+
+  - front: What is the difference between `COPY` and `ADD` instructions in a Dockerfile?
+    back: |
+      Both `COPY` and `ADD` instructions are used to copy files from the local directory into the container, but `ADD` has additional features such as untarring archives and accepting URLs. Example of `COPY`:
+      ```Dockerfile
+      COPY ./app /app
+      ```
+      Example of `ADD`:
+      ```Dockerfile
+      ADD https://example.com/file.tar.gz /tmp/
+      ```
+
+  - front: What is the purpose of the `WORKDIR` instruction in a Dockerfile?
+    back: |
+      The `WORKDIR` instruction in a Dockerfile sets the working directory inside the container where subsequent commands will be executed. Example:
+      ```Dockerfile
+      WORKDIR /app
+      ```
+
+  - front: What does the `CMD` instruction do in a Dockerfile?
+    back: |
+      The `CMD` instruction in a Dockerfile sets the default command to run when the container starts. Example:
+      ```Dockerfile
+      CMD ["/app/my_app"]
+      ```
+
+  - front: How do you set an environment variable in a Dockerfile?
+    back: |
+      You can set an environment variable in a Dockerfile using the `ENV` instruction. Example:
+      ```Dockerfile
+      ENV NAME=hello
+      ```
+
+  - front: What is the builder pattern in Docker?
+    back: |
+      The builder pattern in Docker is a technique used to create optimized and efficient Docker images by separating the build environment from the runtime environment. It involves using a multi-stage build process, where one stage is used for building the application, and another stage is used to package the application for runtime.
+
+  - front: How do you prune unused Docker images?
+    back: |
+      You can prune unused Docker images using the `docker image prune` command:
+      ```bash
+      docker image prune
+      ```
+
+  - front: How do you remove all images not associated with a container?
+    back: |
+      You can remove all images not associated with a container using the `docker image prune -a` command:
+      ```bash
+      docker image prune -a
+      ```
+
+  - front: How do you clean up the entire Docker system?
+    back: |
+      You can clean up the entire Docker system, including unused images, containers, networks, and volumes, using the `docker system prune` command:
+      ```bash
+      docker system prune
+      ```
+
+  - front: How do you leave a Docker swarm?
+    back: |
+      You can leave a Docker swarm using the `docker swarm leave` command:
+      ```bash
+      docker swarm leave
+      ```
+
+  - front: How do you remove a Docker stack?
+    back: |
+      You can remove a Docker stack using the `docker stack rm` command:
+      ```bash
+      docker stack rm STACK_NAME
+      ```
+
+  - front: How do you kill all running Docker containers?
+    back: |
+      You can kill all running Docker containers using the following command:
+      ```bash
+      docker kill $(docker ps -q)
+      ```
+
+  - front: How do you display vulnerabilities from a Docker image saved as a tarball using Docker Scout?
+    back: |
+      You can display vulnerabilities from a Docker image saved as a tarball using the `docker scout cves` command:
+      ```bash
+      docker scout cves redis.tar
+      ```
+
+  - front: How do you compare two Docker images for vulnerabilities using Docker Scout?
+    back: |
+      You can compare two Docker images for vulnerabilities using the `docker scout compare` command:
+      ```bash
+      docker scout compare --to redis:6.0 redis:6-bullseye
+      ```
+
+  - front: How do you display a quick overview of vulnerabilities in a Docker image using Docker Scout?
+    back: |
+      You can display a quick overview of vulnerabilities in a Docker image using the `docker scout quickview` command:
+      ```bash
+      docker scout quickview redis:6.0
+      ```
+
+  - front: How do you export vulnerabilities to a SARIF JSON file using Docker Scout?
+    back: |
+      You can export vulnerabilities to a SARIF JSON file using the `docker scout cves` command with the `--format sarif` and `--output` options:
+      ```bash
+      docker scout cves --format sarif --output redis.sarif.json redis
+      ```
+
+  - front: How do you scale a service in a Docker stack?
+    back: |
+      You can scale a service in a Docker stack using the `docker service scale` command:
+      ```bash
+      docker service scale STACK_NAME_SERVICE_NAME=REPLICAS
+      ```
+
+  - front: How do you view the logs of a specific service in a Docker stack?
+    back: |
+      You can view the logs of a specific service in a Docker stack using the `docker service logs` command:
+      ```bash
+      docker service logs STACK_NAME_SERVICE_NAME
+      ```
+
+  - front: How do you view all services running in a Docker stack?
+    back: |
+      You can view all services running in a Docker stack using the `docker stack services` command:
+      ```bash
+      docker stack services STACK_NAME
+      ```
+
+  - front: How do you view a list of all services running in a Docker swarm?
+    back: |
+      You can view a list of all services running in a Docker swarm using the `docker service ls` command:
+      ```bash
+      docker service ls
+      ```

@@ -17,6 +17,7 @@ export function shuffleArray(array) {
  * @param {string} value - The value of the query parameter.
  */
 function addQueryParam(key, value) {
+    // this is a comment
     const url = new URL(window.location);
     url.searchParams.set(key, value);
     history.pushState({}, '', url);

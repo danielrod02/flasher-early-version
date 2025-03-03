@@ -1,0 +1,75 @@
+deck:
+  - front: What is `getServerSideProps` in Next.js?  
+    back: "`getServerSideProps` is a Next.js function that can be used to fetch data and render the contents of a page at request time."  
+    
+  - front: How do you export and use `getServerSideProps` in a Next.js page component?  
+    back: |
+      ```typescript  
+      import type { InferGetServerSidePropsType, GetServerSideProps } from 'next';  
+    
+      type Repo = {  
+        name: string;  
+        stargazers_count: number;  
+      };  
+    
+      export const getServerSideProps: GetServerSideProps = async () => {  
+        // Fetch data from external API  
+        const res = await fetch('https://api.github.com/repos/vercel/next.js');  
+        const repo: Repo = await res.json();  
+    
+        return { props: { repo } };  
+      };  
+    
+      export default function Page({ repo }: InferGetServerSidePropsType<typeof getServerSideProps>) {  
+        return (  
+          <main>  
+            <p>{repo.stargazers_count}</p>  
+          </main>  
+        );  
+      }  
+      ```  
+    
+  - front: When should you use `getServerSideProps`?  
+    back: "You should use `getServerSideProps` if you need to render a page that relies on personalized user data, or information that can only be known at request time (e.g., authorization headers or geolocation). If data does not need to be fetched at request time, consider using `getStaticProps` for better performance."  
+    
+  - front: Where does `getServerSideProps` run, and what does it return?  
+    back: "`getServerSideProps` runs on the server and returns JSON."  
+    
+  - front: What happens when a user visits a page that uses `getServerSideProps`?  
+    back: "When a user visits such a page, `getServerSideProps` is used to fetch data at request time. The fetched data is used to render the initial HTML of the page."  
+    
+  - front: How are `props` passed to a page component when using `getServerSideProps`?  
+    back: "The `props` returned by `getServerSideProps` are passed to the page component and rendered as part of the initial HTML. These props can also be hydrated on the client side."  
+    
+  - front: What should you avoid passing to `props` in `getServerSideProps`?  
+    back: "Avoid passing sensitive information to `props` that should not be available on the client side."  
+    
+  - front: How does Next.js handle routing for pages using `getServerSideProps`?  
+    back: "When a user visits the page through `next/link` or `next/router`, Next.js sends an API request to the server, which runs `getServerSideProps`."  
+    
+  - front: What happens if there is an error inside `getServerSideProps`?  
+    back: "If an error occurs inside `getServerSideProps`, Next.js will show the `pages/500.js` file. During development, an error overlay will be shown instead."  
+    
+  - front: How can you use caching with `getServerSideProps` for Server-Side Rendering (SSR)?  
+    back: |
+      ```typescript  
+      export async function getServerSideProps({ req, res }) {  
+        res.setHeader(  
+          'Cache-Control',  
+          'public, s-maxage=10, stale-while-revalidate=59'  
+        );  
+    
+        return {  
+          props: {},  
+        };  
+      }  
+      ```  
+    
+  - front: What is the behavior of the cache headers used in the example with `getServerSideProps`?  
+    back: |
+      - "The response is considered fresh for 10 seconds (`s-maxage=10`)."  
+      - "If a request is repeated within the next 10 seconds, the cached value will still be fresh."  
+      - "If the request is repeated after 10 seconds but before 59 seconds, a revalidation will occur in the background (`stale-while-revalidate=59`)."  
+    
+  - front: What should you consider before using caching in `getServerSideProps`?  
+    back: "Before using caching with `getServerSideProps`, consider whether `getStaticProps` with Incremental Static Regeneration (ISR) would be a better fit for your use case."

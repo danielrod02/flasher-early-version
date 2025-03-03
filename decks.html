@@ -72,6 +72,14 @@
             display: flex;
             justify-content: space-between;
         }
+        a[data-after-content]::after {
+            content: attr(data-after-content);
+            display: inline;
+            color: rgb(116, 116, 116);
+            font-size: 0.8rem;
+            margin-left: 0.5rem;
+            text-decoration-color: grey;
+        }
     </style>
     <title>Decks</title>
 </head>
@@ -169,6 +177,7 @@
             githubConfigForm.classList.remove('display-none');
         });
 
+        import { setAfterContentDeck } from "/modules/setAfterContentDeck.js";
         function renderDeckFilesList(deckFiles) {
             listElement.innerHTML = "";
             deckFiles.forEach(file => {
@@ -187,7 +196,10 @@
                 link.dataset.rawFileUrl = file.download_url;
                 link.href = `/app.html?deck=${file.name}`;
                 link.textContent = file.name.replace(".deck", "");
+                setAfterContentDeck(link, file.name);
                 deckData.append(link);
+                deckData.classList.add('deck-name');
+                const decksLastSession = JSON.parse(localStorage.getItem('decks_last_session')) || [];
                 listItem.append(deckData, deckSourceButtons);
                 listElement.append(listItem);
             });

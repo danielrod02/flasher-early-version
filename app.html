@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,10 +8,11 @@
     <title>Flashy</title>
 
     <!-- <link rel="stylesheet" href="/styles/global.css"> -->
-     <link rel="stylesheet" href="/styles/utils.css">
+    <link rel="stylesheet" href="/styles/utils.css">
 
-     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.min.css" />
 
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.11.1/styles/atom-one-dark.css"> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.11.1/styles/monokai-sublime.css">
@@ -24,25 +26,37 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Lexend:wght@100..900&display=swap"
+        rel="stylesheet">
     <style>
         h1 {
             min-height: 33.07px;
         }
+
         #start-deck-session {
             display: block;
             margin: 150px auto 0;
         }
     </style>
 </head>
+
 <body>
-    <header class="container"><h1></h1><a href="/decks.html"><svg style="vertical-align:middle;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
-        <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5"/>
-      </svg>Go to decks</a></header>
+    <header class="container">
+        <h1></h1><a href="/decks.html"><svg style="vertical-align:middle;" xmlns="http://www.w3.org/2000/svg" width="16"
+                height="16" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5" />
+            </svg>Go to decks</a>
+    </header>
     <main class="main container">
-        <button id="start-deck-session">Click here to start <svg style="vertical-align:middle; margin-left: 3px; transform:translateY(-1px);" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
-            <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393"/>
-          </svg></button>
+        <button id="start-deck-session">Click here to start <svg
+                style="vertical-align:middle; margin-left: 3px; transform:translateY(-1px);"
+                xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-fill"
+                viewBox="0 0 16 16">
+                <path
+                    d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393" />
+            </svg></button>
     </main>
     <footer role="group" class="fixed-bottom ml-10 hidden">
         <button id="wrong-button" class="secondary display-none">Wrong</button>
@@ -52,7 +66,7 @@
     <p id="progress-indicator" class="display-none"></p>
 
     <script type="module">
-        window.addEventListener("storage", (e) => {console.log(e)});
+        window.addEventListener("storage", (e) => { console.log(e) });
         const url = window.location.href;
         const urlObj = new URL(url);
         const params = new URLSearchParams(urlObj.search);
@@ -61,16 +75,19 @@
             queryParams[key] = value;
         });
         document.querySelector('header > h1').append(`${queryParams.deck.replace(".deck", "")}`);
-        
+
         import { fetchDeck } from '/modules/fetchDeck.js';
         import { shuffleArray } from '/modules/utils.js';
-        import renderHTMLfromMD from '/modules/renderHTMLfromMD.js' ;
-        
-        
+        import renderHTMLfromMD from '/modules/renderHTMLfromMD.js';
+        import { setLastSessionDate } from '/modules/setLastSessionDate.js';
+
+
 
         const configStr = localStorage.getItem('github_config');
-        localStorage.clear();
-        localStorage.setItem('github_config', configStr)
+        // localStorage.clear();
+        localStorage.removeItem('current_deck:right');
+        localStorage.removeItem('current_deck:wrong');
+        localStorage.removeItem('current_deck:size');
 
         const fixedFooter = document.querySelector('footer[role="group"]');
         const showAnswerButton = document.getElementById('show-back-button');
@@ -80,29 +97,28 @@
         const progressIndicator = document.getElementById("progress-indicator");
 
         document.getElementById('start-deck-session').addEventListener('click', async () => {
+            setLastSessionDate(queryParams.deck);
+
             renderElement.replaceChildren("");
             renderElement.ariaBusy = "true";
-            const { user: owner, repo , folderPath: path } = JSON.parse(
+            const { user: owner, repo, folderPath: path } = JSON.parse(
                 localStorage.getItem("github_config")
             );
             const deck = await fetchDeck(owner, repo, `${path}/${queryParams.deck}`);
             const shuffledDeck = shuffleArray(deck.deck);
 
-            shuffledDeck.forEach( (card, i) => {
-                localStorage.setItem(`current_deck:card${i}:front`, card.front)
-                localStorage.setItem(`current_deck:card${i}:back`, card.back)
-            });
+            localStorage.setItem('current_deck:deck', JSON.stringify(shuffledDeck));
 
             localStorage.setItem('current_deck:wrong', 0);
             localStorage.setItem('current_deck:right', 0);
             localStorage.setItem('current_deck:size', shuffledDeck.length);
 
             const current_card = 0
-            localStorage.setItem('current_deck', queryParams.deck);
+            localStorage.setItem('current_deck:name', queryParams.deck);
             localStorage.setItem('current_deck:current_card', current_card);
 
             const frontElement = renderHTMLfromMD(
-                localStorage.getItem(`current_deck:card${current_card}:front`)
+                JSON.parse(localStorage.getItem(`current_deck:deck`))[current_card].front
             );
 
             renderElement.ariaBusy = "false";
@@ -113,14 +129,14 @@
             progressIndicator.classList.toggle("display-none");
             progressIndicator.append(`1/${shuffledDeck.length}`);
 
-            hljs.highlightAll();
-         });
+            // hljs.highlightAll();
+        });
 
 
-         showAnswerButton.addEventListener('click', async (e) => {
+        showAnswerButton.addEventListener('click', async (e) => {
             const current_card = localStorage.getItem('current_deck:current_card');
             const backElement = renderHTMLfromMD(
-                localStorage.getItem(`current_deck:card${current_card}:back`)
+                JSON.parse(localStorage.getItem(`current_deck:deck`))[current_card].back
             );
             const hrElement = document.createElement('hr');
             renderElement.append(hrElement);
@@ -134,28 +150,28 @@
                 behavior: 'smooth',  // Smooth scrolling
                 block: 'start'      // Scrolls to the center of the visible area of the scrollable ancestor
             });
-            hljs.highlightAll();
-         });
-         document.addEventListener('keydown', function(e) {
+            // hljs.highlightAll();
+        });
+        document.addEventListener('keydown', function (e) {
             if (
-                (event.code === 'Space' || 
-                event.code === 'ArrowDown') && 
+                (event.code === 'Space' ||
+                    event.code === 'ArrowDown') &&
                 !showAnswerButton.classList.contains('display-none')
             ) {
                 e.preventDefault();
                 showAnswerButton.click();
             } else if (
-                event.code === 'ArrowRight' && 
+                event.code === 'ArrowRight' &&
                 !rightButton.classList.contains('display-none')
             ) {
                 rightButton.click();
             } else if (
-                event.code === 'ArrowLeft' && 
+                event.code === 'ArrowLeft' &&
                 !rightButton.classList.contains('display-none')
             ) {
                 wrongButton.click();
             } else if (
-                event.code === 'Enter' && 
+                event.code === 'Enter' &&
                 !document.getElementById('start-deck-session').classList.contains('display-none')
             ) {
                 document.getElementById('start-deck-session').click();
@@ -163,7 +179,7 @@
         });
 
 
-         const nextCardHandler = async (e) => {
+        const nextCardHandler = async (e) => {
             switch (e.target.id) {
                 case 'wrong-button':
                     localStorage.setItem('current_deck:wrong', parseInt(localStorage.getItem('current_deck:wrong') || 0) + 1);
@@ -177,7 +193,7 @@
 
             let current_card = parseInt(localStorage.getItem('current_deck:current_card'));
             const deckSize = parseInt(localStorage.getItem('current_deck:size'))
-            if ( current_card + 1 >= deckSize ) {
+            if (current_card + 1 >= deckSize) {
 
                 renderElement.style.textAlign = 'center';
                 renderElement.innerHTML = "<p>Done!</p>";
@@ -202,7 +218,7 @@
             progressIndicator.innerText = `${current_card + 1}/${deckSize}`;
 
             const frontElement = renderHTMLfromMD(
-                localStorage.getItem(`current_deck:card${current_card}:front`)
+                JSON.parse(localStorage.getItem(`current_deck:deck`))[current_card].front
             );
             renderElement.innerHTML = "";
             renderElement.insertAdjacentHTML("beforeend", frontElement);
@@ -210,9 +226,10 @@
             showAnswerButton.classList.toggle('display-none');
             wrongButton.classList.toggle('display-none');
             rightButton.classList.toggle('display-none');
-         };
-         wrongButton.addEventListener('click', nextCardHandler);
-         rightButton.addEventListener('click', nextCardHandler);
+        };
+        wrongButton.addEventListener('click', nextCardHandler);
+        rightButton.addEventListener('click', nextCardHandler);
     </script>
 </body>
+
 </html>

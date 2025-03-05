@@ -68,10 +68,13 @@
             z-index: 10;
         }
 
-        header h1 {
+        .flex-header {
             display: flex;
             justify-content: space-between;
+            align-items: center;
+            margin-bottom: 7px;
         }
+
         a[data-after-content]::after {
             content: attr(data-after-content);
             display: inline;
@@ -80,13 +83,37 @@
             margin-left: 0.5rem;
             text-decoration-color: grey;
         }
+        header {
+            margin-bottom: 10px;
+        }
+        header > .flex-header > h1 {
+            margin-bottom: 0 !important;
+            margin-left: 12px;
+        }
+        a[href="/generate.html"] {
+            margin-bottom: 15px;
+            display: block;
+            margin-left: 12px;
+        }
     </style>
     <title>Decks</title>
 </head>
 
 <body>
     <header>
-        <h1>Decks<span aria-busy="true" style="width: 29.39px;"></span></h1>
+        <div class="flex-header">
+            <h1>Decks</h1>
+            <span aria-busy="true" style="width: 29.39px;"></span>
+        </div>
+        <a href="/generate.html" class="">
+            Generate!
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-lightning-charge-fill" viewBox="0 0 16 16">
+                <path
+                    d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09z" />
+            </svg>
+        </a>
+        <!-- <h1>Decks<span aria-busy="true" style="width: 29.39px;"></span></h1> -->
         <form role="search">
             <input type="text" name="search-deck" id="search-deck">
             <input type="reset" value="Clear" />
@@ -139,7 +166,7 @@
     </button>
     <script type="module">
         const listElement = document.getElementById('deck-files-list');
-        const headerElement = document.querySelector('header h1 span');
+        const headerElement = document.querySelector('header .flex-header span');
         const resetButton = document.querySelector('input[type="reset"][value="Clear"]');
         const searchDeckField = document.getElementById('search-deck');
         const githubConfigForm = document.getElementById('github-config-form');

@@ -1,0 +1,125 @@
+deck:
+  - front: |
+      What are the multiple ways Next.js supports handling CSS?
+    back: |
+      Next.js supports the following ways of handling CSS:  
+      - CSS Modules  
+      - Global Styles  
+      - External Stylesheets
+
+  - front: |
+      How do CSS Modules work in Next.js?
+    back: |
+      CSS Modules in Next.js have built-in support using the `.module.css` extension. They locally scope CSS by automatically creating a unique class name, allowing the same class name to be used in different files without collisions. This makes CSS Modules ideal for component-level CSS.
+
+  - front: |
+      Provide an example of a CSS Module in a Next.js component.
+    back: |
+      Consider a reusable `Button` component:  
+        
+      Create `components/Button.module.css` with the following content:  
+      ```css  
+      /* You do not need to worry about .error {} colliding with any other `.css` or`.module.css` files! */  
+      .error {    
+        color: white;    
+        background-color: red;  
+      }  
+      ```  
+
+      Then, create `components/Button.js`:  
+      ```javascript  
+      import styles from './Button.module.css';  
+
+      export function Button() {    
+        return (      
+          <button        
+            type="button"        
+            className={styles.error}      
+          >        
+            Destroy      
+          </button>    
+        );  
+      }  
+      ```
+
+  - front: |
+      What file extensions are CSS Modules enabled for in Next.js?
+    back: |
+      CSS Modules are only enabled for files with the `.module.css` and `.module.sass` extensions.
+
+  - front: |
+      How does Next.js handle CSS in production?
+    back: |
+      In production, all CSS Module files are automatically concatenated into many minified and code-split `.css` files. These files represent hot execution paths in the application, ensuring minimal CSS is loaded for rendering.
+
+  - front: |
+      How do you add global styles to a Next.js application?
+    back: |
+      To add global styles, import the CSS file within `pages/_app.js`. For example, create a `styles.css` file and import it:  
+      ```javascript  
+      import '../styles.css';  
+
+      export default function MyApp({ Component, pageProps }) {    
+        return <Component {...pageProps} />;   
+      }  
+      ```
+
+  - front: |
+      What is the significance of the `pages/_app.js` file in Next.js for styles?
+    back: |
+      The `pages/_app.js` file is where global stylesheets are imported. Styles imported here apply to all pages and components in the application. Importing styles in this file avoids conflicts and allows for hot reloading during development.
+
+  - front: |
+      How does Next.js manage the order of CSS files in production?
+    back: |
+      In production, all CSS files are concatenated into a single minified `.css` file. The order of concatenation matches the order of imports in the `_app.js` file, including any CSS from JS modules.
+
+  - front: |
+      How can you import CSS from `node_modules` in Next.js?
+    back: |
+      Since Next.js version 9.5.4, you can import CSS files from `node_modules` anywhere in your application. For global stylesheets, such as Bootstrap, import them in `pages/_app.js`:  
+      ```javascript  
+      import 'bootstrap/dist/css/bootstrap.css';  
+
+      export default function MyApp({ Component, pageProps }) {    
+        return <Component {...pageProps} />;   
+      }  
+      ```
+
+  - front: |
+      Provide an example of importing CSS for a third-party component in a Next.js application.
+    back: |
+      Here’s an example of importing CSS required by a third-party component:  
+      ```javascript  
+      import { useState } from 'react';  
+      import { Dialog } from '@reach/dialog';  
+      import VisuallyHidden from '@reach/visually-hidden';  
+      import '@reach/dialog/styles.css';  
+
+      function ExampleDialog(props) {    
+        const [showDialog, setShowDialog] = useState(false);    
+        const open = () => setShowDialog(true);    
+        const close = () => setShowDialog(false);  
+          
+        return (      
+          <div>        
+            <button onClick={open}>Open Dialog</button>        
+            <Dialog isOpen={showDialog} onDismiss={close}>          
+              <button className="close-button" onClick={close}>            
+                <VisuallyHidden>Close</VisuallyHidden>            
+                <span aria-hidden>×</span>          
+              </button>          
+              <p>Hello there. I am a dialog</p>        
+            </Dialog>      
+          </div>    
+        );  
+      }  
+      ```
+
+  - front: |
+      What additional features does Next.js provide for styles?
+    back: |
+      Next.js offers several features for styles:  
+      - Local stylesheets benefit from Fast Refresh during development.  
+      - In production, CSS files are bundled into fewer minified `.css` files to reduce network requests.  
+      - Styles will still load in production builds even if JavaScript is disabled, but JavaScript is needed for Fast Refresh in development.

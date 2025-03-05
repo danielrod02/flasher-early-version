@@ -1,0 +1,90 @@
+deck:
+  - front: |
+      What is the purpose of the `useNavigation` hook in Remix?
+    back: |
+      The `useNavigation` hook provides information about a pending page navigation.
+
+  - front: |
+      How do you import the `useNavigation` hook in a component?
+    back: |
+      ```javascript  
+      import { useNavigation } from "@remix-run/react";  
+      ```  back:
+
+  - front: |
+      How do you access the navigation object in a component using `useNavigation`?
+    back: |
+      ```javascript  
+      function SomeComponent() {  
+        const navigation = useNavigation();  
+        // ...  
+      }  
+      ```
+
+  - front: |
+      What does the `navigation.formAction` property represent?
+    back: |
+      The `navigation.formAction` property represents the action of the form that was submitted, if any.  
+      ```javascript  
+      // set from either one of these  
+      <Form action="/some/where" />;  
+      submit(formData, { action: "/some/where" });  
+      ```
+
+  - front: |
+      What does the `navigation.formMethod` property indicate?
+    back: |
+      The `navigation.formMethod` property indicates the method of the form that was submitted, if any.  
+      ```javascript  
+      // set from either one of these  
+      <Form method="get" />;  
+      submit(formData, { method: "get" });  
+      ```
+
+  - front: |
+      What type of data does `navigation.formData` contain?
+    back: |
+      The `navigation.formData` contains the submission data from any `DELETE`, `PATCH`, `POST`, or `PUT` navigation that started from a `<Form>` or `useSubmit`.  
+      This is useful for building "Optimistic UI". Example:  
+      ```javascript  
+      // This form has the `email` field  
+      <Form method="post" action="/signup">  
+        <input name="email" />  
+      </Form>;  
+      // Accessing the email value during navigation  
+      navigation.formData.get("email");  
+      ```
+
+  - front: |
+      What happens to `navigation.formData` in the case of a `GET` form submission?
+    back: |
+      In the case of a `GET` form submission, `navigation.formData` will be empty and the data will be reflected in `navigation.location.search`.
+
+  - front: |
+      What does the `navigation.location` property tell you?
+    back: |
+      The `navigation.location` property tells you what the next location is going to be.
+
+  - front: |
+      What are the possible states of `navigation.state`?
+    back: |
+      The possible states of `navigation.state` are:  
+      * **idle** - There is no navigation pending.  
+      * **submitting** - A route action is being called due to a form submission using POST, PUT, PATCH, or DELETE.  
+      * **loading** - The loaders for the next routes are being called to render the next page.
+
+  - front: |
+      What is the transition sequence for normal navigations and GET form submissions in `navigation.state`?
+    back: |
+      The transition sequence for normal navigations and GET form submissions is:  
+      ```plaintext  
+      idle → loading → idle  
+      ```
+
+  - front: |
+      What is the transition sequence for form submissions with POST, PUT, PATCH, or DELETE in `navigation.state`?
+    back: |
+      The transition sequence for form submissions with POST, PUT, PATCH, or DELETE is:  
+      ```plaintext  
+      idle → submitting → loading → idle  
+      ```

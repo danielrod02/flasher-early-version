@@ -1,0 +1,174 @@
+deck:
+  - front: |  
+      What are the three key concepts in building authentication for an application?  
+    back: |  
+      The three key concepts are:  
+      1. **Authentication**: Verifies if the user is who they say they are.  
+      2. **Session Management**: Tracks the user's auth state across requests.  
+      3. **Authorization**: Decides what routes and data the user can access.  
+    
+  - front: |  
+      What is the purpose of using an authentication library in an application?  
+    back: |  
+      An authentication library simplifies the implementation of authentication, session management, and authorization, and may include features such as social logins, multi-factor authentication, and role-based access control.  
+    
+  - front: |  
+      What are the steps to implement a sign-up and/or login form?  
+    back: |  
+      The steps are:  
+      1. The user submits their credentials through a form.  
+      2. The form sends a request that is handled by an API route.  
+      3. Upon successful verification, the process is completed, indicating the user's successful authentication.  
+      4. If verification is unsuccessful, an error message is shown.  
+    
+  - front: |  
+      What does the following code snippet do in a login form?  
+      ```javascript  
+      import { FormEvent } from 'react'  
+      import { useRouter } from 'next/router'  
+    
+      export default function LoginPage() {  
+        const router = useRouter()  
+        async function handleSubmit(event: FormEvent<HTMLFormElement>) {  
+          event.preventDefault()  
+          const formData = new FormData(event.currentTarget)  
+          const email = formData.get('email')  
+          const password = formData.get('password')  
+          const response = await fetch('/api/auth/login', {  
+            method: 'POST',  
+            headers: { 'Content-Type': 'application/json' },  
+            body: JSON.stringify({ email, password }),  
+          })  
+          if (response.ok) {  
+            router.push('/profile')  
+          } else {  
+            // Handle errors  
+          }  
+        }  
+        return (  
+          <form onSubmit={handleSubmit}>  
+            <input type="email" name="email" placeholder="Email" required />  
+            <input type="password" name="password" placeholder="Password" required />  
+            <button type="submit">Login</button>  
+          </form>  
+        )  
+      }  
+      ```  
+    back: |  
+      This code defines a login form where users can input their email and password.   
+      On submission, it triggers a function that sends a POST request to the API route `/api/auth/login` to authenticate the user.  
+    
+  - front: |  
+      How can you handle authentication in an API route in Next.js?  
+    back: |  
+      In the API route, you can handle authentication by using the following code:  
+      ```javascript  
+      import type { NextApiRequest, NextApiResponse } from 'next'  
+      import { signIn } from '@/auth'  
+    
+      export default async function handler(  
+        req: NextApiRequest,  
+        res: NextApiResponse  
+      ) {  
+        try {  
+          const { email, password } = req.body  
+          await signIn('credentials', { email, password })  
+          res.status(200).json({ success: true })  
+        } catch (error) {  
+          if (error.type === 'CredentialsSignin') {  
+            res.status(401).json({ error: 'Invalid credentials.' })  
+          } else {  
+            res.status(500).json({ error: 'Something went wrong.' })  
+          }  
+        }  
+      }  
+      ```  
+    
+  - front: |  
+      What are the two types of sessions in session management?  
+    back: |  
+      The two types of sessions are:  
+      1. **Stateless**: Session data is stored in the browser's cookies, which are sent with each request.  
+      2. **Database**: Session data is stored in a database, with the user's browser receiving only an encrypted session ID.  
+    
+  - front: |  
+      How do you set and delete cookies for session management in Next.js?  
+    back: |  
+      You can set session cookies on the server using API Routes with the following code:  
+      ```javascript  
+      import { serialize } from 'cookie'  
+      import type { NextApiRequest, NextApiResponse } from 'next'  
+      import { encrypt } from '@/app/lib/session'  
+    
+      export default function handler(req: NextApiRequest, res: NextApiResponse) {  
+        const sessionData = req.body  
+        const encryptedSessionData = encrypt(sessionData)  
+        const cookie = serialize('session', encryptedSessionData, {  
+          httpOnly: true,  
+          secure: process.env.NODE_ENV === 'production',  
+          maxAge: 60 * 60 * 24 * 7, // One week  
+          path: '/',  
+        })  
+        res.setHeader('Set-Cookie', cookie)  
+        res.status(200).json({ message: 'Successfully set cookie!' })  
+      }  
+      ```  
+    
+  - front: |  
+      What are the main types of authorization checks?  
+    back: |  
+      The two main types of authorization checks are:  
+      1. **Optimistic**: Checks if the user is authorized to access a route using session data stored in cookies.  
+      2. **Secure**: Checks if the user is authorized using session data stored in the database.  
+    
+  - front: |  
+      What is the purpose of using Middleware in authorization checks?  
+    back: |  
+      Middleware can be used to perform optimistic checks, redirect users based on permissions, and protect static routes that share data between users. It centralizes redirect logic and pre-filters unauthorized users.  
+    
+  - front: |  
+      How do you secure an API route in Next.js?  
+    back: |  
+      To secure an API Route, check for an active session and verify the user's role-based permissions. Here’s an example:  
+      ```javascript  
+      import { NextApiRequest, NextApiResponse } from 'next'  
+    
+      export default async function handler(  
+        req: NextApiRequest,  
+        res: NextApiResponse  
+      ) {  
+        const session = await getSession(req)  
+        if (!session) {  
+          res.status(401).json({ error: 'User is not authenticated' })  
+          return  
+        }  
+        if (session.user.role !== 'admin') {  
+          res.status(401).json({ error: 'Unauthorized access: User does not have admin privileges.' })  
+          return  
+        }  
+        // Proceed with the route for authorized users  
+        // ... implementation of the API Route  
+      }  
+      ```  
+    
+  - front: |  
+      What libraries can be used for authentication in Next.js?  
+    back: |  
+      Some authentication libraries compatible with Next.js include:  
+      - Auth0  
+      - Clerk  
+      - Kinde  
+      - Logto  
+      - NextAuth.js  
+      - Ory  
+      - Stack Auth  
+      - Supabase  
+      - Stytch  
+      - WorkOS  
+    
+  - front: |  
+      What libraries can be used for session management in Next.js?  
+    back: |  
+      For session management, you can use:  
+      - Iron Session  
+      - Jose  

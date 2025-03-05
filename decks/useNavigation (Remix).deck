@@ -9,7 +9,7 @@ deck:
     back: |
       ```javascript  
       import { useNavigation } from "@remix-run/react";  
-      ```  back:
+      ```
 
   - front: |
       How do you access the navigation object in a component using `useNavigation`?

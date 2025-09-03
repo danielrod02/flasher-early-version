@@ -2,7 +2,7 @@
 
 export async function fetchDeckFiles(
     owner = 'danielrod02',
-    repo = 'flasher',
+    repo = 'flasher-early-version',
     path = 'decks'
 ) {
     const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
